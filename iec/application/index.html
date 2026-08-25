@@ -139,6 +139,11 @@
       font-weight: 700;
       color: #770000;
     }
+
+    .deadline.completed {
+      font-weight: 400;
+      color: #999;
+    }
     
     .arrow {
       text-align: center;
@@ -688,20 +693,30 @@
     // Apply warning level
     // ----------------------------------------
     
-    function setWarningLevel(element, daysLeft) {
-    
+    function setWarningLevel(element, daysLeft, completed) {
+
       element.classList.remove(
         "warning-1",
         "warning-2",
         "warning-3",
         "warning-4",
-        "warning-5"
+        "warning-5",
+        "completed"
       );
     
       if (daysLeft === null) {
         return;
       }
     
+      // Completed tasks are always shown in gray
+      if (completed) {
+    
+        element.classList.add("completed");
+    
+        return;
+      }
+    
+      // Deadline has passed or is today
       if (daysLeft <= 0) {
     
         element.classList.add("warning-5");
@@ -732,7 +747,7 @@
     // ----------------------------------------
     
     function displayDeadline(element, deadline) {
-    
+
       const dateElement =
         element.querySelector(".deadline-date");
     
@@ -744,7 +759,11 @@
         dateElement.textContent = "";
         daysElement.textContent = "";
     
-        setWarningLevel(element, null);
+        setWarningLevel(
+          element,
+          null,
+          false
+        );
     
         return;
       }
@@ -772,9 +791,43 @@
     
       }
     
+      // Check whether the corresponding task is completed
+      let completed = false;
+    
+      const deadlineType =
+        element.dataset.deadline;
+    
+      if (deadlineType === "ita-accept") {
+    
+        completed =
+          localStorage.getItem(
+            STORAGE_PREFIX + "ita-accepted"
+          ) === "true";
+    
+      }
+    
+      if (deadlineType === "work-permit") {
+    
+        completed =
+          localStorage.getItem(
+            STORAGE_PREFIX + "application-submitted"
+          ) === "true";
+    
+      }
+    
+      if (deadlineType === "biometrics") {
+    
+        completed =
+          localStorage.getItem(
+            STORAGE_PREFIX + "biometrics-completed"
+          ) === "true";
+    
+      }
+    
       setWarningLevel(
         element,
-        daysLeft
+        daysLeft,
+        completed
       );
     
     }
