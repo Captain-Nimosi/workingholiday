@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Application Process — IEC Visa</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Serif', serif;
+      font-size: 14px;
+      color: #111;
+      background: #fff;
+      margin: 0;
+      padding: 60px 40px;
+      line-height: 1.8;
+    }
+
+    main {
+      max-width: 600px;
+    }
+
+    a {
+      color: #0000EE;
+      text-decoration: underline;
+    }
+
+    a:hover {
+      color: #0000AA;
+    }
+
+    h1 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0 0 32px 0;
+    }
+
+    h2 {
+      font-size: 14px;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+    }
+
+    p {
+      margin: 0 0 16px 0;
+    }
+
+    .step {
+      margin-bottom: 32px;
+    }
+
+    .step-number {
+      margin-bottom: 4px;
+    }
+
+    .deadline {
+      margin-bottom: 12px;
+    }
+
+    .description {
+      margin-bottom: 16px;
+    }
+
+    .documents {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .documents li {
+      margin: 4px 0;
+    }
+
+    .documents label {
+      cursor: pointer;
+    }
+
+    .documents input[type="checkbox"] {
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    .date {
+      margin-top: 8px;
+    }
+
+    .date input {
+      font-family: 'Noto Serif', serif;
+      font-size: 14px;
+      color: #111;
+      border: 0;
+      border-bottom: 1px solid #111;
+      padding: 2px 0;
+      background: transparent;
+    }
+
+    .arrow {
+      text-align: center;
+      margin: 32px 0;
+    }
+
+    .source {
+      margin-top: 12px;
+      font-size: 13px;
+    }
+
+    .back {
+      margin-top: 48px;
+    }
+
+    .back a {
+      color: #111;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main>
+
+    <h1>IEC Application Process</h1>
+
+    <!-- STEP 01 -->
+    <section class="step">
+
+      <div class="step-number">01</div>
+
+      <h2>Create your IEC profile</h2>
+
+      <p class="description">
+        Create and submit your IEC profile and choose the Working Holiday pool.
+        You must be eligible for IEC before submitting your profile.
+      </p>
+
+      <ul class="documents">
+
+        <li>
+          <label>
+            <input type="checkbox" data-save="profile-submitted">
+            Profile submitted
+          </label>
+        </li>
+
+      </ul>
+
+      <div class="date">
+        Completed:
+        <input type="date" data-save="profile-date">
+      </div>
+
+      <div class="source">
+        <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/become-candidate.html"
+           target="_blank">
+          Official source
+        </a>
+      </div>
+
+    </section>
+
+
+    <div class="arrow">↓</div>
+
+
+    <!-- STEP 02 -->
+    <section class="step">
+
+      <div class="step-number">02</div>
+
+      <h2>Wait for an Invitation to Apply</h2>
+
+      <p class="description">
+        After submitting your profile, you remain in the IEC pool until you
+        receive an Invitation to Apply (ITA), your profile expires, or the
+        season closes.
+      </p>
+
+      <ul class="documents">
+
+        <li>
+          <label>
+            <input type="checkbox" data-save="ita-received">
+            ITA received
+          </label>
+        </li>
+
+      </ul>
+
+      <div class="date">
+        Received:
+        <input type="date" data-save="ita-date">
+      </div>
+
+      <div class="source">
+        <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/invitations-apply.html"
+           target="_blank">
+          Official source
+        </a>
+      </div>
+
+    </section>
+
+
+    <div class="arrow">↓</div>
+
+
+    <!-- STEP 03 -->
+    <section class="step">
+
+      <div class="step-number">03</div>
+
+      <h2>Accept your invitation</h2>
+
+      <div class="deadline">Deadline: 10 days</div>
+
+      <p class="description">
+        If you receive an ITA, you have 10 days to accept it and start your
+        work permit application.
+      </p>
+
+      <ul class="documents">
+
+        <li>
+          <label>
+            <input type="checkbox" data-save="ita-accepted">
+            ITA accepted
+          </label>
+        </li>
+
+      </ul>
+
+      <div class="date">
+        Accepted:
+        <input type="date" data-save="ita-accepted-date">
+      </div>
+
+      <div class="source">
+        <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/invitations-apply.html"
+           target="_blank">
+          Official source
+        </a>
+      </div>
+
+    </section>
+
+
+    <div class="arrow">↓</div>
+
+
+    <!-- STEP 04 -->
+    <section class="step">
+
+      <div class="step-number">04</div>
+
+      <h2>Prepare your work permit application</h2>
+
+      <div class="deadline">Deadline: 20 days</div>
+
+      <p class="description">
+        After accepting your ITA, you have 20 days to complete and submit
+        your work permit application.
+      </p>
+
+      <p>Required documents</p>
+
+      <ul class="documents">
+
+        <li>
+          <label>
+            <input type="checkbox" data-save="passport">
+            Passport
+          </label>
+        </li>
+
+        <li>
+          <label>
+            <input type="checkbox" data-save="digital-photo">
+            Digital photo
+          </label>
+        </li>
+
+        <li>
+          <label>
+            <input type="checkbox" data-save="family-information">
+            Family Information form
+          </label>
+        </li>
+
+        <li>
+          <label>
+            <input type="checkbox" data-save="cv">
+            CV / résumé
+          </label>
+        </li>
+
+      </ul>
+
+      <p style="margin-top: 16px;">If applicable</p>
+
+      <ul class="documents">
+
+        <li>
+          <label>
+            <input type="checkbox" data-save="police-certificate">
+            Police certificate
+          </label>
+        </li>
+
+        <li>
+          <label>
+            <input type="checkbox" data-save="medical-exam">
+            Medical exam
+          </label>
+        </li>
+
+      </ul>
+
+      <div class="source">
+        <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/apply-work-permit.html"
+           target="_blank">
+          Official source
+        </a>
+      </div>
+
+    </section>
+
+
+    <div class="arrow">↓</div>
+
+
+    <!-- STEP 05 -->
+    <section class="step">
+
+      <div class="step-number">05</div>
+
+      <h2>Submit your work permit application</h2>
+
+      <p class="description">
+        Complete all required forms, upload your documents, pay the required
+        fees and submit your complete application before the deadline.
+      </p>
+
+      <ul class="documents">
+
+        <li>
+          <label>
+            <input type="checkbox" data-save="application-submitted">
+            Application submitted
+          </label>
+        </li>
+
+        <li>
+          <label>
+            <input type="checkbox" data-save="fees-paid">
+            Fees paid
+          </label>
+        </li>
+
+      </ul>
+
+      <div class="date">
+        Submitted:
+        <input type="date" data-save="application-date">
+      </div>
+
+      <div class="source">
+        <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/apply-work-permit.html"
+           target="_blank">
+          Official source
+        </a>
+      </div>
+
+    </section>
+
+
+    <div class="arrow">↓</div>
+
+
+    <!-- STEP 06 -->
+    <section class="step">
+
+      <div class="step-number">06</div>
+
+      <h2>Give your biometrics</h2>
+
+      <div class="deadline">Deadline: 30 days</div>
+
+      <p class="description">
+        If biometrics are required, you will receive a Biometrics Instruction
+        Letter (BIL) after submitting your application. You must give your
+        biometrics in person within 30 days.
+      </p>
+
+      <ul class="documents">
+
+        <li>
+          <label>
+            <input type="checkbox" data-save="bil-received">
+            Biometrics Instruction Letter received
+          </label>
+        </li>
+
+        <li>
+          <label>
+            <input type="checkbox" data-save="biometrics-completed">
+            Biometrics completed
+          </label>
+        </li>
+
+      </ul>
+
+      <div class="date">
+        Completed:
+        <input type="date" data-save="biometrics-date">
+      </div>
+
+      <div class="source">
+        <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/apply-work-permit.html"
+           target="_blank">
+          Official source
+        </a>
+      </div>
+
+    </section>
+
+
+    <div class="arrow">↓</div>
+
+
+    <!-- STEP 07 -->
+    <section class="step">
+
+      <div class="step-number">07</div>
+
+      <h2>Wait for a decision</h2>
+
+      <p class="description">
+        IRCC will assess your application and may ask you to provide
+        additional documents or information.
+      </p>
+
+      <ul class="documents">
+
+        <li>
+          <label>
+            <input type="checkbox" data-save="application-approved">
+            Application approved
+          </label>
+        </li>
+
+      </ul>
+
+      <div class="date">
+        Approved:
+        <input type="date" data-save="approval-date">
+      </div>
+
+      <div class="source">
+        <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/after-apply-next-steps.html"
+           target="_blank">
+          Official source
+        </a>
+      </div>
+
+    </section>
+
+
+    <div class="arrow">↓</div>
+
+
+    <!-- STEP 08 -->
+    <section class="step">
+
+      <div class="step-number">08</div>
+
+      <h2>Receive your POE Letter</h2>
+
+      <p class="description">
+        If your application is approved, IRCC will send your Port of Entry
+        Letter of Introduction to your account. Bring this letter with you
+        when you travel to Canada.
+      </p>
+
+      <ul class="documents">
+
+        <li>
+          <label>
+            <input type="checkbox" data-save="poe-received">
+            POE Letter received
+          </label>
+        </li>
+
+      </ul>
+
+      <div class="date">
+        Received:
+        <input type="date" data-save="poe-date">
+      </div>
+
+      <div class="source">
+        <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/after-apply-next-steps.html"
+           target="_blank">
+          Official source
+        </a>
+      </div>
+
+    </section>
+
+
+    <div class="back">
+      <a href="../">back</a>
+    </div>
+
+  </main>
+
+
+  <script>
+    const STORAGE_PREFIX = "workingholiday_iec_";
+
+    const elements = document.querySelectorAll("[data-save]");
+
+    elements.forEach(element => {
+
+      const key = STORAGE_PREFIX + element.dataset.save;
+
+      const savedValue = localStorage.getItem(key);
+
+      if (element.type === "checkbox") {
+
+        element.checked = savedValue === "true";
+
+      } else {
+
+        if (savedValue) {
+          element.value = savedValue;
+        }
+
+      }
+
+      element.addEventListener("change", () => {
+
+        if (element.type === "checkbox") {
+
+          localStorage.setItem(key, element.checked);
+
+        } else {
+
+          localStorage.setItem(key, element.value);
+
+        }
+
+      });
+
+    });
+  </script>
+
+</body>
+
+</html>
