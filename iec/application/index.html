@@ -102,6 +102,44 @@
       background: transparent;
     }
 
+    .deadline {
+       margin-top: 12px;
+      font-weight: 400;
+    }
+
+    .deadline-date {
+      margin-left: 4px;
+    }
+
+    .days-left {
+      margin-left: 8px;
+    }
+
+    .deadline.warning-1 {
+      font-weight: 700;
+      color: #cc7777;
+    }
+
+    .deadline.warning-2 {
+      font-weight: 700;
+      color: #bb5555;
+    }
+
+    .deadline.warning-3 {
+      font-weight: 700;
+      color: #aa3333;
+    }
+
+    .deadline.warning-4 {
+      font-weight: 700;
+      color: #990000;
+    }
+
+    .deadline.warning-5 {
+      font-weight: 700;
+      color: #770000;
+    }
+    
     .arrow {
       text-align: center;
       margin: 32px 0;
@@ -213,41 +251,45 @@
 
     <!-- STEP 03 -->
     <section class="step">
-
+    
       <div class="step-number">03</div>
-
+    
       <h2>Accept your invitation</h2>
-
-      <div class="deadline">Deadline: 10 days</div>
-
+    
       <p class="description">
-        If you receive an ITA, you have 10 days to accept it and start your
-        work permit application.
+        You have 10 days to accept your Invitation to Apply (ITA).
+        Check your invitation for the exact deadline.
       </p>
-
+    
       <ul class="documents">
-
+    
         <li>
           <label>
             <input type="checkbox" data-save="ita-accepted">
             ITA accepted
           </label>
         </li>
-
+    
       </ul>
-
+    
       <div class="date">
-        Accepted:
-        <input type="date" data-save="ita-accepted-date">
+        ITA received:
+        <input type="date" data-save="ita-date">
       </div>
-
+    
+      <div class="deadline" data-deadline="ita-accept">
+        Accept by:
+        <span class="deadline-date"></span>
+        <span class="days-left"></span>
+      </div>
+    
       <div class="source">
         <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/invitations-apply.html"
            target="_blank">
           Official source
         </a>
       </div>
-
+    
     </section>
 
 
@@ -261,7 +303,16 @@
 
       <h2>Prepare your work permit application</h2>
 
-      <div class="deadline">Deadline: 20 days</div>
+      <div class="date">
+        ITA accepted:
+        <input type="date" data-save="ita-accepted-date">
+      </div>
+
+      <div class="deadline" data-deadline="work-permit">
+        Application deadline:
+        <span class="deadline-date"></span>
+        <span class="days-left"></span>
+      </div>
 
       <p class="description">
         After accepting your ITA, you have 20 days to complete and submit
@@ -390,7 +441,16 @@
 
       <h2>Give your biometrics</h2>
 
-      <div class="deadline">Deadline: 30 days</div>
+      <div class="date">
+        BIL received:
+        <input type="date" data-save="bil-date">
+      </div>
+
+      <div class="deadline" data-deadline="biometrics">
+        Biometrics deadline:
+        <span class="deadline-date"></span>
+        <span class="days-left"></span>
+      </div>
 
       <p class="description">
         If biometrics are required, you will receive a Biometrics Instruction
@@ -524,6 +584,11 @@
   <script>
     const STORAGE_PREFIX = "workingholiday_iec_";
 
+
+    // ----------------------------------------
+    // Save and restore checkbox / date values
+    // ----------------------------------------
+
     const elements = document.querySelectorAll("[data-save]");
 
     elements.forEach(element => {
@@ -533,32 +598,284 @@
       const savedValue = localStorage.getItem(key);
 
       if (element.type === "checkbox") {
-
+    
         element.checked = savedValue === "true";
-
+    
       } else {
-
+    
         if (savedValue) {
           element.value = savedValue;
         }
-
+    
       }
-
+    
       element.addEventListener("change", () => {
-
+    
         if (element.type === "checkbox") {
-
+    
           localStorage.setItem(key, element.checked);
-
+    
         } else {
-
+    
           localStorage.setItem(key, element.value);
-
+    
         }
-
+    
+        updateDeadlines();
+    
       });
-
+    
     });
+    
+    
+    // ----------------------------------------
+    // Date utilities
+    // ----------------------------------------
+    
+    function addDays(dateString, days) {
+    
+      if (!dateString) {
+        return null;
+      }
+    
+      const date = new Date(dateString + "T00:00:00");
+    
+      date.setDate(date.getDate() + days);
+    
+      return date;
+    }
+    
+    
+    function formatDate(date) {
+    
+      if (!date) {
+        return "";
+      }
+    
+      return date.toLocaleDateString("en-CA", {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      });
+    
+    }
+    
+    
+    // ----------------------------------------
+    // Calculate days remaining
+    // ----------------------------------------
+    
+    function getDaysRemaining(deadline) {
+    
+      if (!deadline) {
+        return null;
+      }
+    
+      const today = new Date();
+    
+      today.setHours(0, 0, 0, 0);
+    
+      const target = new Date(deadline);
+    
+      target.setHours(0, 0, 0, 0);
+    
+      const difference =
+        target.getTime() - today.getTime();
+    
+      return Math.ceil(
+        difference / (1000 * 60 * 60 * 24)
+      );
+    
+    }
+    
+    
+    // ----------------------------------------
+    // Apply warning level
+    // ----------------------------------------
+    
+    function setWarningLevel(element, daysLeft) {
+    
+      element.classList.remove(
+        "warning-1",
+        "warning-2",
+        "warning-3",
+        "warning-4",
+        "warning-5"
+      );
+    
+      if (daysLeft === null) {
+        return;
+      }
+    
+      if (daysLeft <= 0) {
+    
+        element.classList.add("warning-5");
+    
+      } else if (daysLeft === 1) {
+    
+        element.classList.add("warning-4");
+    
+      } else if (daysLeft === 2) {
+    
+        element.classList.add("warning-3");
+    
+      } else if (daysLeft <= 4) {
+    
+        element.classList.add("warning-2");
+    
+      } else if (daysLeft <= 5) {
+    
+        element.classList.add("warning-1");
+    
+      }
+    
+    }
+    
+    
+    // ----------------------------------------
+    // Display deadline
+    // ----------------------------------------
+    
+    function displayDeadline(element, deadline) {
+    
+      const dateElement =
+        element.querySelector(".deadline-date");
+    
+      const daysElement =
+        element.querySelector(".days-left");
+    
+      if (!deadline) {
+    
+        dateElement.textContent = "";
+        daysElement.textContent = "";
+    
+        setWarningLevel(element, null);
+    
+        return;
+      }
+    
+      const daysLeft =
+        getDaysRemaining(deadline);
+    
+      dateElement.textContent =
+        formatDate(deadline);
+    
+      if (daysLeft > 0) {
+    
+        daysElement.textContent =
+          `(D-${daysLeft})`;
+    
+      } else if (daysLeft === 0) {
+    
+        daysElement.textContent =
+          "(D-Day)";
+    
+      } else {
+    
+        daysElement.textContent =
+          `(D+${Math.abs(daysLeft)})`;
+    
+      }
+    
+      setWarningLevel(
+        element,
+        daysLeft
+      );
+    
+    }
+    
+    
+    // ----------------------------------------
+    // Update all deadlines
+    // ----------------------------------------
+    
+    function updateDeadlines() {
+    
+      // ITA acceptance deadline
+      const itaReceivedDate =
+        localStorage.getItem(
+          STORAGE_PREFIX + "ita-date"
+        );
+      
+      const itaDeadline =
+        addDays(
+          itaReceivedDate,
+          10
+        );
+      
+      const itaElement =
+        document.querySelector(
+          '[data-deadline="ita-accept"]'
+        );
+      
+      if (itaElement) {
+      
+        displayDeadline(
+          itaElement,
+          itaDeadline
+        );
+      
+      }
+    
+    
+      // Work permit application deadline
+      const itaAcceptedDate =
+        localStorage.getItem(
+          STORAGE_PREFIX + "ita-accepted-date"
+        );
+    
+      const workPermitDeadline =
+        addDays(
+          itaAcceptedDate,
+          20
+        );
+    
+      const workPermitElement =
+        document.querySelector(
+          '[data-deadline="work-permit"]'
+        );
+    
+      if (workPermitElement) {
+    
+        displayDeadline(
+          workPermitElement,
+          workPermitDeadline
+        );
+    
+      }
+    
+    
+      // Biometrics deadline
+      const bilDate =
+        localStorage.getItem(
+          STORAGE_PREFIX + "bil-date"
+        );
+    
+      const biometricsDeadline =
+        addDays(
+          bilDate,
+          30
+        );
+    
+      const biometricsElement =
+        document.querySelector(
+          '[data-deadline="biometrics"]'
+        );
+    
+      if (biometricsElement) {
+    
+        displayDeadline(
+          biometricsElement,
+          biometricsDeadline
+        );
+    
+      }
+    
+    }
+    
+    
+    // Run when page loads
+    updateDeadlines();
   </script>
 
 </body>
