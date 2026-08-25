@@ -1,167 +1,124 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>Vancouver Cost of Living Calculator</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
-  body {
-    font-family: 'Noto Serif', serif;
-    font-size: 14px;
-    color: #111;
-    background: #fff;
-    margin: 0;
-    padding: 60px 40px;
-    max-width: 600px;
-  }
-  h1 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
-  .subtitle { font-size: 12px; color: #555; margin-bottom: 30px; }
-  .field {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-  }
-  .field label { flex: 1; }
-  .field input {
-    width: 100px;
-    font-family: 'Noto Serif', serif;
-    font-size: 14px;
-    border: none;
-    border-bottom: 1px solid #111;
-    text-align: right;
-    padding: 2px 0;
-    background: transparent;
-  }
-  .field input:focus { outline: none; border-bottom: 1px solid #0000EE; }
-  .section-title {
-    font-weight: 700;
-    margin-top: 30px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #111;
-    padding-bottom: 4px;
-  }
-  .result {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 2px solid #111;
-  }
-  .result-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
-  }
-  .result-row.total { font-weight: 700; font-size: 16px; }
-  .surplus { color: #0000EE; }
-  .deficit { color: #CC0000; }
-  .note { font-size: 12px; color: #555; margin-top: 20px; line-height: 1.6; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Working Holiday Canada</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Serif', serif;
+      font-size: 14px;
+      color: #111;
+      background: #fff;
+      margin: 0;
+      padding: 60px 40px;
+      line-height: 1.8;
+    }
+
+    main {
+      max-width: 600px;
+    }
+
+    a {
+      color: #0000EE;
+      text-decoration: underline;
+    }
+
+    a:hover {
+      color: #0000AA;
+    }
+
+    .header {
+      margin-bottom: 40px;
+    }
+
+    .site-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .country {
+      margin-top: 2px;
+    }
+
+    .location {
+      margin-bottom: 36px;
+    }
+
+    .location a {
+      display: inline-block;
+    }
+
+    .menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      line-height: 2.2;
+    }
+
+    .language {
+      margin-top: 40px;
+    }
+
+    .language a {
+      text-decoration: underline;
+    }
+
+    .language .current {
+      color: #111;
+      text-decoration: none;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Vancouver Cost of Living</h1>
-  <div class="subtitle">밴쿠버 워킹홀리데이 생활비 계산기 (월 기준, CAD)</div>
 
-  <div class="section-title">수입</div>
-  <div class="field">
-    <label>연봉 (Gross, CAD)</label>
-    <input type="number" id="salary" value="45000">
-  </div>
+  <main>
 
-  <div class="section-title">지출</div>
-  <div class="field">
-    <label>주거비 (Rent)</label>
-    <input type="number" id="rent" value="2262">
-  </div>
-  <div class="field">
-    <label>교통비 (Transit)</label>
-    <input type="number" id="transit" value="115">
-  </div>
-  <div class="field">
-    <label>식료품 (Groceries)</label>
-    <input type="number" id="groceries" value="575">
-  </div>
-  <div class="field">
-    <label>공과금 (Utilities + Phone)</label>
-    <input type="number" id="utilities" value="185">
-  </div>
-  <div class="field">
-    <label>외식 (Restaurants)</label>
-    <input type="number" id="restaurants" value="379">
-  </div>
-  <div class="field">
-    <label>여가/취미 (Leisure)</label>
-    <input type="number" id="leisure" value="171">
-  </div>
-  <div class="field">
-    <label>기타 (Misc)</label>
-    <input type="number" id="misc" value="150">
-  </div>
+    <header class="header">
+      <h1 class="site-title">working holiday</h1>
+      <div class="country">canada</div>
+    </header>
 
-  <div class="result">
-    <div class="result-row">
-      <span>월 예상 실수령액 (세후 추정)</span>
-      <span id="netIncome">-</span>
+    <div class="location">
+      <div>
+        <a href="#">British Columbia</a>
+      </div>
+
+      <div>
+        <a href="#">Vancouver</a>
+      </div>
     </div>
-    <div class="result-row">
-      <span>월 예상 총 지출</span>
-      <span id="totalExpense">-</span>
+
+    <nav>
+      <ul class="menu">
+        <li><a href="#">checklist</a></li>
+        <li><a href="#">visa</a></li>
+        <li><a href="#">money</a></li>
+        <li><a href="#">living</a></li>
+        <li><a href="#">work</a></li>
+        <li><a href="#">settlement</a></li>
+      </ul>
+    </nav>
+
+    <div class="language">
+      <span class="current">EN</span>
+      <span> | </span>
+      <a href="#">KR</a>
     </div>
-    <div class="result-row total">
-      <span>월 잔여/부족</span>
-      <span id="balance">-</span>
-    </div>
-  </div>
 
-  <div class="note">
-    * 세후 실수령액은 대략적으로 연봉의 78%로 계산한 추정치입니다 (BC주 평균 실효세율 기준, 정확한 세금 계산은 별도 확인 필요).<br>
-    * 기본값은 밴쿠버 평균 데이터 기준이며, 각 항목을 직접 수정해서 본인 상황에 맞게 계산할 수 있습니다.<br>
-    * 참고: <a href="https://www.careerbeacon.com/en/cost-of-living/vancouver_british-columbia" target="_blank">CareerBeacon Cost of Living Calculator</a>
-  </div>
+  </main>
 
-  <script>
-    const inputs = document.querySelectorAll('input');
-    const STORAGE_KEY = 'vancouver-col-calc';
-
-    function loadSaved() {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (!saved) return;
-      const data = JSON.parse(saved);
-      inputs.forEach(input => {
-        if (data[input.id] !== undefined) input.value = data[input.id];
-      });
-    }
-
-    function saveState() {
-      const data = {};
-      inputs.forEach(input => { data[input.id] = input.value; });
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-    }
-
-    function calculate() {
-      const salary = parseFloat(document.getElementById('salary').value) || 0;
-      const netMonthly = (salary * 0.78) / 12;
-
-      const expenseIds = ['rent', 'transit', 'groceries', 'utilities', 'restaurants', 'leisure', 'misc'];
-      const totalExpense = expenseIds.reduce((sum, id) => {
-        return sum + (parseFloat(document.getElementById(id).value) || 0);
-      }, 0);
-
-      const balance = netMonthly - totalExpense;
-
-      document.getElementById('netIncome').textContent = `$${netMonthly.toFixed(0)}`;
-      document.getElementById('totalExpense').textContent = `$${totalExpense.toFixed(0)}`;
-
-      const balanceEl = document.getElementById('balance');
-      balanceEl.textContent = `${balance >= 0 ? '+' : ''}$${balance.toFixed(0)}`;
-      balanceEl.className = balance >= 0 ? 'surplus' : 'deficit';
-
-      saveState();
-    }
-
-    inputs.forEach(input => input.addEventListener('input', calculate));
-
-    loadSaved();
-    calculate();
-  </script>
 </body>
+
 </html>
