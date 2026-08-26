@@ -1,979 +1,809 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Application Process — IEC Visa</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
 
-  <title>Application Process — IEC Visa</title>
+* {
+  box-sizing: border-box;
+}
 
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+body {
+  font-family: 'Noto Serif', serif;
+  font-size: 14px;
+  color: #111;
+  background: #fff;
+  margin: 0;
+  padding: 60px 40px;
+  line-height: 1.8;
+}
 
-    * {
-      box-sizing: border-box;
-    }
+main {
+  max-width: 600px;
+}
 
-    body {
-      font-family: 'Noto Serif', serif;
-      font-size: 14px;
-      color: #111;
-      background: #fff;
-      margin: 0;
-      padding: 60px 40px;
-      line-height: 1.8;
-    }
+a {
+  color: #0000EE;
+  text-decoration: underline;
+}
 
-    main {
-      max-width: 600px;
-    }
+a:hover {
+  color: #0000AA;
+}
 
-    a {
-      color: #0000EE;
-      text-decoration: underline;
-    }
+h1 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 32px 0;
+}
 
-    a:hover {
-      color: #0000AA;
-    }
+.page-meta {
+  margin-top: 8px;
+  margin-bottom: 40px;
+  font-size: 14px;
+  line-height: 1.8;
+  font-weight: 400;
+  color: #111;
+}
 
-    h1 {
-      font-size: 16px;
-      font-weight: 700;
-      margin: 0 0 32px 0;
-    }
+/* ---------- Step / details ---------- */
 
-    h2 {
-      font-size: 14px;
-      font-weight: 700;
-      margin: 0 0 8px 0;
-    }
+.step {
+  margin-bottom: 24px;
+  border: none;
+}
 
-    h3 {
-      margin-top: 28px;
-      margin-bottom: 8px;
-      font-size: 14px;
-      font-weight: 700;
-    }
+.step > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
 
-    p {
-      margin: 0 0 16px 0;
-    }
+.step > summary::-webkit-details-marker {
+  display: none;
+}
 
-    .page-meta {
-      margin-top: 8px;
-      margin-bottom: 40px;
-      font-size: 14px;
-      line-height: 1.8;
-      font-weight: 400;
-      color: #111;
-    }
+.step > summary::before {
+  content: "+";
+  font-weight: 700;
+  width: 12px;
+  flex-shrink: 0;
+}
 
-    .step {
-      margin-bottom: 32px;
-    }
+.step[open] > summary::before {
+  content: "−";
+}
 
-    .step-number {
-      margin-bottom: 4px;
-    }
+.step-number {
+  font-weight: 400;
+}
 
-    .description {
-      margin-bottom: 16px;
-    }
+.step > summary h2 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+  display: inline;
+}
 
-    .documents {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
+.step.completed > summary {
+  color: #999;
+}
 
-    .documents li {
-      margin: 4px 0;
-    }
+.step-content {
+  margin-top: 16px;
+  margin-left: 22px;
+}
 
-    .documents label {
-      cursor: pointer;
-    }
+.description {
+  margin-bottom: 16px;
+}
 
-    .documents input[type="checkbox"] {
-      margin-right: 8px;
-      vertical-align: middle;
-    }
+/* ---------- Subgroups (04, 05용 시각적 분리) ---------- */
 
-    .date {
-      margin-top: 8px;
-    }
+.subgroup {
+  border-left: 2px solid #ddd;
+  padding-left: 16px;
+  margin-bottom: 24px;
+}
 
-    .date input {
-      font-family: 'Noto Serif', serif;
-      font-size: 14px;
-      color: #111;
-      border: 0;
-      border-bottom: 1px solid #111;
-      padding: 2px 0;
-      background: transparent;
-    }
+.subgroup:last-child {
+  margin-bottom: 0;
+}
 
-    .deadline {
-      margin-top: 12px;
-      margin-bottom: 12px;
-      font-weight: 400;
-    }
-    
-    .deadline-note {
-      margin-top: 0;
-      margin-bottom: 16px;
-      font-size: 14px;
-    }
+.subgroup h3 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  font-weight: 700;
+}
 
-    .deadline-date {
-      margin-left: 4px;
-    }
+.subgroup p {
+  margin: 0 0 12px 0;
+}
 
-    .days-left {
-      margin-left: 8px;
-    }
+.subgroup p:last-child {
+  margin-bottom: 0;
+}
 
-    .deadline.warning-1 {
-      font-weight: 700;
-      color: #cc7777;
-    }
+/* ---------- Documents / checkboxes ---------- */
 
-    .deadline.warning-2 {
-      font-weight: 700;
-      color: #bb5555;
-    }
+.documents {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
-    .deadline.warning-3 {
-      font-weight: 700;
-      color: #aa3333;
-    }
+.documents li {
+  margin: 4px 0;
+}
 
-    .deadline.warning-4 {
-      font-weight: 700;
-      color: #990000;
-    }
+.documents label {
+  cursor: pointer;
+}
 
-    .deadline.warning-5 {
-      font-weight: 700;
-      color: #770000;
-    }
+.documents input[type="checkbox"] {
+  margin-right: 8px;
+  vertical-align: middle;
+}
 
-    .deadline.completed {
-      font-weight: 400;
-      color: #999;
-    }
-    
-    .arrow {
-      text-align: center;
-      margin: 32px 0;
-    }
+.date {
+  margin-top: 8px;
+}
 
-    .source {
-      margin-top: 12px;
-      font-size: 13px;
-    }
+.date input {
+  font-family: 'Noto Serif', serif;
+  font-size: 14px;
+  color: #111;
+  border: 0;
+  border-bottom: 1px solid #111;
+  padding: 2px 0;
+  background: transparent;
+}
 
-    .back {
-      margin-top: 48px;
-    }
+.deadline {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  font-weight: 400;
+}
 
-    .back a {
-      color: #111;
-    }
-  </style>
+.deadline-note {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.deadline-date {
+  margin-left: 4px;
+}
+
+.days-left {
+  margin-left: 8px;
+}
+
+.deadline.warning-1 { font-weight: 700; color: #cc7777; }
+.deadline.warning-2 { font-weight: 700; color: #bb5555; }
+.deadline.warning-3 { font-weight: 700; color: #aa3333; }
+.deadline.warning-4 { font-weight: 700; color: #990000; }
+.deadline.warning-5 { font-weight: 700; color: #770000; }
+.deadline.completed { font-weight: 400; color: #999; }
+
+/* ---------- Arrow (왼쪽 정렬) ---------- */
+
+.arrow {
+  text-align: left;
+  margin: 8px 0 8px 1px;
+  font-size: 14px;
+  color: #999;
+}
+
+.source {
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+.back {
+  margin-top: 48px;
+}
+
+.back a {
+  color: #111;
+}
+</style>
 </head>
-
 <body>
+<main>
 
-  <main>
+<h1>IEC Application Process</h1>
 
-    <h1>IEC Application Process</h1>
-    
-    <p class="page-meta">
-      For Korean citizens applying for the IEC program.<br>
-      Based on information provided by
-      <a
-        href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/eligibility.html?selection=kr-wh#selection"
-        target="_blank"
-        rel="noopener noreferrer"
-      >Immigration, Refugees and Citizenship Canada (IRCC)</a>.<br>
-      Last updated: August 26, 2026
+<p class="page-meta">
+For Korean citizens applying for the IEC program.<br>
+Based on information provided by
+
+  href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/eligibility.html?selection=kr-wh#selection"
+  target="_blank"
+  rel="noopener noreferrer"
+>Immigration, Refugees and Citizenship Canada (IRCC)</a>.<br>
+Last updated: August 26, 2026
+</p>
+
+<!-- STEP 01 -->
+<details class="step" data-step="01" open>
+  <summary>
+    <span class="step-number">01</span>
+    <h2>Create your IEC profile</h2>
+  </summary>
+  <div class="step-content">
+    <p class="description">
+      Create and submit your IEC profile and choose the Working Holiday pool.
+      You must be eligible for IEC before submitting your profile.
     </p>
 
-    <!-- STEP 01 -->
-    <section class="step">
+    <ul class="documents">
+      <li>
+        <label>
+          <input type="checkbox" data-save="profile-submitted">
+          Profile submitted
+        </label>
+      </li>
+    </ul>
 
-      <div class="step-number">01</div>
+    <div class="date">
+      Completed:
+      <input type="date" data-save="profile-date">
+    </div>
+  </div>
+</details>
 
-      <h2>Create your IEC profile</h2>
+<div class="arrow">↓</div>
 
-      <p class="description">
-        Create and submit your IEC profile and choose the Working Holiday pool.
-        You must be eligible for IEC before submitting your profile.
-      </p>
+<!-- STEP 02 -->
+<details class="step" data-step="02" open>
+  <summary>
+    <span class="step-number">02</span>
+    <h2>Wait for an Invitation to Apply</h2>
+  </summary>
+  <div class="step-content">
+    <p class="description">
+      After submitting your profile, you remain in the IEC pool until you
+      receive an Invitation to Apply (ITA), your profile expires, or the
+      season closes.
+    </p>
 
-      <ul class="documents">
+    <ul class="documents">
+      <li>
+        <label>
+          <input type="checkbox" data-save="ita-received">
+          ITA received
+        </label>
+      </li>
+    </ul>
 
-        <li>
-          <label>
-            <input type="checkbox" data-save="profile-submitted">
-            Profile submitted
-          </label>
-        </li>
+    <div class="date">
+      Received:
+      <input type="date" data-save="ita-date">
+    </div>
+  </div>
+</details>
 
-      </ul>
+<div class="arrow">↓</div>
 
-      <div class="date">
-        Completed:
-        <input type="date" data-save="profile-date">
-      </div>
+<!-- STEP 03 -->
+<details class="step" data-step="03" open>
+  <summary>
+    <span class="step-number">03</span>
+    <h2>Accept your invitation</h2>
+  </summary>
+  <div class="step-content">
+    <p class="description">
+      You have 10 days to accept your Invitation to Apply (ITA).
+      Check your invitation for the exact deadline.
+    </p>
 
-    </section>
+    <div class="deadline" data-deadline="ita-accept">
+      Accept by:
+      <span class="deadline-date"></span>
+      <span class="days-left"></span>
+    </div>
+    <p class="deadline-note">
+      Check your IRCC account for your exact deadline.
+    </p>
 
+    <ul class="documents">
+      <li>
+        <label>
+          <input type="checkbox" data-save="ita-accepted">
+          ITA accepted
+        </label>
+      </li>
+    </ul>
 
-    <div class="arrow">↓</div>
+    <div class="date">
+      Accepted:
+      <input type="date" data-save="ita-accepted-date">
+    </div>
+  </div>
+</details>
 
+<div class="arrow">↓</div>
 
-    <!-- STEP 02 -->
-    <section class="step">
+<!-- STEP 04 -->
+<details class="step" data-step="04" open>
+  <summary>
+    <span class="step-number">04</span>
+    <h2>Prepare and submit your work permit application</h2>
+  </summary>
+  <div class="step-content">
+    <p class="description">
+      You have exactly 20 days from the time you accept your ITA to submit
+      your work permit application.
+    </p>
 
-      <div class="step-number">02</div>
+    <div class="deadline" data-deadline="work-permit">
+      Application deadline:
+      <span class="deadline-date"></span>
+      <span class="days-left"></span>
+    </div>
+    <p class="deadline-note">
+      Check your IRCC account for your exact deadline.
+    </p>
 
-      <h2>Wait for an Invitation to Apply</h2>
-
-      <p class="description">
-        After submitting your profile, you remain in the IEC pool until you
-        receive an Invitation to Apply (ITA), your profile expires, or the
-        season closes.
-      </p>
-
-      <ul class="documents">
-
-        <li>
-          <label>
-            <input type="checkbox" data-save="ita-received">
-            ITA received
-          </label>
-        </li>
-
-      </ul>
-
-      <div class="date">
-        Received:
-        <input type="date" data-save="ita-date">
-      </div>
-
-    </section>
-
-
-    <div class="arrow">↓</div>
-
-
-    <!-- STEP 03 -->
-    <section class="step">
-    
-      <div class="step-number">03</div>
-    
-      <h2>Accept your invitation</h2>
-    
-      <p class="description">
-        You have 10 days to accept your Invitation to Apply (ITA).
-        Check your invitation for the exact deadline.
-      </p>
-    
-      <div class="deadline" data-deadline="ita-accept">
-        Accept by:
-        <span class="deadline-date"></span>
-        <span class="days-left"></span>
-      </div>
-      
-      <p class="deadline-note">
-        Check your IRCC account for your exact deadline.
-      </p>
-      
-      <ul class="documents">
-      
-        <li>
-          <label>
-            <input type="checkbox" data-save="ita-accepted">
-            ITA accepted
-          </label>
-        </li>
-      
-      </ul>
-      
-      <div class="date">
-        Accepted:
-        <input type="date" data-save="ita-accepted-date">
-      </div>
-    
-    </section>
-
-
-    <div class="arrow">↓</div>
-
-
-    <!-- STEP 04 -->
-    <section class="step">
-    
-      <div class="step-number">04</div>
-    
-      <h2>Prepare and submit your work permit application</h2>
-    
-      <p class="description">
-        You have exactly 20 days from the time you accept your ITA to submit
-        your work permit application.
-      </p>
-    
-      <div class="deadline" data-deadline="work-permit">
-        Application deadline:
-        <span class="deadline-date"></span>
-        <span class="days-left"></span>
-      </div>
-    
-      <p class="deadline-note">
-        Check your IRCC account for your exact deadline.
-      </p>
-    
-    
+    <div class="subgroup">
       <h3>eService Form</h3>
-    
       <ul class="documents">
-    
         <li>
           <label>
             <input type="checkbox" data-save="personal-details">
             Personal details of applicant
           </label>
         </li>
-    
         <li>
           <label>
             <input type="checkbox" data-save="contact-information">
             Contact information
           </label>
         </li>
-    
         <li>
           <label>
             <input type="checkbox" data-save="work-education-details">
             Work and education details
           </label>
         </li>
-    
         <li>
           <label>
             <input type="checkbox" data-save="application-details">
             Application details
           </label>
         </li>
-    
       </ul>
-    
-    
+    </div>
+
+    <div class="subgroup">
       <h3>Required Documents</h3>
-    
       <ul class="documents">
-    
         <li>
           <label>
             <input type="checkbox" data-save="family-information">
             Family Information Form (IMM 5707)
           </label>
         </li>
-    
         <li>
           <label>
             <input type="checkbox" data-save="cv">
             CV / résumé
           </label>
         </li>
-    
         <li>
           <label>
             <input type="checkbox" data-save="passport">
             Passport
           </label>
         </li>
-    
         <li>
           <label>
             <input type="checkbox" data-save="national-identity-document">
             National Identity Document
           </label>
         </li>
-    
         <li>
           <label>
             <input type="checkbox" data-save="digital-photo">
             Digital photo
           </label>
         </li>
-    
         <li>
           <label>
             <input type="checkbox" data-save="medical-exam">
             Proof of medical exam
           </label>
         </li>
-    
         <li>
           <label>
             <input type="checkbox" data-save="police-certificates">
             Police Certificates
           </label>
         </li>
-    
       </ul>
-    
-    
+    </div>
+
+    <div class="subgroup">
       <h3>Medical exam</h3>
-      
       <p>
         The exam must be performed by an IRCC-approved panel physician.
         The medical exam results are valid for 12 months.
       </p>
-      
       <p>
-        <a
+        
           href="https://secure.cic.gc.ca/PanelPhysicianMedecinDesigne/en/Home"
           target="_blank"
           rel="noopener noreferrer"
         >Find an IRCC-approved panel physician</a>
       </p>
-        
+    </div>
+
+    <div class="subgroup">
       <h3>Additional Documents</h3>
-    
       <p>
         Additional documents may be requested depending on your individual
         circumstances.
       </p>
-    
-    
+    </div>
+
+    <div class="subgroup">
       <h3>Submit your application</h3>
-    
       <ul class="documents">
-    
         <li>
           <label>
             <input type="checkbox" data-save="application-submitted">
             Application submitted
           </label>
         </li>
-    
         <li>
           <label>
             <input type="checkbox" data-save="fees-paid">
             Fees paid
           </label>
         </li>
-    
       </ul>
-    
       <div class="date">
         Submitted:
         <input type="date" data-save="application-date">
       </div>
-    
-    </section>
+    </div>
+  </div>
+</details>
 
+<div class="arrow">↓</div>
 
-    <!-- STEP 05 -->
-    <section class="step">
-    
-      <div class="step-number">05</div>
-    
-      <h2>Give your biometrics</h2>
-    
-      <p class="description">
-        After you submit your application, you may receive a Biometrics Instruction
-        Letter (BIL) in your IRCC account. If required, you must give your
-        fingerprints and photo in person within 30 days of receiving the BIL.
-      </p>
-    
+<!-- STEP 05 -->
+<details class="step" data-step="05" open>
+  <summary>
+    <span class="step-number">05</span>
+    <h2>Give your biometrics</h2>
+  </summary>
+  <div class="step-content">
+    <p class="description">
+      After you submit your application, you may receive a Biometrics Instruction
+      Letter (BIL) in your IRCC account. If required, you must give your
+      fingerprints and photo in person within 30 days of receiving the BIL.
+    </p>
+
+    <div class="subgroup">
+      <h3>Biometrics Instruction Letter</h3>
       <ul class="documents">
-    
         <li>
           <label>
             <input type="checkbox" data-save="bil-received">
             BIL received
           </label>
         </li>
-    
       </ul>
-    
       <div class="date">
         BIL received:
         <input type="date" data-save="bil-date">
       </div>
-    
       <div class="deadline" data-deadline="biometrics">
         Biometrics deadline:
         <span class="deadline-date"></span>
         <span class="days-left"></span>
       </div>
-    
       <p class="deadline-note">
         Check your IRCC account for your exact deadline.
       </p>
-    
       <p>
-        <a
+        
           href="https://www.canada.ca/en/immigration-refugees-citizenship/services/biometrics/where-to-give.html"
           target="_blank"
           rel="noopener noreferrer"
         >Find a biometrics collection site</a>
       </p>
-    
+    </div>
+
+    <div class="subgroup">
+      <h3>Complete biometrics</h3>
       <ul class="documents">
-    
         <li>
           <label>
             <input type="checkbox" data-save="biometrics-completed">
             Biometrics completed
           </label>
         </li>
-    
       </ul>
-    
-    
-      <h3>If you’ve already given your biometrics</h3>
-    
+    </div>
+
+    <div class="subgroup">
+      <h3>If you've already given your biometrics</h3>
       <p>
         Your biometrics may still be valid. Check your biometrics status and
         expiry date using the
-        <a
+        
           href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html"
           target="_blank"
           rel="noopener noreferrer"
         >IRCC Check Status Tool</a>.
       </p>
-    
-    </section>
-
-
-    <div class="arrow">↓</div>
-
-
-    <!-- STEP 06 -->
-    <section class="step">
-
-      <div class="step-number">06</div>
-
-      <h2>Wait for a decision</h2>
-
-      <p class="description">
-        IRCC will assess your application and may ask you to provide
-        additional documents or information.
-      </p>
-
-      <ul class="documents">
-
-        <li>
-          <label>
-            <input type="checkbox" data-save="application-approved">
-            Application approved
-          </label>
-        </li>
-
-      </ul>
-
-      <div class="date">
-        Approved:
-        <input type="date" data-save="approval-date">
-      </div>
-
-    </section>
-
-
-    <div class="arrow">↓</div>
-
-
-    <!-- STEP 07 -->
-    <section class="step">
-
-      <div class="step-number">07</div>
-
-      <h2>Receive your POE Letter</h2>
-
-      <p class="description">
-        If your application is approved, IRCC will send your Port of Entry
-        Letter of Introduction to your account. Bring this letter with you
-        when you travel to Canada.
-      </p>
-
-      <ul class="documents">
-
-        <li>
-          <label>
-            <input type="checkbox" data-save="poe-received">
-            POE Letter received
-          </label>
-        </li>
-
-      </ul>
-
-      <div class="date">
-        Received:
-        <input type="date" data-save="poe-date">
-      </div>
-
-    </section>
-
-
-    <div class="back">
-      <a href="../">back</a>
     </div>
+  </div>
+</details>
 
-  </main>
+<div class="arrow">↓</div>
 
+<!-- STEP 06 -->
+<details class="step" data-step="06" open>
+  <summary>
+    <span class="step-number">06</span>
+    <h2>Wait for a decision</h2>
+  </summary>
+  <div class="step-content">
+    <p class="description">
+      IRCC will assess your application and may ask you to provide
+      additional documents or information.
+    </p>
 
-  <script>
-    const STORAGE_PREFIX = "workingholiday_iec_";
+    <ul class="documents">
+      <li>
+        <label>
+          <input type="checkbox" data-save="application-approved">
+          Application approved
+        </label>
+      </li>
+    </ul>
 
+    <div class="date">
+      Approved:
+      <input type="date" data-save="approval-date">
+    </div>
+  </div>
+</details>
 
-    // ----------------------------------------
-    // Save and restore checkbox / date values
-    // ----------------------------------------
+<div class="arrow">↓</div>
 
-    const elements = document.querySelectorAll("[data-save]");
+<!-- STEP 07 -->
+<details class="step" data-step="07" open>
+  <summary>
+    <span class="step-number">07</span>
+    <h2>Receive your POE Letter</h2>
+  </summary>
+  <div class="step-content">
+    <p class="description">
+      If your application is approved, IRCC will send your Port of Entry
+      Letter of Introduction to your account. Bring this letter with you
+      when you travel to Canada.
+    </p>
 
-    elements.forEach(element => {
+    <ul class="documents">
+      <li>
+        <label>
+          <input type="checkbox" data-save="poe-received">
+          POE Letter received
+        </label>
+      </li>
+    </ul>
 
-      const key = STORAGE_PREFIX + element.dataset.save;
+    <div class="date">
+      Received:
+      <input type="date" data-save="poe-date">
+    </div>
+  </div>
+</details>
 
-      const savedValue = localStorage.getItem(key);
+<div class="back">
+  <a href="../">back</a>
+</div>
 
-      if (element.type === "checkbox") {
-    
-        element.checked = savedValue === "true";
-    
-      } else {
-    
-        if (savedValue) {
-          element.value = savedValue;
-        }
-    
-      }
-    
-      element.addEventListener("change", () => {
-    
-        if (element.type === "checkbox") {
-    
-          localStorage.setItem(key, element.checked);
-    
-        } else {
-    
-          localStorage.setItem(key, element.value);
-    
-        }
-    
-        updateDeadlines();
-    
-      });
-    
-    });
-    
-    
-    // ----------------------------------------
-    // Date utilities
-    // ----------------------------------------
-    
-    function addDays(dateString, days) {
-    
-      if (!dateString) {
-        return null;
-      }
-    
-      const date = new Date(dateString + "T00:00:00");
-    
-      date.setDate(date.getDate() + days);
-    
-      return date;
+</main>
+
+<script>
+const STORAGE_PREFIX = "workingholiday_iec_";
+
+// ----------------------------------------
+// Save and restore checkbox / date values
+// ----------------------------------------
+const elements = document.querySelectorAll("[data-save]");
+
+elements.forEach(element => {
+  const key = STORAGE_PREFIX + element.dataset.save;
+  const savedValue = localStorage.getItem(key);
+
+  if (element.type === "checkbox") {
+    element.checked = savedValue === "true";
+  } else {
+    if (savedValue) {
+      element.value = savedValue;
     }
-    
-    
-    function formatDate(date) {
-    
-      if (!date) {
-        return "";
-      }
-    
-      return date.toLocaleDateString("en-CA", {
-        year: "numeric",
-        month: "long",
-        day: "numeric"
-      });
-    
-    }
-    
-    
-    // ----------------------------------------
-    // Calculate days remaining
-    // ----------------------------------------
-    
-    function getDaysRemaining(deadline) {
-    
-      if (!deadline) {
-        return null;
-      }
-    
-      const today = new Date();
-    
-      today.setHours(0, 0, 0, 0);
-    
-      const target = new Date(deadline);
-    
-      target.setHours(0, 0, 0, 0);
-    
-      const difference =
-        target.getTime() - today.getTime();
-    
-      return Math.ceil(
-        difference / (1000 * 60 * 60 * 24)
-      );
-    
-    }
-    
-    
-    // ----------------------------------------
-    // Apply warning level
-    // ----------------------------------------
-    
-    function setWarningLevel(element, daysLeft, completed) {
+  }
 
-      element.classList.remove(
-        "warning-1",
-        "warning-2",
-        "warning-3",
-        "warning-4",
-        "warning-5",
-        "completed"
-      );
-    
-      if (daysLeft === null) {
-        return;
-      }
-    
-      // Completed tasks are always shown in gray
-      if (completed) {
-    
-        element.classList.add("completed");
-    
-        return;
-      }
-    
-      // Apply warning level based on days remaining
-      if (daysLeft <= 0) {
-      
-        element.classList.add("warning-5");
-      
-      } else if (daysLeft === 1) {
-      
-        element.classList.add("warning-4");
-      
-      } else if (daysLeft <= 3) {
-      
-        element.classList.add("warning-3");
-      
-      } else if (daysLeft <= 5) {
-      
-        element.classList.add("warning-2");
-      
-      } else {
-      
-        element.classList.add("warning-1");
-      
-      }
-    
+  element.addEventListener("change", () => {
+    if (element.type === "checkbox") {
+      localStorage.setItem(key, element.checked);
+    } else {
+      localStorage.setItem(key, element.value);
     }
-    
-    
-    // ----------------------------------------
-    // Display deadline
-    // ----------------------------------------
-    
-    function displayDeadline(element, deadline) {
-
-      const dateElement =
-        element.querySelector(".deadline-date");
-    
-      const daysElement =
-        element.querySelector(".days-left");
-    
-      if (!deadline) {
-    
-        dateElement.textContent = "";
-        daysElement.textContent = "";
-    
-        setWarningLevel(
-          element,
-          null,
-          false
-        );
-    
-        return;
-      }
-    
-      const daysLeft =
-        getDaysRemaining(deadline);
-    
-      dateElement.textContent =
-        formatDate(deadline);
-    
-      if (daysLeft > 0) {
-    
-        daysElement.textContent =
-          `(D-${daysLeft})`;
-    
-      } else if (daysLeft === 0) {
-    
-        daysElement.textContent =
-          "(D-Day)";
-    
-      } else {
-    
-        daysElement.textContent =
-          `(D+${Math.abs(daysLeft)})`;
-    
-      }
-    
-      // Check whether the corresponding task is completed
-      let completed = false;
-    
-      const deadlineType =
-        element.dataset.deadline;
-    
-      if (deadlineType === "ita-accept") {
-    
-        completed =
-          localStorage.getItem(
-            STORAGE_PREFIX + "ita-accepted"
-          ) === "true";
-    
-      }
-    
-      if (deadlineType === "work-permit") {
-    
-        completed =
-          localStorage.getItem(
-            STORAGE_PREFIX + "application-submitted"
-          ) === "true";
-    
-      }
-    
-      if (deadlineType === "biometrics") {
-    
-        completed =
-          localStorage.getItem(
-            STORAGE_PREFIX + "biometrics-completed"
-          ) === "true";
-    
-      }
-    
-      setWarningLevel(
-        element,
-        daysLeft,
-        completed
-      );
-    
-    }
-    
-    
-    // ----------------------------------------
-    // Update all deadlines
-    // ----------------------------------------
-    
-    function updateDeadlines() {
-    
-      // ITA acceptance deadline
-      const itaReceivedDate =
-        localStorage.getItem(
-          STORAGE_PREFIX + "ita-date"
-        );
-      
-      const itaDeadline =
-        addDays(
-          itaReceivedDate,
-          10
-        );
-      
-      const itaElement =
-        document.querySelector(
-          '[data-deadline="ita-accept"]'
-        );
-      
-      if (itaElement) {
-      
-        displayDeadline(
-          itaElement,
-          itaDeadline
-        );
-      
-      }
-    
-    
-      // Work permit application deadline
-      const itaAcceptedDate =
-        localStorage.getItem(
-          STORAGE_PREFIX + "ita-accepted-date"
-        );
-    
-      const workPermitDeadline =
-        addDays(
-          itaAcceptedDate,
-          20
-        );
-    
-      const workPermitElement =
-        document.querySelector(
-          '[data-deadline="work-permit"]'
-        );
-    
-      if (workPermitElement) {
-    
-        displayDeadline(
-          workPermitElement,
-          workPermitDeadline
-        );
-    
-      }
-    
-    
-      // Biometrics deadline
-      const bilDate =
-        localStorage.getItem(
-          STORAGE_PREFIX + "bil-date"
-        );
-    
-      const biometricsDeadline =
-        addDays(
-          bilDate,
-          30
-        );
-    
-      const biometricsElement =
-        document.querySelector(
-          '[data-deadline="biometrics"]'
-        );
-    
-      if (biometricsElement) {
-    
-        displayDeadline(
-          biometricsElement,
-          biometricsDeadline
-        );
-    
-      }
-    
-    }
-    
-    
-    // Run when page loads
     updateDeadlines();
-  </script>
+    updateStepCompletion();
+  });
+});
 
+// ----------------------------------------
+// Date utilities
+// ----------------------------------------
+function addDays(dateString, days) {
+  if (!dateString) {
+    return null;
+  }
+  const date = new Date(dateString + "T00:00:00");
+  date.setDate(date.getDate() + days);
+  return date;
+}
+
+function formatDate(date) {
+  if (!date) {
+    return "";
+  }
+  return date.toLocaleDateString("en-CA", {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  });
+}
+
+// ----------------------------------------
+// Calculate days remaining
+// ----------------------------------------
+function getDaysRemaining(deadline) {
+  if (!deadline) {
+    return null;
+  }
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const target = new Date(deadline);
+  target.setHours(0, 0, 0, 0);
+
+  const difference = target.getTime() - today.getTime();
+  return Math.ceil(difference / (1000 * 60 * 60 * 24));
+}
+
+// ----------------------------------------
+// Apply warning level
+// ----------------------------------------
+function setWarningLevel(element, daysLeft, completed) {
+  element.classList.remove(
+    "warning-1", "warning-2", "warning-3", "warning-4", "warning-5", "completed"
+  );
+
+  if (daysLeft === null) {
+    return;
+  }
+
+  if (completed) {
+    element.classList.add("completed");
+    return;
+  }
+
+  if (daysLeft <= 0) {
+    element.classList.add("warning-5");
+  } else if (daysLeft === 1) {
+    element.classList.add("warning-4");
+  } else if (daysLeft <= 3) {
+    element.classList.add("warning-3");
+  } else if (daysLeft <= 5) {
+    element.classList.add("warning-2");
+  } else {
+    element.classList.add("warning-1");
+  }
+}
+
+// ----------------------------------------
+// Display deadline
+// ----------------------------------------
+function displayDeadline(element, deadline) {
+  const dateElement = element.querySelector(".deadline-date");
+  const daysElement = element.querySelector(".days-left");
+
+  if (!deadline) {
+    dateElement.textContent = "";
+    daysElement.textContent = "";
+    setWarningLevel(element, null, false);
+    return;
+  }
+
+  const daysLeft = getDaysRemaining(deadline);
+  dateElement.textContent = formatDate(deadline);
+
+  if (daysLeft > 0) {
+    daysElement.textContent = `(D-${daysLeft})`;
+  } else if (daysLeft === 0) {
+    daysElement.textContent = "(D-Day)";
+  } else {
+    daysElement.textContent = `(D+${Math.abs(daysLeft)})`;
+  }
+
+  let completed = false;
+  const deadlineType = element.dataset.deadline;
+
+  if (deadlineType === "ita-accept") {
+    completed = localStorage.getItem(STORAGE_PREFIX + "ita-accepted") === "true";
+  }
+  if (deadlineType === "work-permit") {
+    completed = localStorage.getItem(STORAGE_PREFIX + "application-submitted") === "true";
+  }
+  if (deadlineType === "biometrics") {
+    completed = localStorage.getItem(STORAGE_PREFIX + "biometrics-completed") === "true";
+  }
+
+  setWarningLevel(element, daysLeft, completed);
+}
+
+// ----------------------------------------
+// Update all deadlines
+// ----------------------------------------
+function updateDeadlines() {
+  const itaReceivedDate = localStorage.getItem(STORAGE_PREFIX + "ita-date");
+  const itaDeadline = addDays(itaReceivedDate, 10);
+  const itaElement = document.querySelector('[data-deadline="ita-accept"]');
+  if (itaElement) {
+    displayDeadline(itaElement, itaDeadline);
+  }
+
+  const itaAcceptedDate = localStorage.getItem(STORAGE_PREFIX + "ita-accepted-date");
+  const workPermitDeadline = addDays(itaAcceptedDate, 20);
+  const workPermitElement = document.querySelector('[data-deadline="work-permit"]');
+  if (workPermitElement) {
+    displayDeadline(workPermitElement, workPermitDeadline);
+  }
+
+  const bilDate = localStorage.getItem(STORAGE_PREFIX + "bil-date");
+  const biometricsDeadline = addDays(bilDate, 30);
+  const biometricsElement = document.querySelector('[data-deadline="biometrics"]');
+  if (biometricsElement) {
+    displayDeadline(biometricsElement, biometricsDeadline);
+  }
+}
+
+// ----------------------------------------
+// Auto-collapse fully completed steps
+// ----------------------------------------
+function updateStepCompletion() {
+  document.querySelectorAll(".step").forEach(step => {
+    const boxes = step.querySelectorAll('input[type="checkbox"]');
+    if (boxes.length === 0) return;
+
+    const allChecked = [...boxes].every(box => box.checked);
+    step.classList.toggle("completed", allChecked);
+
+    if (allChecked) {
+      step.removeAttribute("open");
+    }
+  });
+}
+
+// Run when page loads
+updateDeadlines();
+updateStepCompletion();
+</script>
 </body>
-
 </html>
