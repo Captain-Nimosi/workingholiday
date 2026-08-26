@@ -98,7 +98,7 @@ async function createArchiveList() {
     }
 
     pages.sort((a, b) =>
-      a.name.localeCompare(b.name)
+      a.name.localeCompare(b.name, undefined, { numeric: true })
     );
 
     container.innerHTML = "";
