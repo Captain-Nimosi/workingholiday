@@ -123,6 +123,12 @@
       font-weight: 400;
     }
 
+    .deadline-note {
+      margin-top: 0;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+
     .deadline-date {
       margin-left: 4px;
     }
@@ -279,27 +285,27 @@
         Check your invitation for the exact deadline.
       </p>
     
+      <div class="deadline" data-deadline="ita-accept">
+        Accept by:
+        <span class="deadline-date"></span>
+        <span class="days-left"></span>
+      </div>
+      
+      <p class="deadline-note">
+        Check your IRCC account for your exact deadline.
+      </p>
+      
       <ul class="documents">
-    
+      
         <li>
           <label>
             <input type="checkbox" data-save="ita-accepted">
             ITA accepted
           </label>
         </li>
-    
+      
       </ul>
-    
-      <div class="deadline" data-deadline="ita-accept">
-        Accept by:
-        <span class="deadline-date"></span>
-        <span class="days-left"></span>
-      </div>
-
-      <p>
-        Check your IRCC account for your exact deadline.
-      </p>
-    
+      
       <div class="date">
         Accepted:
         <input type="date" data-save="ita-accepted-date">
@@ -328,8 +334,8 @@
         <span class="deadline-date"></span>
         <span class="days-left"></span>
       </div>
-
-      <p>
+      
+      <p class="deadline-note">
         Check your IRCC account for your exact deadline.
       </p>
     
@@ -458,16 +464,6 @@
         circumstances.
       </p>
     
-    
-      <div class="application-complete">
-    
-        <label>
-          <input type="checkbox" data-save="application-submitted">
-          Application submitted
-        </label>
-    
-      </div>
-    
     </section>
 
 
@@ -563,8 +559,8 @@
         <span class="deadline-date"></span>
         <span class="days-left"></span>
       </div>
-
-      <p>
+      
+      <p class="deadline-note">
         Check your IRCC account for your exact deadline.
       </p>
     
@@ -803,27 +799,27 @@
         return;
       }
     
-      // Deadline has passed or is today
+      // Apply warning level based on days remaining
       if (daysLeft <= 0) {
-    
+      
         element.classList.add("warning-5");
-    
+      
       } else if (daysLeft === 1) {
-    
+      
         element.classList.add("warning-4");
-    
-      } else if (daysLeft === 2) {
-    
+      
+      } else if (daysLeft <= 3) {
+      
         element.classList.add("warning-3");
-    
-      } else if (daysLeft <= 4) {
-    
-        element.classList.add("warning-2");
-    
+      
       } else if (daysLeft <= 5) {
-    
+      
+        element.classList.add("warning-2");
+      
+      } else {
+      
         element.classList.add("warning-1");
-    
+      
       }
     
     }
