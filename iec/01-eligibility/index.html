@@ -588,7 +588,7 @@ function isEligibilityComplete() {
 function updateNextButton() {
 
   const nextButton =
-    document.querySelector(".next-button");
+    document.querySelector(".next");
 
   if (!nextButton) {
     return;
@@ -614,7 +614,7 @@ function updateNextButton() {
 document.addEventListener("click", event => {
 
   const nextButton =
-    event.target.closest(".next-button");
+    event.target.closest(".next");
 
   if (!nextButton) {
     return;
