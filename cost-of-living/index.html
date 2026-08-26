@@ -1,494 +1,2160 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cost of Living — British Columbia</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
-* { box-sizing: border-box; }
-body { font-family: 'Noto Serif', serif; font-size: 14px; color: #111; background: #fff; margin: 0; padding: 60px 40px; line-height: 1.8; }
-main { max-width: 600px; }
-a { color: #0000EE; text-decoration: underline; }
-a:hover { color: #0000AA; }
-h1 { font-size: 16px; font-weight: 700; margin: 0 0 32px 0; }
-h2 { font-size: 14px; font-weight: 700; margin: 40px 0 16px 0; }
-h3 { font-size: 14px; font-weight: 700; margin: 0 0 8px 0; }
-p { margin: 0 0 16px 0; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-.language { margin-bottom: 40px; }
-.language a { text-decoration: underline; }
-.language .current { color: #111; text-decoration: none; }
+  <title>Cost of Living — British Columbia</title>
 
-.salary-section { margin-top: 40px; }
-.salary-label { display: block; margin-bottom: 8px; font-weight: 700; }
-.salary-input { display: flex; align-items: center; gap: 4px; margin-bottom: 12px; }
-.salary-input span { font-size: 16px; }
-#salary-input { width: 150px; border: none; border-bottom: 1px solid #111; border-radius: 0; padding: 4px 0; font-family: inherit; font-size: 16px; outline: none; }
-#salary-range { width: 100%; margin: 4px 0 0 0; accent-color: #0000EE; }
-.range-labels { display: flex; justify-content: space-between; font-size: 12px; color: #777; margin-top: 2px; }
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
 
-.summary { margin-top: 40px; padding-top: 16px; border-top: 1px solid #ddd; }
-.summary-row { display: flex; justify-content: space-between; gap: 20px; margin: 4px 0; }
-.summary-row strong { font-weight: 700; white-space: nowrap; }
-.summary-note { color: #777; font-size: 12px; margin-top: 8px; }
-
-.cost-section { margin-top: 40px; }
-.cost-item { margin-bottom: 28px; }
-.cost-header { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; }
-.cost-title { font-weight: 700; }
-.average { color: #777; font-size: 12px; white-space: nowrap; }
-.cost-input-row { display: flex; align-items: center; gap: 4px; margin-top: 6px; }
-.cost-input-row span { font-size: 14px; }
-.cost-input { width: 110px; border: none; border-bottom: 1px solid #111; border-radius: 0; padding: 2px 0; font-family: inherit; font-size: 14px; outline: none; }
-.cost-range { width: 100%; margin-top: 8px; accent-color: #0000EE; }
-.cost-range-labels { display: flex; justify-content: space-between; font-size: 11px; color: #999; margin-top: 1px; }
-
-.tax-section { margin-top: 48px; padding-top: 24px; border-top: 1px solid #ddd; }
-.tax-row { display: flex; justify-content: space-between; gap: 20px; margin: 5px 0; }
-.tax-row span:last-child { white-space: nowrap; }
-.tax-group { margin-bottom: 24px; }
-.tax-group-title { font-weight: 700; margin-bottom: 8px; }
-.tax-rate { color: #777; font-size: 12px; }
-.tax-total { margin-top: 16px; padding-top: 12px; border-top: 1px solid #ddd; }
-.net-income { margin-top: 24px; padding-top: 16px; border-top: 1px solid #111; }
-.net-income .tax-row { font-weight: 700; }
-
-.result { margin-top: 48px; padding-top: 24px; border-top: 1px solid #111; }
-.result-row { display: flex; justify-content: space-between; gap: 20px; margin: 5px 0; }
-.result-row strong { white-space: nowrap; }
-.result-note { margin-top: 12px; color: #777; font-size: 12px; }
-
-.sources { margin-top: 48px; padding-top: 24px; border-top: 1px solid #ddd; font-size: 12px; }
-.sources p { margin-bottom: 8px; }
-
-.back { margin-top: 48px; display: flex; justify-content: space-between; }
-.back a { color: #111; }
-
-@media (max-width: 600px) {
-  body { padding: 48px 24px; }
-  .cost-header, .summary-row, .tax-row, .result-row { gap: 12px; }
-}
-</style>
-</head>
-<body>
-<main>
-
-<div class="language">
-  <a href="#" id="lang-en">EN</a>
-  <span> | </span>
-  <a href="#" id="lang-ko">한국어</a>
-</div>
-
-<h1 data-en="Cost of Living" data-ko="생활비 계산">Cost of Living</h1>
-
-<p data-en="Estimate your monthly cost of living in British Columbia based on your income and lifestyle." data-ko="소득과 생활 방식에 따라 브리티시컬럼비아에서의 예상 월 생활비를 계산해볼 수 있습니다.">Estimate your monthly cost of living in British Columbia based on your income and lifestyle.</p>
-
-<p data-en="The default values are based on current Vancouver cost-of-living data and can be adjusted to match your situation." data-ko="기본값은 현재 밴쿠버 생활비 데이터를 기준으로 하며, 실제 생활 방식에 맞게 직접 조정할 수 있습니다.">The default values are based on current Vancouver cost-of-living data and can be adjusted to match your situation.</p>
-
-<section class="salary-section">
-  <label class="salary-label" for="salary-input" data-en="Annual salary" data-ko="연봉">Annual salary</label>
-  <div class="salary-input">
-    <span>$</span>
-    <input id="salary-input" type="text" inputmode="numeric" value="50,000" aria-label="Annual salary">
-  </div>
-  <input id="salary-range" type="range" min="30000" max="150000" step="1000" value="50000">
-  <div class="range-labels"><span>$30,000</span><span>$150,000</span></div>
-</section>
-
-<section class="summary">
-  <div class="summary-row">
-    <span data-en="Gross annual income" data-ko="세전 연소득">Gross annual income</span>
-    <strong id="gross-annual">$50,000</strong>
-  </div>
-  <div class="summary-row">
-    <span data-en="Gross monthly income" data-ko="세전 월소득">Gross monthly income</span>
-    <strong id="gross-monthly">$4,167</strong>
-  </div>
-  <div class="summary-row">
-    <span data-en="Estimated monthly net income" data-ko="예상 세후 월소득">Estimated monthly net income</span>
-    <strong id="net-monthly-summary">$3,500</strong>
-  </div>
-  <p class="summary-note" data-en="Estimated using 2026 federal and British Columbia tax rules." data-ko="2026년 캐나다 연방 및 브리티시컬럼비아 세금 기준을 적용한 예상치입니다.">Estimated using 2026 federal and British Columbia tax rules.</p>
-</section>
-
-<section class="cost-section">
-  <h2 data-en="Monthly cost of living" data-ko="월 생활비">Monthly cost of living</h2>
-
-  <div class="cost-item">
-    <div class="cost-header">
-      <span class="cost-title" data-en="Housing" data-ko="주거비">Housing</span>
-      <span class="average" data-en="Vancouver avg. $2,262" data-ko="밴쿠버 평균 $2,262">Vancouver avg. $2,262</span>
-    </div>
-    <div class="cost-input-row"><span>$</span><input class="cost-input" id="housing-input" type="text" inputmode="numeric" value="2,262"></div>
-    <input class="cost-range" id="housing-range" type="range" min="0" max="5000" step="25" value="2262">
-    <div class="cost-range-labels"><span>$0</span><span>$5,000</span></div>
-  </div>
-
-  <div class="cost-item">
-    <div class="cost-header">
-      <span class="cost-title" data-en="Food & groceries" data-ko="식비 및 식료품">Food & groceries</span>
-      <span class="average" data-en="Average estimate $575" data-ko="평균 예상 $575">Average estimate $575</span>
-    </div>
-    <div class="cost-input-row"><span>$</span><input class="cost-input" id="food-input" type="text" inputmode="numeric" value="575"></div>
-    <input class="cost-range" id="food-range" type="range" min="0" max="1500" step="25" value="575">
-    <div class="cost-range-labels"><span>$0</span><span>$1,500</span></div>
-  </div>
-
-  <div class="cost-item">
-    <div class="cost-header">
-      <span class="cost-title" data-en="Transportation" data-ko="교통비">Transportation</span>
-      <span class="average" data-en="Estimated average" data-ko="평균 예상">Estimated average</span>
-    </div>
-    <div class="cost-input-row"><span>$</span><input class="cost-input" id="transport-input" type="text" inputmode="numeric" value="150"></div>
-    <input class="cost-range" id="transport-range" type="range" min="0" max="1000" step="10" value="150">
-    <div class="cost-range-labels"><span>$0</span><span>$1,000</span></div>
-  </div>
-
-  <div class="cost-item">
-    <div class="cost-header">
-      <span class="cost-title" data-en="Utilities & internet" data-ko="공과금 및 인터넷">Utilities & internet</span>
-      <span class="average" data-en="Estimated average" data-ko="평균 예상">Estimated average</span>
-    </div>
-    <div class="cost-input-row"><span>$</span><input class="cost-input" id="utilities-input" type="text" inputmode="numeric" value="150"></div>
-    <input class="cost-range" id="utilities-range" type="range" min="0" max="600" step="10" value="150">
-    <div class="cost-range-labels"><span>$0</span><span>$600</span></div>
-  </div>
-
-  <div class="cost-item">
-    <div class="cost-header">
-      <span class="cost-title" data-en="Mobile phone" data-ko="휴대전화">Mobile phone</span>
-      <span class="average" data-en="Estimated average" data-ko="평균 예상">Estimated average</span>
-    </div>
-    <div class="cost-input-row"><span>$</span><input class="cost-input" id="mobile-input" type="text" inputmode="numeric" value="60"></div>
-    <input class="cost-range" id="mobile-range" type="range" min="0" max="300" step="5" value="60">
-    <div class="cost-range-labels"><span>$0</span><span>$300</span></div>
-  </div>
-
-  <div class="cost-item">
-    <div class="cost-header">
-      <span class="cost-title" data-en="Dining & entertainment" data-ko="외식 및 여가">Dining & entertainment</span>
-      <span class="average" data-en="Estimated average" data-ko="평균 예상">Estimated average</span>
-    </div>
-    <div class="cost-input-row"><span>$</span><input class="cost-input" id="entertainment-input" type="text" inputmode="numeric" value="300"></div>
-    <input class="cost-range" id="entertainment-range" type="range" min="0" max="1500" step="25" value="300">
-    <div class="cost-range-labels"><span>$0</span><span>$1,500</span></div>
-  </div>
-
-  <div class="cost-item">
-    <div class="cost-header">
-      <span class="cost-title" data-en="Other" data-ko="기타">Other</span>
-      <span class="average" data-en="Vancouver avg. $150" data-ko="밴쿠버 평균 $150">Vancouver avg. $150</span>
-    </div>
-    <div class="cost-input-row"><span>$</span><input class="cost-input" id="other-input" type="text" inputmode="numeric" value="150"></div>
-    <input class="cost-range" id="other-range" type="range" min="0" max="1000" step="10" value="150">
-    <div class="cost-range-labels"><span>$0</span><span>$1,000</span></div>
-  </div>
-</section>
-
-<section class="result">
-  <div class="result-row">
-    <span data-en="Estimated monthly living cost" data-ko="예상 월 생활비">Estimated monthly living cost</span>
-    <strong id="total-cost">$3,647</strong>
-  </div>
-  <div class="result-row">
-    <span data-en="Estimated monthly net income" data-ko="예상 세후 월소득">Estimated monthly net income</span>
-    <strong id="net-monthly-result">$3,500</strong>
-  </div>
-  <div class="result-row">
-    <span data-en="Estimated monthly balance" data-ko="예상 월 잔액">Estimated monthly balance</span>
-    <strong id="monthly-balance">$-147</strong>
-  </div>
-  <p class="result-note" data-en="A negative balance means your estimated living costs exceed your estimated monthly net income." data-ko="잔액이 마이너스라면 예상 생활비가 예상 세후 월소득보다 많다는 의미입니다.">A negative balance means your estimated living costs exceed your estimated monthly net income.</p>
-</section>
-
-<section class="tax-section">
-  <h2 data-en="Estimated tax & deductions" data-ko="예상 세금 및 공제">Estimated tax & deductions</h2>
-  <p data-en="Estimated for a single employee in British Columbia using 2026 federal and provincial rates. Actual payroll deductions may differ depending on your TD1, benefits, deductions and other circumstances." data-ko="2026년 연방 및 BC주 세율을 기준으로 한 1인 근로자의 예상치입니다. 실제 급여 공제액은 TD1, 복리후생, 공제 항목 및 개인 상황에 따라 달라질 수 있습니다.">Estimated for a single employee in British Columbia using 2026 federal and provincial rates. Actual payroll deductions may differ depending on your TD1, benefits, deductions and other circumstances.</p>
-
-  <div class="tax-group">
-    <div class="tax-group-title" data-en="Federal income tax" data-ko="연방 소득세">Federal income tax</div>
-    <div class="tax-row"><span>14% <span class="tax-rate" data-en="first bracket" data-ko="첫 번째 구간">first bracket</span></span><span id="federal-tax-first">$7,000</span></div>
-    <div class="tax-row"><span>20.5% <span class="tax-rate" data-en="second bracket" data-ko="두 번째 구간">second bracket</span></span><span id="federal-tax-second">$0</span></div>
-    <div class="tax-row"><span data-en="Federal basic personal credit" data-ko="연방 기본 인적공제">Federal basic personal credit</span><span id="federal-credit">-$2,303</span></div>
-    <div class="tax-row"><span data-en="Canada employment credit" data-ko="근로소득 공제">Canada employment credit</span><span id="employment-credit">-$210</span></div>
-    <div class="tax-row"><strong data-en="Estimated federal tax" data-ko="예상 연방 소득세">Estimated federal tax</strong><strong id="federal-tax-total">$4,487</strong></div>
-  </div>
-
-  <div class="tax-group">
-    <div class="tax-group-title" data-en="British Columbia income tax" data-ko="브리티시컬럼비아 소득세">British Columbia income tax</div>
-    <div class="tax-row"><span>5.6% <span class="tax-rate" data-en="first bracket" data-ko="첫 번째 구간">first bracket</span></span><span id="bc-tax-first">$2,800</span></div>
-    <div class="tax-row"><span>7.7% <span class="tax-rate" data-en="second bracket" data-ko="두 번째 구간">second bracket</span></span><span id="bc-tax-second">$0</span></div>
-    <div class="tax-row"><span data-en="BC basic personal credit" data-ko="BC 기본 인적공제">BC basic personal credit</span><span id="bc-credit">-$741</span></div>
-    <div class="tax-row"><strong data-en="Estimated BC tax" data-ko="예상 BC 소득세">Estimated BC tax</strong><strong id="bc-tax-total">$2,059</strong></div>
-  </div>
-
-  <div class="tax-group">
-    <div class="tax-group-title">CPP</div>
-    <div class="tax-row"><span data-en="5.95% on pensionable earnings" data-ko="연금 적용 소득의 5.95%">5.95% on pensionable earnings</span><span id="cpp-total">$2,766</span></div>
-  </div>
-
-  <div class="tax-group">
-    <div class="tax-group-title">EI</div>
-    <div class="tax-row"><span data-en="1.63% of insurable earnings" data-ko="보험 적용 소득의 1.63%">1.63% of insurable earnings</span><span id="ei-total">$815</span></div>
-  </div>
-
-  <div class="tax-total">
-    <div class="tax-row"><strong data-en="Total estimated deductions" data-ko="예상 총 공제액">Total estimated deductions</strong><strong id="total-deductions">$10,127</strong></div>
-  </div>
-
-  <div class="net-income">
-    <div class="tax-row"><span data-en="Gross annual income" data-ko="세전 연소득">Gross annual income</span><span id="tax-gross">$50,000</span></div>
-    <div class="tax-row"><strong data-en="Estimated annual net income" data-ko="예상 세후 연소득">Estimated annual net income</strong><strong id="net-annual">$39,873</strong></div>
-    <div class="tax-row"><strong data-en="Estimated monthly net income" data-ko="예상 세후 월소득">Estimated monthly net income</strong><strong id="net-monthly">$3,323</strong></div>
-  </div>
-</section>
-
-<section class="sources">
-  <h2 data-en="Sources" data-ko="출처">Sources</h2>
-  <p><a href="https://www.careerbeacon.com/en/cost-of-living/vancouver_british-columbia/50000-salary" target="_blank" rel="noopener noreferrer">CareerBeacon — Vancouver cost of living</a></p>
-  <p><a href="https://www.numbeo.com/cost-of-living/in/Vancouver" target="_blank" rel="noopener noreferrer">Numbeo — Vancouver</a></p>
-  <p><a href="https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/current-year.html" target="_blank" rel="noopener noreferrer">Canada Revenue Agency — 2026 tax rates</a></p>
-  <p><a href="https://www2.gov.bc.ca/gov/content/taxes/income-taxes/personal" target="_blank" rel="noopener noreferrer">Government of British Columbia — Personal income tax</a></p>
-</section>
-
-<div class="back">
-  <a href="../" data-en="← back" data-ko="← 뒤로">← back</a>
-</div>
-
-</main>
-
-<script>
-const LANGUAGE_KEY = "workingholiday_language";
-const currentLanguage = localStorage.getItem(LANGUAGE_KEY) || "en";
-
-function applyLanguage(language) {
-  document.documentElement.lang = language;
-  document.querySelectorAll("[data-en][data-ko]").forEach(element => {
-    element.textContent = element.dataset[language];
-  });
-  const en = document.getElementById("lang-en");
-  const ko = document.getElementById("lang-ko");
-  if (language === "en") {
-    en.classList.add("current");
-    ko.classList.remove("current");
-  } else {
-    en.classList.remove("current");
-    ko.classList.add("current");
-  }
-  document.title = language === "en" ? "Cost of Living — British Columbia" : "생활비 계산 — 브리티시컬럼비아";
-}
-
-document.getElementById("lang-en").addEventListener("click", event => {
-  event.preventDefault();
-  localStorage.setItem(LANGUAGE_KEY, "en");
-  applyLanguage("en");
-});
-
-document.getElementById("lang-ko").addEventListener("click", event => {
-  event.preventDefault();
-  localStorage.setItem(LANGUAGE_KEY, "ko");
-  applyLanguage("ko");
-});
-
-function formatMoney(value) {
-  return "$" + Math.round(value).toLocaleString("en-CA");
-}
-
-function parseMoney(value) {
-  const number = Number(String(value).replace(/,/g, "").replace(/[^0-9.-]/g, ""));
-  return Number.isFinite(number) ? Math.max(0, number) : 0;
-}
-
-function updateFormattedInput(input, value) {
-  input.value = Math.round(value).toLocaleString("en-CA");
-}
-
-const salaryInput = document.getElementById("salary-input");
-const salaryRange = document.getElementById("salary-range");
-
-function updateSalaryFromRange() {
-  const value = Number(salaryRange.value);
-  updateFormattedInput(salaryInput, value);
-  updateAll(value);
-}
-
-salaryRange.addEventListener("input", updateSalaryFromRange);
-
-salaryInput.addEventListener("input", () => {
-  const value = parseMoney(salaryInput.value);
-  updateFormattedInput(salaryInput, value);
-  if (value >= Number(salaryRange.min) && value <= Number(salaryRange.max)) {
-    salaryRange.value = value;
-  }
-  updateAll(value);
-});
-
-salaryInput.addEventListener("blur", () => {
-  const value = parseMoney(salaryInput.value);
-  updateFormattedInput(salaryInput, value);
-});
-
-const costPairs = [
-  ["housing-input", "housing-range"],
-  ["food-input", "food-range"],
-  ["transport-input", "transport-range"],
-  ["utilities-input", "utilities-range"],
-  ["mobile-input", "mobile-range"],
-  ["entertainment-input", "entertainment-range"],
-  ["other-input", "other-range"]
-];
-
-costPairs.forEach(([inputId, rangeId]) => {
-  const input = document.getElementById(inputId);
-  const range = document.getElementById(rangeId);
-
-  range.addEventListener("input", () => {
-    const value = Number(range.value);
-    updateFormattedInput(input, value);
-    updateAll(parseMoney(salaryInput.value));
-  });
-
-  input.addEventListener("input", () => {
-    const value = parseMoney(input.value);
-    updateFormattedInput(input, value);
-    if (value >= Number(range.min) && value <= Number(range.max)) {
-      range.value = value;
+    * {
+      box-sizing: border-box;
     }
-    updateAll(parseMoney(salaryInput.value));
-  });
 
-  input.addEventListener("blur", () => {
-    const value = parseMoney(input.value);
-    updateFormattedInput(input, value);
-  });
-});
+    body {
+      font-family: 'Noto Serif', serif;
+      font-size: 14px;
+      color: #111;
+      background: #fff;
+      margin: 0;
+      padding: 60px 40px;
+      line-height: 1.8;
+    }
 
-function calculateProgressiveTax(income, brackets) {
-  let tax = 0;
-  let previous = 0;
-  for (const bracket of brackets) {
-    if (income <= previous) break;
-    const taxable = Math.min(income, bracket.max) - previous;
-    if (taxable > 0) tax += taxable * bracket.rate;
-    previous = bracket.max;
-  }
-  return tax;
-}
+    main {
+      max-width: 600px;
+    }
 
-const federalBrackets = [
-  { max: 58523, rate: 0.14 },
-  { max: 117045, rate: 0.205 },
-  { max: 181440, rate: 0.26 },
-  { max: 258482, rate: 0.29 },
-  { max: Infinity, rate: 0.33 }
-];
+    a {
+      color: #0000EE;
+      text-decoration: underline;
+    }
 
-const bcBrackets = [
-  { max: 50363, rate: 0.056 },
-  { max: 100728, rate: 0.077 },
-  { max: 115648, rate: 0.105 },
-  { max: 140430, rate: 0.1229 },
-  { max: 190405, rate: 0.147 },
-  { max: 265545, rate: 0.168 },
-  { max: Infinity, rate: 0.205 }
-];
+    a:hover {
+      color: #0000AA;
+    }
 
-function calculateTax(salary) {
-  // 2026 federal: basic personal amount $16,452, employment amount max $1,501, credit rate 14%
-  // BC: basic personal amount $13,216, lowest rate 5.6%
-  const federalTaxBeforeCredits = calculateProgressiveTax(salary, federalBrackets);
-  const federalPersonalCredit = 16452 * 0.14;
-  const employmentAmount = Math.min(salary, 1501);
-  const employmentCredit = employmentAmount * 0.14;
-  const federalTax = Math.max(0, federalTaxBeforeCredits - federalPersonalCredit - employmentCredit);
+    h1 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0 0 32px 0;
+    }
 
-  const bcTaxBeforeCredits = calculateProgressiveTax(salary, bcBrackets);
-  const bcPersonalCredit = 13216 * 0.056;
-  let bcTaxReduction = 0;
-  if (salary <= 25570) {
-    bcTaxReduction = 690;
-  } else if (salary < 44952) {
-    bcTaxReduction = Math.max(0, 690 - (salary - 25570) * 0.0356);
-  }
-  const bcTax = Math.max(0, bcTaxBeforeCredits - bcPersonalCredit - bcTaxReduction);
+    h2 {
+      font-size: 14px;
+      font-weight: 700;
+      margin: 40px 0 16px 0;
+    }
 
-  // CPP 2026: 5.95% base+first additional, YMPE $74,600, basic exemption $3,500, CPP2 4% between $74,600–$85,000
-  const cppBase = Math.min(Math.max(salary - 3500, 0), 71100) * 0.0595;
-  const cpp2 = Math.min(Math.max(salary - 74600, 0), 10400) * 0.04;
-  const cpp = cppBase + cpp2;
+    h3 {
+      font-size: 14px;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+    }
 
-  // EI 2026: 1.63%, max insurable earnings $68,900
-  const ei = Math.min(salary, 68900) * 0.0163;
+    p {
+      margin: 0 0 16px 0;
+    }
 
-  const total = federalTax + bcTax + cpp + ei;
-  const net = Math.max(0, salary - total);
+    /* ---------- Language ---------- */
 
-  return {
-    federalTax,
-    federalTaxFirst: Math.min(salary, 58523) * 0.14,
-    federalTaxSecond: Math.max(0, Math.min(salary, 117045) - 58523) * 0.205,
-    federalCredit: federalPersonalCredit,
-    employmentCredit,
-    bcTax,
-    bcTaxFirst: Math.min(salary, 50363) * 0.056,
-    bcTaxSecond: Math.max(0, Math.min(salary, 100728) - 50363) * 0.077,
-    bcCredit: bcPersonalCredit,
-    cpp,
-    ei,
-    total,
-    net
-  };
-}
+    .language {
+      margin-bottom: 40px;
+    }
 
-function getCost(inputId) {
-  return parseMoney(document.getElementById(inputId).value);
-}
+    .language a {
+      text-decoration: underline;
+    }
 
-function calculateLivingCost() {
-  return getCost("housing-input") + getCost("food-input") + getCost("transport-input") +
-    getCost("utilities-input") + getCost("mobile-input") + getCost("entertainment-input") + getCost("other-input");
-}
+    .language .current {
+      color: #111;
+      text-decoration: none;
+    }
 
-function updateAll(salary) {
-  if (!Number.isFinite(salary)) salary = 0;
+    /* ---------- Salary ---------- */
 
-  const tax = calculateTax(salary);
-  const monthlyNet = tax.net / 12;
-  const livingCost = calculateLivingCost();
-  const balance = monthlyNet - livingCost;
+    .salary-section {
+      margin-top: 40px;
+    }
 
-  document.getElementById("gross-annual").textContent = formatMoney(salary);
-  document.getElementById("gross-monthly").textContent = formatMoney(salary / 12);
-  document.getElementById("net-monthly-summary").textContent = formatMoney(monthlyNet);
+    .salary-label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
 
-  document.getElementById("total-cost").textContent = formatMoney(livingCost);
-  document.getElementById("net-monthly-result").textContent = formatMoney(monthlyNet);
-  document.getElementById("monthly-balance").textContent =
-    (balance < 0 ? "-$" : "$") + Math.abs(Math.round(balance)).toLocaleString("en-CA");
+    .salary-input {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 12px;
+    }
 
-  document.getElementById("federal-tax-first").textContent = formatMoney(tax.federalTaxFirst);
-  document.getElementById("federal-tax-second").textContent = formatMoney(tax.federalTaxSecond);
-  document.getElementById("federal-credit").textContent = "-" + formatMoney(tax.federalCredit);
-  document.getElementById("employment-credit").textContent = "-" + formatMoney(tax.employmentCredit);
-  document.getElementById("federal-tax-total").textContent = formatMoney(tax.federalTax);
+    .salary-input span {
+      font-size: 16px;
+    }
 
-  document.getElementById("bc-tax-first").textContent = formatMoney(tax.bcTaxFirst);
-  document.getElementById("bc-tax-second").textContent = formatMoney(tax.bcTaxSecond);
-  document.getElementById("bc-credit").textContent = "-" + formatMoney(tax.bcCredit);
-  document.getElementById("bc-tax-total").textContent = formatMoney(tax.bcTax);
+    #salary-input {
+      width: 150px;
+      border: none;
+      border-bottom: 1px solid #111;
+      border-radius: 0;
+      padding: 4px 0;
+      font-family: inherit;
+      font-size: 16px;
+      outline: none;
+    }
 
-  document.getElementById("cpp-total").textContent = formatMoney(tax.cpp);
-  document.getElementById("ei-total").textContent = formatMoney(tax.ei);
-  document.getElementById("total-deductions").textContent = formatMoney(tax.total);
+    #salary-range {
+      width: 100%;
+      margin: 4px 0 0 0;
+      accent-color: #0000EE;
+    }
 
-  document.getElementById("tax-gross").textContent = formatMoney(salary);
-  document.getElementById("net-annual").textContent = formatMoney(tax.net);
-  document.getElementById("net-monthly").textContent = formatMoney(monthlyNet);
-}
+    .range-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #777;
+      margin-top: 2px;
+    }
 
-applyLanguage(currentLanguage);
-updateAll(parseMoney(salaryInput.value));
-</script>
+    /* ---------- Summary ---------- */
+
+    .summary {
+      margin-top: 40px;
+      padding-top: 16px;
+      border-top: 1px solid #ddd;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin: 4px 0;
+    }
+
+    .summary-row strong {
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .summary-note {
+      color: #777;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    /* ---------- Cost sections ---------- */
+
+    .cost-section {
+      margin-top: 40px;
+    }
+
+    .cost-item {
+      margin-bottom: 28px;
+    }
+
+    .cost-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 20px;
+    }
+
+    .cost-title {
+      font-weight: 700;
+    }
+
+    .average {
+      color: #777;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .cost-input-row {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 6px;
+    }
+
+    .cost-input-row span {
+      font-size: 14px;
+    }
+
+    .cost-input {
+      width: 110px;
+      border: none;
+      border-bottom: 1px solid #111;
+      border-radius: 0;
+      padding: 2px 0;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .cost-range {
+      width: 100%;
+      margin-top: 8px;
+      accent-color: #0000EE;
+    }
+
+    .cost-range-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #999;
+      margin-top: 1px;
+    }
+
+    /* ---------- Tax ---------- */
+
+    .tax-section {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid #ddd;
+    }
+
+    .tax-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin: 5px 0;
+    }
+
+    .tax-row span:last-child {
+      white-space: nowrap;
+    }
+
+    .tax-group {
+      margin-bottom: 24px;
+    }
+
+    .tax-group-title {
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .tax-rate {
+      color: #777;
+      font-size: 12px;
+    }
+
+    .tax-total {
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid #ddd;
+    }
+
+    .net-income {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid #111;
+    }
+
+    .net-income .tax-row {
+      font-weight: 700;
+    }
+
+    /* ---------- Result ---------- */
+
+    .result {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid #111;
+    }
+
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin: 5px 0;
+    }
+
+    .result-row strong {
+      white-space: nowrap;
+    }
+
+    .result-note {
+      margin-top: 12px;
+      color: #777;
+      font-size: 12px;
+    }
+
+    /* ---------- Sources ---------- */
+
+    .sources {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid #ddd;
+      font-size: 12px;
+    }
+
+    .sources p {
+      margin-bottom: 8px;
+    }
+
+    /* ---------- Back ---------- */
+
+    .back {
+      margin-top: 48px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .back a {
+      color: #111;
+    }
+
+    /* ---------- Mobile ---------- */
+
+    @media (max-width: 600px) {
+
+      body {
+        padding: 48px 24px;
+      }
+
+      .cost-header,
+      .summary-row,
+      .tax-row,
+      .result-row {
+        gap: 12px;
+      }
+
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <main>
+
+    <!-- Language -->
+
+    <div class="language">
+      <a href="#" id="lang-en">EN</a>
+      <span> | </span>
+      <a href="#" id="lang-ko">한국어</a>
+    </div>
+
+
+    <!-- Title -->
+
+    <h1
+      data-en="Cost of Living"
+      data-ko="생활비 계산"
+    >
+      Cost of Living
+    </h1>
+
+
+    <p
+      data-en="Estimate your monthly cost of living in British Columbia based on your income and lifestyle."
+      data-ko="소득과 생활 방식에 따라 브리티시컬럼비아에서의 예상 월 생활비를 계산해볼 수 있습니다."
+    >
+      Estimate your monthly cost of living in British Columbia based on your
+      income and lifestyle.
+    </p>
+
+
+    <p
+      data-en="The default values are based on current Vancouver cost-of-living data and can be adjusted to match your situation."
+      data-ko="기본값은 현재 밴쿠버 생활비 데이터를 기준으로 하며, 실제 생활 방식에 맞게 직접 조정할 수 있습니다."
+    >
+      The default values are based on current Vancouver cost-of-living data
+      and can be adjusted to match your situation.
+    </p>
+
+
+    <!-- Salary -->
+
+    <section class="salary-section">
+
+      <label
+        class="salary-label"
+        for="salary-input"
+        data-en="Annual salary"
+        data-ko="연봉"
+      >
+        Annual salary
+      </label>
+
+      <div class="salary-input">
+        <span>$</span>
+
+        <input
+          id="salary-input"
+          type="text"
+          inputmode="numeric"
+          value="50,000"
+          aria-label="Annual salary"
+        >
+      </div>
+
+      <input
+        id="salary-range"
+        type="range"
+        min="30000"
+        max="150000"
+        step="1000"
+        value="50000"
+      >
+
+      <div class="range-labels">
+        <span>$30,000</span>
+        <span>$150,000</span>
+      </div>
+
+    </section>
+
+
+    <!-- Income Summary -->
+
+    <section class="summary">
+
+      <div class="summary-row">
+        <span
+          data-en="Gross annual income"
+          data-ko="세전 연소득"
+        >
+          Gross annual income
+        </span>
+
+        <strong id="gross-annual">$50,000</strong>
+      </div>
+
+      <div class="summary-row">
+        <span
+          data-en="Gross monthly income"
+          data-ko="세전 월소득"
+        >
+          Gross monthly income
+        </span>
+
+        <strong id="gross-monthly">$4,167</strong>
+      </div>
+
+      <div class="summary-row">
+        <span
+          data-en="Estimated monthly net income"
+          data-ko="예상 세후 월소득"
+        >
+          Estimated monthly net income
+        </span>
+
+        <strong id="net-monthly-summary">$3,500</strong>
+      </div>
+
+      <p
+        class="summary-note"
+        data-en="Estimated using 2026 federal and British Columbia tax rules."
+        data-ko="2026년 캐나다 연방 및 브리티시컬럼비아 세금 기준을 적용한 예상치입니다."
+      >
+        Estimated using 2026 federal and British Columbia tax rules.
+      </p>
+
+    </section>
+
+
+    <!-- Cost of Living -->
+
+    <section class="cost-section">
+
+      <h2
+        data-en="Monthly cost of living"
+        data-ko="월 생활비"
+      >
+        Monthly cost of living
+      </h2>
+
+
+      <!-- Housing -->
+
+      <div class="cost-item">
+
+        <div class="cost-header">
+
+          <span
+            class="cost-title"
+            data-en="Housing"
+            data-ko="주거비"
+          >
+            Housing
+          </span>
+
+          <span
+            class="average"
+            data-en="Vancouver avg. $2,262"
+            data-ko="밴쿠버 평균 $2,262"
+          >
+            Vancouver avg. $2,262
+          </span>
+
+        </div>
+
+        <div class="cost-input-row">
+          <span>$</span>
+
+          <input
+            class="cost-input"
+            id="housing-input"
+            type="text"
+            inputmode="numeric"
+            value="2,262"
+          >
+        </div>
+
+        <input
+          class="cost-range"
+          id="housing-range"
+          type="range"
+          min="0"
+          max="5000"
+          step="25"
+          value="2262"
+        >
+
+        <div class="cost-range-labels">
+          <span>$0</span>
+          <span>$5,000</span>
+        </div>
+
+      </div>
+
+
+      <!-- Food -->
+
+      <div class="cost-item">
+
+        <div class="cost-header">
+
+          <span
+            class="cost-title"
+            data-en="Food & groceries"
+            data-ko="식비 및 식료품"
+          >
+            Food & groceries
+          </span>
+
+          <span
+            class="average"
+            data-en="Average estimate $575"
+            data-ko="평균 예상 $575"
+          >
+            Average estimate $575
+          </span>
+
+        </div>
+
+        <div class="cost-input-row">
+          <span>$</span>
+
+          <input
+            class="cost-input"
+            id="food-input"
+            type="text"
+            inputmode="numeric"
+            value="575"
+          >
+        </div>
+
+        <input
+          class="cost-range"
+          id="food-range"
+          type="range"
+          min="0"
+          max="1500"
+          step="25"
+          value="575"
+        >
+
+        <div class="cost-range-labels">
+          <span>$0</span>
+          <span>$1,500</span>
+        </div>
+
+      </div>
+
+
+      <!-- Transportation -->
+
+      <div class="cost-item">
+
+        <div class="cost-header">
+
+          <span
+            class="cost-title"
+            data-en="Transportation"
+            data-ko="교통비"
+          >
+            Transportation
+          </span>
+
+          <span
+            class="average"
+            data-en="Estimated average"
+            data-ko="평균 예상"
+          >
+            Estimated average
+          </span>
+
+        </div>
+
+        <div class="cost-input-row">
+          <span>$</span>
+
+          <input
+            class="cost-input"
+            id="transport-input"
+            type="text"
+            inputmode="numeric"
+            value="150"
+          >
+        </div>
+
+        <input
+          class="cost-range"
+          id="transport-range"
+          type="range"
+          min="0"
+          max="1000"
+          step="10"
+          value="150"
+        >
+
+        <div class="cost-range-labels">
+          <span>$0</span>
+          <span>$1,000</span>
+        </div>
+
+      </div>
+
+
+      <!-- Utilities -->
+
+      <div class="cost-item">
+
+        <div class="cost-header">
+
+          <span
+            class="cost-title"
+            data-en="Utilities & internet"
+            data-ko="공과금 및 인터넷"
+          >
+            Utilities & internet
+          </span>
+
+          <span
+            class="average"
+            data-en="Estimated average"
+            data-ko="평균 예상"
+          >
+            Estimated average
+          </span>
+
+        </div>
+
+        <div class="cost-input-row">
+          <span>$</span>
+
+          <input
+            class="cost-input"
+            id="utilities-input"
+            type="text"
+            inputmode="numeric"
+            value="150"
+          >
+        </div>
+
+        <input
+          class="cost-range"
+          id="utilities-range"
+          type="range"
+          min="0"
+          max="600"
+          step="10"
+          value="150"
+        >
+
+        <div class="cost-range-labels">
+          <span>$0</span>
+          <span>$600</span>
+        </div>
+
+      </div>
+
+
+      <!-- Mobile -->
+
+      <div class="cost-item">
+
+        <div class="cost-header">
+
+          <span
+            class="cost-title"
+            data-en="Mobile phone"
+            data-ko="휴대전화"
+          >
+            Mobile phone
+          </span>
+
+          <span
+            class="average"
+            data-en="Estimated average"
+            data-ko="평균 예상"
+          >
+            Estimated average
+          </span>
+
+        </div>
+
+        <div class="cost-input-row">
+          <span>$</span>
+
+          <input
+            class="cost-input"
+            id="mobile-input"
+            type="text"
+            inputmode="numeric"
+            value="60"
+          >
+        </div>
+
+        <input
+          class="cost-range"
+          id="mobile-range"
+          type="range"
+          min="0"
+          max="300"
+          step="5"
+          value="60"
+        >
+
+        <div class="cost-range-labels">
+          <span>$0</span>
+          <span>$300</span>
+        </div>
+
+      </div>
+
+
+      <!-- Dining & Entertainment -->
+
+      <div class="cost-item">
+
+        <div class="cost-header">
+
+          <span
+            class="cost-title"
+            data-en="Dining & entertainment"
+            data-ko="외식 및 여가"
+          >
+            Dining & entertainment
+          </span>
+
+          <span
+            class="average"
+            data-en="Estimated average"
+            data-ko="평균 예상"
+          >
+            Estimated average
+          </span>
+
+        </div>
+
+        <div class="cost-input-row">
+          <span>$</span>
+
+          <input
+            class="cost-input"
+            id="entertainment-input"
+            type="text"
+            inputmode="numeric"
+            value="300"
+          >
+        </div>
+
+        <input
+          class="cost-range"
+          id="entertainment-range"
+          type="range"
+          min="0"
+          max="1500"
+          step="25"
+          value="300"
+        >
+
+        <div class="cost-range-labels">
+          <span>$0</span>
+          <span>$1,500</span>
+        </div>
+
+      </div>
+
+
+      <!-- Other -->
+
+      <div class="cost-item">
+
+        <div class="cost-header">
+
+          <span
+            class="cost-title"
+            data-en="Other"
+            data-ko="기타"
+          >
+            Other
+          </span>
+
+          <span
+            class="average"
+            data-en="Vancouver avg. $150"
+            data-ko="밴쿠버 평균 $150"
+          >
+            Vancouver avg. $150
+          </span>
+
+        </div>
+
+        <div class="cost-input-row">
+          <span>$</span>
+
+          <input
+            class="cost-input"
+            id="other-input"
+            type="text"
+            inputmode="numeric"
+            value="150"
+          >
+        </div>
+
+        <input
+          class="cost-range"
+          id="other-range"
+          type="range"
+          min="0"
+          max="1000"
+          step="10"
+          value="150"
+        >
+
+        <div class="cost-range-labels">
+          <span>$0</span>
+          <span>$1,000</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Cost Result -->
+
+    <section class="result">
+
+      <div class="result-row">
+
+        <span
+          data-en="Estimated monthly living cost"
+          data-ko="예상 월 생활비"
+        >
+          Estimated monthly living cost
+        </span>
+
+        <strong id="total-cost">$3,647</strong>
+
+      </div>
+
+      <div class="result-row">
+
+        <span
+          data-en="Estimated monthly net income"
+          data-ko="예상 세후 월소득"
+        >
+          Estimated monthly net income
+        </span>
+
+        <strong id="net-monthly-result">$3,500</strong>
+
+      </div>
+
+      <div class="result-row">
+
+        <span
+          data-en="Estimated monthly balance"
+          data-ko="예상 월 잔액"
+        >
+          Estimated monthly balance
+        </span>
+
+        <strong id="monthly-balance">$-147</strong>
+
+      </div>
+
+      <p
+        class="result-note"
+        data-en="A negative balance means your estimated living costs exceed your estimated monthly net income."
+        data-ko="잔액이 마이너스라면 예상 생활비가 예상 세후 월소득보다 많다는 의미입니다."
+      >
+        A negative balance means your estimated living costs exceed your
+        estimated monthly net income.
+      </p>
+
+    </section>
+
+
+    <!-- Tax -->
+
+    <section class="tax-section">
+
+      <h2
+        data-en="Estimated tax & deductions"
+        data-ko="예상 세금 및 공제"
+      >
+        Estimated tax & deductions
+      </h2>
+
+      <p
+        data-en="Estimated for a single employee in British Columbia using 2026 federal and provincial rates. Actual payroll deductions may differ depending on your TD1, benefits, deductions and other circumstances."
+        data-ko="2026년 연방 및 BC주 세율을 기준으로 한 1인 근로자의 예상치입니다. 실제 급여 공제액은 TD1, 복리후생, 공제 항목 및 개인 상황에 따라 달라질 수 있습니다."
+      >
+        Estimated for a single employee in British Columbia using 2026
+        federal and provincial rates. Actual payroll deductions may differ
+        depending on your TD1, benefits, deductions and other circumstances.
+      </p>
+
+
+      <!-- Federal -->
+
+      <div class="tax-group">
+
+        <div
+          class="tax-group-title"
+          data-en="Federal income tax"
+          data-ko="연방 소득세"
+        >
+          Federal income tax
+        </div>
+
+        <div class="tax-row">
+          <span>
+            14%
+            <span
+              class="tax-rate"
+              data-en="first bracket"
+              data-ko="첫 번째 구간"
+            >
+              first bracket
+            </span>
+          </span>
+
+          <span id="federal-tax-first">$7,000</span>
+        </div>
+
+        <div class="tax-row">
+          <span>
+            20.5%
+            <span
+              class="tax-rate"
+              data-en="second bracket"
+              data-ko="두 번째 구간"
+            >
+              second bracket
+            </span>
+          </span>
+
+          <span id="federal-tax-second">$0</span>
+        </div>
+
+        <div class="tax-row">
+          <span
+            data-en="Federal basic personal credit"
+            data-ko="연방 기본 인적공제"
+          >
+            Federal basic personal credit
+          </span>
+
+          <span id="federal-credit">-$2,303</span>
+        </div>
+
+        <div class="tax-row">
+          <span
+            data-en="Canada employment credit"
+            data-ko="근로소득 공제"
+          >
+            Canada employment credit
+          </span>
+
+          <span id="employment-credit">-$210</span>
+        </div>
+
+        <div class="tax-row">
+          <strong
+            data-en="Estimated federal tax"
+            data-ko="예상 연방 소득세"
+          >
+            Estimated federal tax
+          </strong>
+
+          <strong id="federal-tax-total">$4,487</strong>
+        </div>
+
+      </div>
+
+
+      <!-- BC -->
+
+      <div class="tax-group">
+
+        <div
+          class="tax-group-title"
+          data-en="British Columbia income tax"
+          data-ko="브리티시컬럼비아 소득세"
+        >
+          British Columbia income tax
+        </div>
+
+        <div class="tax-row">
+
+          <span>
+            5.6%
+            <span
+              class="tax-rate"
+              data-en="first bracket"
+              data-ko="첫 번째 구간"
+            >
+              first bracket
+            </span>
+          </span>
+
+          <span id="bc-tax-first">$2,800</span>
+
+        </div>
+
+        <div class="tax-row">
+
+          <span>
+            7.7%
+            <span
+              class="tax-rate"
+              data-en="second bracket"
+              data-ko="두 번째 구간"
+            >
+              second bracket
+            </span>
+          </span>
+
+          <span id="bc-tax-second">$0</span>
+
+        </div>
+
+        <div class="tax-row">
+
+          <span
+            data-en="BC basic personal credit"
+            data-ko="BC 기본 인적공제"
+          >
+            BC basic personal credit
+          </span>
+
+          <span id="bc-credit">-$741</span>
+
+        </div>
+
+        <div class="tax-row">
+
+          <strong
+            data-en="Estimated BC tax"
+            data-ko="예상 BC 소득세"
+          >
+            Estimated BC tax
+          </strong>
+
+          <strong id="bc-tax-total">$2,059</strong>
+
+        </div>
+
+      </div>
+
+
+      <!-- CPP -->
+
+      <div class="tax-group">
+
+        <div class="tax-group-title">
+          CPP
+        </div>
+
+        <div class="tax-row">
+
+          <span
+            data-en="5.95% on pensionable earnings"
+            data-ko="연금 적용 소득의 5.95%"
+          >
+            5.95% on pensionable earnings
+          </span>
+
+          <span id="cpp-total">$2,766</span>
+
+        </div>
+
+      </div>
+
+
+      <!-- EI -->
+
+      <div class="tax-group">
+
+        <div class="tax-group-title">
+          EI
+        </div>
+
+        <div class="tax-row">
+
+          <span
+            data-en="1.63% of insurable earnings"
+            data-ko="보험 적용 소득의 1.63%"
+          >
+            1.63% of insurable earnings
+          </span>
+
+          <span id="ei-total">$815</span>
+
+        </div>
+
+      </div>
+
+
+      <!-- Total -->
+
+      <div class="tax-total">
+
+        <div class="tax-row">
+
+          <strong
+            data-en="Total estimated deductions"
+            data-ko="예상 총 공제액"
+          >
+            Total estimated deductions
+          </strong>
+
+          <strong id="total-deductions">$10,127</strong>
+
+        </div>
+
+      </div>
+
+
+      <!-- Net -->
+
+      <div class="net-income">
+
+        <div class="tax-row">
+
+          <span
+            data-en="Gross annual income"
+            data-ko="세전 연소득"
+          >
+            Gross annual income
+          </span>
+
+          <span id="tax-gross">$50,000</span>
+
+        </div>
+
+        <div class="tax-row">
+
+          <strong
+            data-en="Estimated annual net income"
+            data-ko="예상 세후 연소득"
+          >
+            Estimated annual net income
+          </strong>
+
+          <strong id="net-annual">$39,873</strong>
+
+        </div>
+
+        <div class="tax-row">
+
+          <strong
+            data-en="Estimated monthly net income"
+            data-ko="예상 세후 월소득"
+          >
+            Estimated monthly net income
+          </strong>
+
+          <strong id="net-monthly">$3,323</strong>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Sources -->
+
+    <section class="sources">
+
+      <h2
+        data-en="Sources"
+        data-ko="출처"
+      >
+        Sources
+      </h2>
+
+      <p>
+        <a
+          href="https://www.careerbeacon.com/en/cost-of-living/vancouver_british-columbia/50000-salary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          CareerBeacon — Vancouver cost of living
+        </a>
+      </p>
+
+      <p>
+        <a
+          href="https://www.numbeo.com/cost-of-living/in/Vancouver"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Numbeo — Vancouver
+        </a>
+      </p>
+
+      <p>
+        <a
+          href="https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/current-year.html"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Canada Revenue Agency — 2026 tax rates
+        </a>
+      </p>
+
+      <p>
+        <a
+          href="https://www2.gov.bc.ca/gov/content/taxes/income-taxes/personal"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Government of British Columbia — Personal income tax
+        </a>
+      </p>
+
+    </section>
+
+
+    <!-- Back -->
+
+    <div class="back">
+
+      <a
+        href="../"
+        data-en="← back"
+        data-ko="← 뒤로"
+      >
+        ← back
+      </a>
+
+    </div>
+
+  </main>
+
+
+  <script>
+
+    /* ----------------------------------------
+       Language
+    ---------------------------------------- */
+
+    const LANGUAGE_KEY = "workingholiday_language";
+
+    const currentLanguage =
+      localStorage.getItem(LANGUAGE_KEY) || "en";
+
+
+    function applyLanguage(language) {
+
+      document.documentElement.lang = language;
+
+      document
+        .querySelectorAll("[data-en][data-ko]")
+        .forEach(element => {
+
+          element.textContent =
+            element.dataset[language];
+
+        });
+
+
+      const en =
+        document.getElementById("lang-en");
+
+      const ko =
+        document.getElementById("lang-ko");
+
+
+      if (language === "en") {
+
+        en.classList.add("current");
+        ko.classList.remove("current");
+
+      } else {
+
+        en.classList.remove("current");
+        ko.classList.add("current");
+
+      }
+
+
+      document.title =
+        language === "en"
+          ? "Cost of Living — British Columbia"
+          : "생활비 계산 — 브리티시컬럼비아";
+
+    }
+
+
+    document
+      .getElementById("lang-en")
+      .addEventListener("click", event => {
+
+        event.preventDefault();
+
+        localStorage.setItem(
+          LANGUAGE_KEY,
+          "en"
+        );
+
+        applyLanguage("en");
+
+      });
+
+
+    document
+      .getElementById("lang-ko")
+      .addEventListener("click", event => {
+
+        event.preventDefault();
+
+        localStorage.setItem(
+          LANGUAGE_KEY,
+          "ko"
+        );
+
+        applyLanguage("ko");
+
+      });
+
+
+    /* ----------------------------------------
+       Number formatting
+    ---------------------------------------- */
+
+    function formatMoney(value) {
+
+      return "$" +
+        Math.round(value).toLocaleString("en-CA");
+
+    }
+
+
+    function parseMoney(value) {
+
+      const number =
+        Number(
+          String(value)
+            .replace(/,/g, "")
+            .replace(/[^0-9.-]/g, "")
+        );
+
+      return Number.isFinite(number)
+        ? Math.max(0, number)
+        : 0;
+
+    }
+
+
+    function updateFormattedInput(input, value) {
+
+      input.value =
+        Math.round(value).toLocaleString("en-CA");
+
+    }
+
+
+    /* ----------------------------------------
+       Salary
+    ---------------------------------------- */
+
+    const salaryInput =
+      document.getElementById("salary-input");
+
+    const salaryRange =
+      document.getElementById("salary-range");
+
+
+    function updateSalaryFromRange() {
+
+      const value =
+        Number(salaryRange.value);
+
+      updateFormattedInput(
+        salaryInput,
+        value
+      );
+
+      updateAll(value);
+
+    }
+
+
+    salaryRange.addEventListener(
+      "input",
+      updateSalaryFromRange
+    );
+
+
+    salaryInput.addEventListener(
+      "input",
+      () => {
+
+        const value =
+          parseMoney(salaryInput.value);
+
+        updateFormattedInput(
+          salaryInput,
+          value
+        );
+
+        if (
+          value >= Number(salaryRange.min) &&
+          value <= Number(salaryRange.max)
+        ) {
+
+          salaryRange.value = value;
+
+        }
+
+        updateAll(value);
+
+      }
+    );
+
+
+    salaryInput.addEventListener(
+      "blur",
+      () => {
+
+        const value =
+          parseMoney(salaryInput.value);
+
+        updateFormattedInput(
+          salaryInput,
+          value
+        );
+
+      }
+    );
+
+
+    /* ----------------------------------------
+       Living cost inputs
+    ---------------------------------------- */
+
+    const costPairs = [
+
+      ["housing-input", "housing-range"],
+
+      ["food-input", "food-range"],
+
+      ["transport-input", "transport-range"],
+
+      ["utilities-input", "utilities-range"],
+
+      ["mobile-input", "mobile-range"],
+
+      ["entertainment-input", "entertainment-range"],
+
+      ["other-input", "other-range"]
+
+    ];
+
+
+    costPairs.forEach(
+      ([inputId, rangeId]) => {
+
+        const input =
+          document.getElementById(inputId);
+
+        const range =
+          document.getElementById(rangeId);
+
+
+        range.addEventListener(
+          "input",
+          () => {
+
+            const value =
+              Number(range.value);
+
+            updateFormattedInput(
+              input,
+              value
+            );
+
+            updateAll(
+              parseMoney(salaryInput.value)
+            );
+
+          }
+        );
+
+
+        input.addEventListener(
+          "input",
+          () => {
+
+            const value =
+              parseMoney(input.value);
+
+            updateFormattedInput(
+              input,
+              value
+            );
+
+            if (
+              value >= Number(range.min) &&
+              value <= Number(range.max)
+            ) {
+
+              range.value = value;
+
+            }
+
+            updateAll(
+              parseMoney(salaryInput.value)
+            );
+
+          }
+        );
+
+
+        input.addEventListener(
+          "blur",
+          () => {
+
+            const value =
+              parseMoney(input.value);
+
+            updateFormattedInput(
+              input,
+              value
+            );
+
+          }
+        );
+
+      }
+    );
+
+
+    /* ----------------------------------------
+       Tax calculation
+    ---------------------------------------- */
+
+    function calculateProgressiveTax(
+      income,
+      brackets
+    ) {
+
+      let tax = 0;
+
+      let previous = 0;
+
+
+      for (
+        const bracket of brackets
+      ) {
+
+        if (income <= previous) {
+          break;
+        }
+
+
+        const taxable =
+          Math.min(
+            income,
+            bracket.max
+          ) - previous;
+
+
+        if (taxable > 0) {
+
+          tax +=
+            taxable * bracket.rate;
+
+        }
+
+
+        previous =
+          bracket.max;
+
+      }
+
+
+      return tax;
+
+    }
+
+
+    const federalBrackets = [
+
+      {
+        max: 58523,
+        rate: 0.14
+      },
+
+      {
+        max: 117045,
+        rate: 0.205
+      },
+
+      {
+        max: 181440,
+        rate: 0.26
+      },
+
+      {
+        max: 258482,
+        rate: 0.29
+      },
+
+      {
+        max: Infinity,
+        rate: 0.33
+      }
+
+    ];
+
+
+    const bcBrackets = [
+
+      {
+        max: 50363,
+        rate: 0.056
+      },
+
+      {
+        max: 100728,
+        rate: 0.077
+      },
+
+      {
+        max: 115648,
+        rate: 0.105
+      },
+
+      {
+        max: 140430,
+        rate: 0.1229
+      },
+
+      {
+        max: 190405,
+        rate: 0.147
+      },
+
+      {
+        max: 265545,
+        rate: 0.168
+      },
+
+      {
+        max: Infinity,
+        rate: 0.205
+      }
+
+    ];
+
+
+    function calculateTax(
+      salary
+    ) {
+
+      /*
+       * 2026 federal:
+       * Basic personal amount:
+       * $16,452
+       *
+       * Canada employment amount:
+       * maximum $1,501
+       *
+       * Federal credit rate:
+       * 14%
+       *
+       * BC:
+       * Basic personal amount:
+       * $13,216
+       *
+       * BC lowest rate:
+       * 5.6%
+       */
+
+      const federalTaxBeforeCredits =
+        calculateProgressiveTax(
+          salary,
+          federalBrackets
+        );
+
+
+      const federalPersonalCredit =
+        16452 * 0.14;
+
+
+      const employmentAmount =
+        Math.min(
+          salary,
+          1501
+        );
+
+
+      const employmentCredit =
+        employmentAmount * 0.14;
+
+
+      const federalTax =
+        Math.max(
+          0,
+          federalTaxBeforeCredits -
+          federalPersonalCredit -
+          employmentCredit
+        );
+
+
+      const bcTaxBeforeCredits =
+        calculateProgressiveTax(
+          salary,
+          bcBrackets
+        );
+
+
+      const bcPersonalCredit =
+        13216 * 0.056;
+
+
+      let bcTaxReduction = 0;
+
+      if (salary <= 25570) {
+
+        bcTaxReduction = 690;
+
+      } else if (salary < 44952) {
+
+        bcTaxReduction =
+          Math.max(
+            0,
+            690 -
+            (salary - 25570) * 0.0356
+          );
+
+      }
+
+
+      const bcTax =
+        Math.max(
+          0,
+          bcTaxBeforeCredits -
+          bcPersonalCredit -
+          bcTaxReduction
+        );
+
+
+      /*
+       * CPP 2026
+       *
+       * Base + first additional:
+       * 5.95%
+       *
+       * YMPE: $74,600
+       * Basic exemption: $3,500
+       *
+       * CPP2:
+       * 4% between $74,600 and $85,000
+       */
+
+      const cppBase =
+        Math.min(
+          Math.max(
+            salary - 3500,
+            0
+          ),
+          71100
+        ) * 0.0595;
+
+
+      const cpp2 =
+        Math.min(
+          Math.max(
+            salary - 74600,
+            0
+          ),
+          10400
+        ) * 0.04;
+
+
+      const cpp =
+        cppBase + cpp2;
+
+
+      /*
+       * EI 2026
+       *
+       * 1.63%
+       * Maximum insurable earnings:
+       * $68,900
+       */
+
+      const ei =
+        Math.min(
+          salary,
+          68900
+        ) * 0.0163;
+
+
+      const total =
+        federalTax +
+        bcTax +
+        cpp +
+        ei;
+
+
+      const net =
+        Math.max(
+          0,
+          salary - total
+        );
+
+
+      return {
+
+        federalTax,
+
+        federalTaxFirst:
+          Math.min(
+            salary,
+            58523
+          ) * 0.14,
+
+        federalTaxSecond:
+          Math.max(
+            0,
+            Math.min(
+              salary,
+              117045
+            ) - 58523
+          ) * 0.205,
+
+        federalCredit:
+          federalPersonalCredit,
+
+        employmentCredit:
+          employmentCredit,
+
+        bcTax,
+
+        bcTaxFirst:
+          Math.min(
+            salary,
+            50363
+          ) * 0.056,
+
+        bcTaxSecond:
+          Math.max(
+            0,
+            Math.min(
+              salary,
+              100728
+            ) - 50363
+          ) * 0.077,
+
+        bcCredit:
+          bcPersonalCredit,
+
+        cpp,
+
+        ei,
+
+        total,
+
+        net
+
+      };
+
+    }
+
+
+    /* ----------------------------------------
+       Cost calculation
+    ---------------------------------------- */
+
+    function getCost(
+      inputId
+    ) {
+
+      return parseMoney(
+        document.getElementById(inputId).value
+      );
+
+    }
+
+
+    function calculateLivingCost() {
+
+      return (
+
+        getCost("housing-input") +
+
+        getCost("food-input") +
+
+        getCost("transport-input") +
+
+        getCost("utilities-input") +
+
+        getCost("mobile-input") +
+
+        getCost("entertainment-input") +
+
+        getCost("other-input")
+
+      );
+
+    }
+
+
+    /* ----------------------------------------
+       Update everything
+    ---------------------------------------- */
+
+    function updateAll(
+      salary
+    ) {
+
+      if (!Number.isFinite(salary)) {
+        salary = 0;
+      }
+
+
+      const tax =
+        calculateTax(salary);
+
+
+      const monthlyNet =
+        tax.net / 12;
+
+
+      const livingCost =
+        calculateLivingCost();
+
+
+      const balance =
+        monthlyNet -
+        livingCost;
+
+
+      /* Income */
+
+      document
+        .getElementById("gross-annual")
+        .textContent =
+          formatMoney(salary);
+
+
+      document
+        .getElementById("gross-monthly")
+        .textContent =
+          formatMoney(salary / 12);
+
+
+      document
+        .getElementById("net-monthly-summary")
+        .textContent =
+          formatMoney(monthlyNet);
+
+
+      /* Living cost */
+
+      document
+        .getElementById("total-cost")
+        .textContent =
+          formatMoney(livingCost);
+
+
+      document
+        .getElementById("net-monthly-result")
+        .textContent =
+          formatMoney(monthlyNet);
+
+
+      document
+        .getElementById("monthly-balance")
+        .textContent =
+          (balance < 0 ? "-$" : "$") +
+          Math.abs(
+            Math.round(balance)
+          ).toLocaleString("en-CA");
+
+
+      /* Tax */
+
+      document
+        .getElementById("federal-tax-first")
+        .textContent =
+          formatMoney(
+            tax.federalTaxFirst
+          );
+
+
+      document
+        .getElementById("federal-tax-second")
+        .textContent =
+          formatMoney(
+            tax.federalTaxSecond
+          );
+
+
+      document
+        .getElementById("federal-credit")
+        .textContent =
+          "-" +
+          formatMoney(
+            tax.federalCredit
+          );
+
+
+      document
+        .getElementById("employment-credit")
+        .textContent =
+          "-" +
+          formatMoney(
+            tax.employmentCredit
+          );
+
+
+      document
+        .getElementById("federal-tax-total")
+        .textContent =
+          formatMoney(
+            tax.federalTax
+          );
+
+
+      document
+        .getElementById("bc-tax-first")
+        .textContent =
+          formatMoney(
+            tax.bcTaxFirst
+          );
+
+
+      document
+        .getElementById("bc-tax-second")
+        .textContent =
+          formatMoney(
+            tax.bcTaxSecond
+          );
+
+
+      document
+        .getElementById("bc-credit")
+        .textContent =
+          "-" +
+          formatMoney(
+            tax.bcCredit
+          );
+
+
+      document
+        .getElementById("bc-tax-total")
+        .textContent =
+          formatMoney(
+            tax.bcTax
+          );
+
+
+      document
+        .getElementById("cpp-total")
+        .textContent =
+          formatMoney(
+            tax.cpp
+          );
+
+
+      document
+        .getElementById("ei-total")
+        .textContent =
+          formatMoney(
+            tax.ei
+          );
+
+
+      document
+        .getElementById("total-deductions")
+        .textContent =
+          formatMoney(
+            tax.total
+          );
+
+
+      document
+        .getElementById("tax-gross")
+        .textContent =
+          formatMoney(
+            salary
+          );
+
+
+      document
+        .getElementById("net-annual")
+        .textContent =
+          formatMoney(
+            tax.net
+          );
+
+
+      document
+        .getElementById("net-monthly")
+        .textContent =
+          formatMoney(
+            monthlyNet
+          );
+
+    }
+
+
+    /* ----------------------------------------
+       Initial state
+    ---------------------------------------- */
+
+    applyLanguage(currentLanguage);
+
+    updateAll(
+      parseMoney(
+        salaryInput.value
+      )
+    );
+
+  </script>
+
 </body>
 </html>
+```
