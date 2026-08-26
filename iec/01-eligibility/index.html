@@ -473,25 +473,27 @@ function isSectionComplete(step) {
 
 function isParticipationComplete() {
 
+  // First participation
   const firstParticipation =
     document.querySelector('[data-save="first-participation"]');
-
-  const secondParticipation =
-    document.querySelectorAll(
-      '[data-save="second-participation-history"],' +
-      '[data-save="second-participation-remaining"],' +
-      '[data-save="second-participation-eligible"]'
-    );
 
   const firstComplete =
     firstParticipation && firstParticipation.checked;
 
+
+  // Second participation
+  const secondParticipation = [
+    document.querySelector('[data-save="second-participation-history"]'),
+    document.querySelector('[data-save="second-participation-remaining"]'),
+    document.querySelector('[data-save="second-participation-eligible"]')
+  ];
+
   const secondComplete =
-    secondParticipation.length > 0 &&
-    [...secondParticipation].every(box => box.checked);
+    secondParticipation.every(box => box && box.checked);
 
+
+  // Either First OR Second participation is sufficient
   return firstComplete || secondComplete;
-
 }
 
 
