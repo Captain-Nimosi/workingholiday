@@ -66,6 +66,45 @@
     .back a {
       color: #111;
     }
+
+    /* ---------- IEC steps ---------- */
+
+    .steps {
+      margin-top: 40px;
+    }
+    
+    .step {
+      margin: 0;
+    }
+    
+    .step a {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      color: #111;
+      text-decoration: none;
+    }
+    
+    .step a:hover {
+      color: #0000AA;
+      text-decoration: underline;
+    }
+    
+    .step-number {
+      font-weight: 400;
+      width: 18px;
+      flex-shrink: 0;
+    }
+    
+    .step-title {
+      font-weight: 700;
+    }
+    
+    .arrow {
+      margin: 8px 0 8px 1px;
+      font-size: 14px;
+      color: #999;
+    }
   </style>
 </head>
 
@@ -83,7 +122,34 @@
 
     <h2>Working Holiday</h2>
 
-    <ul data-archive="iec"></ul>
+    <div class="steps">
+
+      <div class="step">
+        <a href="01-eligibility/">
+          <span class="step-number">01</span>
+          <span class="step-title">Eligibility</span>
+        </a>
+      </div>
+    
+      <div class="arrow">↓</div>
+    
+      <div class="step">
+        <a href="02-application-process/">
+          <span class="step-number">02</span>
+          <span class="step-title">Application Process</span>
+        </a>
+      </div>
+    
+      <div class="arrow">↓</div>
+    
+      <div class="step">
+        <a href="03-before-departure/">
+          <span class="step-number">03</span>
+          <span class="step-title">Before Departure</span>
+        </a>
+      </div>
+    
+    </div>
 
     <div class="back">
       <a href="../">back</a>
