@@ -436,6 +436,7 @@ elements.forEach(element => {
     }
 
     updateStepCompletion();
+    updateNextButton();
 
   });
 
@@ -443,24 +444,87 @@ elements.forEach(element => {
 
 
 // ----------------------------------------
-// Auto-collapse fully completed sections
+// Check completion of each section
+// ----------------------------------------
+
+function isSectionComplete(step) {
+
+  const boxes = step.querySelectorAll('input[type="checkbox"]');
+
+  if (boxes.length === 0) {
+    return false;
+  }
+
+  return [...boxes].every(box => box.checked);
+
+}
+
+
+// ----------------------------------------
+// Check Previous IEC participation
+// ----------------------------------------
+//
+// Section 03 is complete when either:
+//
+// 1. First participation is checked
+// OR
+// 2. All Second participation items are checked
+//
+
+function isParticipationComplete() {
+
+  const firstParticipation =
+    document.querySelector('[data-save="first-participation"]');
+
+  const secondParticipation =
+    document.querySelectorAll(
+      '[data-save="second-participation-history"],' +
+      '[data-save="second-participation-remaining"],' +
+      '[data-save="second-participation-eligible"]'
+    );
+
+  const firstComplete =
+    firstParticipation && firstParticipation.checked;
+
+  const secondComplete =
+    secondParticipation.length > 0 &&
+    [...secondParticipation].every(box => box.checked);
+
+  return firstComplete || secondComplete;
+
+}
+
+
+// ----------------------------------------
+// Auto-collapse completed sections
 // ----------------------------------------
 
 function updateStepCompletion() {
 
   document.querySelectorAll(".step").forEach(step => {
 
-    const boxes = step.querySelectorAll('input[type="checkbox"]');
+    const stepNumber =
+      step.dataset.step;
 
-    if (boxes.length === 0) {
-      return;
+    let completed = false;
+
+    // Sections 01, 02, 04
+    if (
+      stepNumber === "01" ||
+      stepNumber === "02" ||
+      stepNumber === "04"
+    ) {
+      completed = isSectionComplete(step);
     }
 
-    const allChecked = [...boxes].every(box => box.checked);
+    // Section 03
+    if (stepNumber === "03") {
+      completed = isParticipationComplete();
+    }
 
-    step.classList.toggle("completed", allChecked);
+    step.classList.toggle("completed", completed);
 
-    if (allChecked) {
+    if (completed) {
       step.removeAttribute("open");
     }
 
@@ -470,10 +534,107 @@ function updateStepCompletion() {
 
 
 // ----------------------------------------
+// Check whether user is ready for next step
+// ----------------------------------------
+
+function isEligibilityComplete() {
+
+  // Section 01
+  const section01 =
+    document.querySelector('[data-step="01"]');
+
+  // Section 02
+  const section02 =
+    document.querySelector('[data-step="02"]');
+
+  // Section 03
+  const section03 =
+    document.querySelector('[data-step="03"]');
+
+  // Section 04
+  const section04 =
+    document.querySelector('[data-step="04"]');
+
+
+  const basicEligibility =
+    isSectionComplete(section01);
+
+  const financialInsurance =
+    isSectionComplete(section02);
+
+  const participation =
+    isParticipationComplete();
+
+  const requiredDocuments =
+    isSectionComplete(section04);
+
+
+  return (
+    basicEligibility &&
+    financialInsurance &&
+    participation &&
+    requiredDocuments
+  );
+
+}
+
+
+// ----------------------------------------
+// Create / update Next button
+// ----------------------------------------
+
+function updateNextButton() {
+
+  const nextButton =
+    document.querySelector(".next-button");
+
+  if (!nextButton) {
+    return;
+  }
+
+  const complete =
+    isEligibilityComplete();
+
+  nextButton.classList.toggle("active", complete);
+
+  nextButton.setAttribute(
+    "aria-disabled",
+    complete ? "false" : "true"
+  );
+
+}
+
+
+// ----------------------------------------
+// Prevent navigation when not complete
+// ----------------------------------------
+
+document.addEventListener("click", event => {
+
+  const nextButton =
+    event.target.closest(".next-button");
+
+  if (!nextButton) {
+    return;
+  }
+
+  if (!isEligibilityComplete()) {
+
+    event.preventDefault();
+
+    return;
+
+  }
+
+});
+
+
+// ----------------------------------------
 // Run when page loads
 // ----------------------------------------
 
 updateStepCompletion();
+updateNextButton();
 
 </script>
 
