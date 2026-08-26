@@ -47,18 +47,6 @@
       margin: 0;
     }
 
-    .country {
-      margin-top: 2px;
-    }
-
-    .location {
-      margin-bottom: 36px;
-    }
-
-    .location a {
-      display: inline-block;
-    }
-
     .menu {
       list-style: none;
       padding: 0;
@@ -92,20 +80,113 @@
     <nav>
       <ul class="menu">
         <li>
-          <a href="/workingholiday/iec/">Canada</a>
+          <a
+            href="/workingholiday/iec/"
+            data-en="Canada"
+            data-ko="캐나다"
+          >
+            Canada
+          </a>
         </li>
       </ul>
     </nav>
 
     <div class="language">
-      <span class="current">EN</span>
+      <span id="lang-en" class="current">EN</span>
       <span> | </span>
-      <a href="#">KR</a>
+      <a href="#" id="lang-ko">한국어</a>
     </div>
 
   </main>
 
-  <script src="archive.js"></script>
+  <script>
+
+    // ----------------------------------------
+    // Language
+    // ----------------------------------------
+
+    const LANGUAGE_KEY = "workingholiday_language";
+
+    const currentLanguage =
+      localStorage.getItem(LANGUAGE_KEY) || "en";
+
+
+    // ----------------------------------------
+    // Apply language
+    // ----------------------------------------
+
+    function applyLanguage(language) {
+
+      document.documentElement.lang = language;
+
+      document.querySelectorAll("[data-en][data-ko]").forEach(element => {
+
+        element.textContent =
+          element.dataset[language];
+
+      });
+
+
+      // Language selector
+
+      const en = document.getElementById("lang-en");
+      const ko = document.getElementById("lang-ko");
+
+      if (language === "en") {
+
+        en.classList.add("current");
+        ko.classList.remove("current");
+
+      } else {
+
+        en.classList.remove("current");
+        ko.classList.add("current");
+
+      }
+
+
+      // Page title
+
+      document.title =
+        language === "en"
+          ? "Working Holiday Canada"
+          : "캐나다 워킹홀리데이";
+    }
+
+
+    // ----------------------------------------
+    // Language selector
+    // ----------------------------------------
+
+    document.getElementById("lang-en").addEventListener("click", event => {
+
+      event.preventDefault();
+
+      localStorage.setItem(LANGUAGE_KEY, "en");
+
+      applyLanguage("en");
+
+    });
+
+
+    document.getElementById("lang-ko").addEventListener("click", event => {
+
+      event.preventDefault();
+
+      localStorage.setItem(LANGUAGE_KEY, "ko");
+
+      applyLanguage("ko");
+
+    });
+
+
+    // ----------------------------------------
+    // Run when page loads
+    // ----------------------------------------
+
+    applyLanguage(currentLanguage);
+
+  </script>
 
 </body>
 
