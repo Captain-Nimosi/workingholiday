@@ -970,39 +970,36 @@ function updateDeadlines() {
 
 
 // ----------------------------------------
-// Auto-collapse fully completed steps
+// Auto-collapse completed steps
 // ----------------------------------------
 
 function updateStepCompletion() {
 
   document.querySelectorAll(".step").forEach(step => {
 
-    const boxes =
-      step.querySelectorAll(
-        'input[type="checkbox"]'
-      );
+    const boxes = step.querySelectorAll('input[type="checkbox"]');
+    const dates = step.querySelectorAll('input[type="date"]');
 
-    if (boxes.length === 0) {
-      return;
-    }
+    // Checkboxes
+    const checkboxesComplete =
+      boxes.length === 0 ||
+      [...boxes].every(box => box.checked);
 
+    // Dates
+    const datesComplete =
+      dates.length === 0 ||
+      [...dates].every(date => date.value !== "");
 
-    const allChecked =
-      [...boxes].every(
-        box => box.checked
-      );
+    // Step is complete only when:
+    // 1. All checkboxes are checked
+    // 2. All date fields are filled
+    const completed =
+      checkboxesComplete && datesComplete;
 
+    step.classList.toggle("completed", completed);
 
-    step.classList.toggle(
-      "completed",
-      allChecked
-    );
-
-
-    if (allChecked) {
-
+    if (completed) {
       step.removeAttribute("open");
-
     }
 
   });
