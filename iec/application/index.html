@@ -49,8 +49,29 @@
       margin: 0 0 8px 0;
     }
 
+    h3 {
+      margin-top: 28px;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .note {
+      margin-top: 0;
+      color: #777;
+      font-size: 13px;
+    }
+
     p {
       margin: 0 0 16px 0;
+    }
+
+    .page-meta {
+      margin-top: 8px;
+      margin-bottom: 40px;
+      font-size: 12px;
+      line-height: 1.7;
+      color: #777;
     }
 
     .step {
@@ -170,6 +191,12 @@
   <main>
 
     <h1>IEC Application Process</h1>
+    
+    <div class="page-meta">
+      <p>For Korean citizens applying for the IEC program.</p>
+      <p>Based on information provided by Immigration, Refugees and Citizenship Canada (IRCC).</p>
+      <p>Last updated: August 26, 2026</p>
+    </div>
 
     <!-- STEP 01 -->
     <section class="step">
@@ -320,58 +347,103 @@
       </div>
     
       <p>Required documents</p>
-    
+
+      <h3>eService Form</h3>
+      
       <ul class="documents">
-    
+      
         <li>
           <label>
-            <input type="checkbox" data-save="passport">
-            Passport
+            <input type="checkbox" data-save="personal-details">
+            Personal details of applicant
           </label>
         </li>
-    
+      
         <li>
           <label>
-            <input type="checkbox" data-save="digital-photo">
-            Digital photo
+            <input type="checkbox" data-save="contact-information">
+            Contact information
           </label>
         </li>
-    
+      
+        <li>
+          <label>
+            <input type="checkbox" data-save="work-education-details">
+            Work and education details
+          </label>
+        </li>
+      
+        <li>
+          <label>
+            <input type="checkbox" data-save="application-details">
+            Application details
+          </label>
+        </li>
+      
+      </ul>
+      
+      
+      <h3>Required Documents</h3>
+      
+      <ul class="documents">
+      
         <li>
           <label>
             <input type="checkbox" data-save="family-information">
-            Family Information form
+            Family Information Form (IMM 5707)
           </label>
         </li>
-    
+      
         <li>
           <label>
             <input type="checkbox" data-save="cv">
             CV / résumé
           </label>
         </li>
-    
-      </ul>
-    
-      <p style="margin-top: 16px;">If applicable</p>
-    
-      <ul class="documents">
-    
+      
         <li>
           <label>
-            <input type="checkbox" data-save="police-certificate">
-            Police certificate
+            <input type="checkbox" data-save="passport">
+            Passport
           </label>
         </li>
-    
+      
+        <li>
+          <label>
+            <input type="checkbox" data-save="national-identity-document">
+            National Identity Document
+          </label>
+        </li>
+      
+        <li>
+          <label>
+            <input type="checkbox" data-save="digital-photo">
+            Digital photo
+          </label>
+        </li>
+      
         <li>
           <label>
             <input type="checkbox" data-save="medical-exam">
-            Medical exam
+            Proof of upfront medical exam
           </label>
         </li>
-    
+      
+        <li>
+          <label>
+            <input type="checkbox" data-save="police-certificates">
+            Police Certificates
+          </label>
+        </li>
+      
       </ul>
+      
+      
+      <h3>Additional Documents</h3>
+      
+      <p class="note">
+        Additional documents may be requested depending on your individual circumstances.
+      </p>
     
       <div class="source">
         <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/apply-work-permit.html"
