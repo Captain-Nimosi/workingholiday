@@ -1,9 +1,13 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Application Process — IEC Visa</title>
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
 
@@ -47,6 +51,25 @@ h1 {
   line-height: 1.8;
   font-weight: 400;
   color: #111;
+}
+
+/* ---------- Language ---------- */
+
+.language {
+  position: fixed;
+  top: 24px;
+  right: 40px;
+  z-index: 1000;
+}
+
+.language a {
+  color: #111;
+  text-decoration: underline;
+}
+
+.language .current {
+  color: #111;
+  text-decoration: none;
 }
 
 /* ---------- Step / details ---------- */
@@ -103,7 +126,7 @@ h1 {
   margin-bottom: 16px;
 }
 
-/* ---------- Subgroups (04, 05용 시각적 분리) ---------- */
+/* ---------- Subgroups ---------- */
 
 .subgroup {
   border-left: 2px solid #ddd;
@@ -191,7 +214,7 @@ h1 {
 .deadline.warning-5 { font-weight: 700; color: #770000; }
 .deadline.completed { font-weight: 400; color: #999; }
 
-/* ---------- Arrow (왼쪽 정렬) ---------- */
+/* ---------- Arrow ---------- */
 
 .arrow {
   text-align: left;
@@ -204,6 +227,8 @@ h1 {
   margin-top: 12px;
   font-size: 13px;
 }
+
+/* ---------- Back ---------- */
 
 .back {
   margin-top: 48px;
@@ -228,428 +253,936 @@ h1 {
 }
 </style>
 </head>
+
 <body>
+
+<div class="language">
+  <a href="#" id="lang-en">EN</a>
+  <span> | </span>
+  <a href="#" id="lang-ko">한국어</a>
+</div>
+
 <main>
 
-<h1>IEC Application Process</h1>
+<h1 data-en="IEC Application Process"
+    data-ko="IEC 신청 절차">
+  IEC Application Process
+</h1>
 
 <p class="page-meta">
-For Korean citizens applying for the IEC program.<br>
-Based on information provided by
-<a
-  href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/eligibility.html?selection=kr-wh#selection"
-  target="_blank"
-  rel="noopener noreferrer"
->Immigration, Refugees and Citizenship Canada (IRCC)</a>.<br>
-Last updated: August 26, 2026
+  <span data-en="For Korean citizens applying for the IEC program."
+        data-ko="IEC 프로그램에 신청하는 대한민국 국민을 위한 안내입니다.">
+    For Korean citizens applying for the IEC program.
+  </span>
+  <br>
+
+  <span data-en="Based on information provided by"
+        data-ko="다음 기관에서 제공한 정보를 바탕으로 작성되었습니다:">
+    Based on information provided by
+  </span>
+
+  <a
+    href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/eligibility.html?selection=kr-wh#selection"
+    target="_blank"
+    rel="noopener noreferrer"
+    data-en="Immigration, Refugees and Citizenship Canada (IRCC)"
+    data-ko="캐나다 이민·난민·시민권부 (IRCC)"
+  >Immigration, Refugees and Citizenship Canada (IRCC)</a>.
+  <br>
+
+  <span data-en="Last updated: August 26, 2026"
+        data-ko="최종 업데이트: 2026년 8월 26일">
+    Last updated: August 26, 2026
+  </span>
 </p>
 
+
 <!-- STEP 01 -->
+
 <details class="step" data-step="01" open>
+
   <summary>
     <span class="step-number">01</span>
-    <h2>Create your IEC profile</h2>
+    <h2 data-en="Create your IEC profile"
+        data-ko="IEC 프로필 생성">
+      Create your IEC profile
+    </h2>
   </summary>
+
   <div class="step-content">
-    <p class="description">
+
+    <p class="description"
+       data-en="Create and submit your IEC profile and choose the Working Holiday pool. You must be eligible for IEC before submitting your profile."
+       data-ko="IEC 프로필을 생성하고 제출한 후 Working Holiday 풀을 선택합니다. 프로필을 제출하기 전에 IEC 자격 요건을 충족해야 합니다.">
       Create and submit your IEC profile and choose the Working Holiday pool.
       You must be eligible for IEC before submitting your profile.
     </p>
 
     <ul class="documents">
+
       <li>
         <label>
           <input type="checkbox" data-save="profile-submitted">
-          Profile submitted
+          <span data-en="Profile submitted"
+                data-ko="프로필 제출 완료">
+            Profile submitted
+          </span>
         </label>
       </li>
+
     </ul>
 
     <div class="date">
-      Completed:
+      <span data-en="Completed:"
+            data-ko="완료일:">
+        Completed:
+      </span>
+
       <input type="date" data-save="profile-date">
     </div>
+
   </div>
+
 </details>
+
 
 <div class="arrow">↓</div>
 
+
 <!-- STEP 02 -->
+
 <details class="step" data-step="02" open>
+
   <summary>
     <span class="step-number">02</span>
-    <h2>Wait for an Invitation to Apply</h2>
+    <h2 data-en="Wait for an Invitation to Apply"
+        data-ko="신청 초대장(ITA) 대기">
+      Wait for an Invitation to Apply
+    </h2>
   </summary>
+
   <div class="step-content">
-    <p class="description">
+
+    <p class="description"
+       data-en="After submitting your profile, you remain in the IEC pool until you receive an Invitation to Apply (ITA), your profile expires, or the season closes."
+       data-ko="프로필을 제출한 후에는 신청 초대장(ITA)을 받거나, 프로필이 만료되거나, 해당 시즌이 종료될 때까지 IEC 풀에 남아 있습니다.">
       After submitting your profile, you remain in the IEC pool until you
       receive an Invitation to Apply (ITA), your profile expires, or the
       season closes.
     </p>
 
     <ul class="documents">
+
       <li>
         <label>
           <input type="checkbox" data-save="ita-received">
-          ITA received
+
+          <span data-en="ITA received"
+                data-ko="ITA 수령">
+            ITA received
+          </span>
+
         </label>
       </li>
+
     </ul>
 
     <div class="date">
-      Received:
+
+      <span data-en="Received:"
+            data-ko="수령일:">
+        Received:
+      </span>
+
       <input type="date" data-save="ita-date">
+
     </div>
+
   </div>
+
 </details>
+
 
 <div class="arrow">↓</div>
 
+
 <!-- STEP 03 -->
+
 <details class="step" data-step="03" open>
+
   <summary>
     <span class="step-number">03</span>
-    <h2>Accept your invitation</h2>
+
+    <h2 data-en="Accept your invitation"
+        data-ko="초대장 수락">
+      Accept your invitation
+    </h2>
+
   </summary>
+
   <div class="step-content">
-    <p class="description">
+
+    <p class="description"
+       data-en="You have 10 days to accept your Invitation to Apply (ITA). Check your invitation for the exact deadline."
+       data-ko="신청 초대장(ITA)을 수락할 수 있는 기간은 10일입니다. 정확한 마감일은 초대장에서 확인하세요.">
       You have 10 days to accept your Invitation to Apply (ITA).
       Check your invitation for the exact deadline.
     </p>
 
     <div class="deadline" data-deadline="ita-accept">
-      Accept by:
+
+      <span data-en="Accept by:"
+            data-ko="수락 기한:">
+        Accept by:
+      </span>
+
       <span class="deadline-date"></span>
       <span class="days-left"></span>
+
     </div>
-    <p class="deadline-note">
+
+    <p class="deadline-note"
+       data-en="Check your IRCC account for your exact deadline."
+       data-ko="정확한 마감일은 IRCC 계정에서 확인하세요.">
       Check your IRCC account for your exact deadline.
     </p>
 
     <ul class="documents">
+
       <li>
         <label>
           <input type="checkbox" data-save="ita-accepted">
-          ITA accepted
+
+          <span data-en="ITA accepted"
+                data-ko="ITA 수락 완료">
+            ITA accepted
+          </span>
+
         </label>
       </li>
+
     </ul>
 
     <div class="date">
-      Accepted:
+
+      <span data-en="Accepted:"
+            data-ko="수락일:">
+        Accepted:
+      </span>
+
       <input type="date" data-save="ita-accepted-date">
+
     </div>
+
   </div>
+
 </details>
+
 
 <div class="arrow">↓</div>
 
+
 <!-- STEP 04 -->
+
 <details class="step" data-step="04" open>
+
   <summary>
     <span class="step-number">04</span>
-    <h2>Prepare and submit your work permit application</h2>
+
+    <h2 data-en="Prepare and submit your work permit application"
+        data-ko="취업 허가 신청서 준비 및 제출">
+      Prepare and submit your work permit application
+    </h2>
+
   </summary>
+
   <div class="step-content">
-    <p class="description">
+
+    <p class="description"
+       data-en="You have exactly 20 days from the time you accept your ITA to submit your work permit application."
+       data-ko="ITA를 수락한 시점부터 정확히 20일 이내에 취업 허가 신청서를 제출해야 합니다.">
       You have exactly 20 days from the time you accept your ITA to submit
       your work permit application.
     </p>
 
     <div class="deadline" data-deadline="work-permit">
-      Application deadline:
+
+      <span data-en="Application deadline:"
+            data-ko="신청 마감일:">
+        Application deadline:
+      </span>
+
       <span class="deadline-date"></span>
       <span class="days-left"></span>
+
     </div>
-    <p class="deadline-note">
+
+    <p class="deadline-note"
+       data-en="Check your IRCC account for your exact deadline."
+       data-ko="정확한 마감일은 IRCC 계정에서 확인하세요.">
       Check your IRCC account for your exact deadline.
     </p>
 
+
     <div class="subgroup">
-      <h3>eService Form</h3>
+
+      <h3 data-en="eService Form"
+          data-ko="eService 양식">
+        eService Form
+      </h3>
+
       <ul class="documents">
+
         <li>
           <label>
             <input type="checkbox" data-save="personal-details">
-            Personal details of applicant
+
+            <span data-en="Personal details of applicant"
+                  data-ko="신청자 개인정보">
+              Personal details of applicant
+            </span>
+
           </label>
         </li>
+
         <li>
           <label>
             <input type="checkbox" data-save="contact-information">
-            Contact information
+
+            <span data-en="Contact information"
+                  data-ko="연락처 정보">
+              Contact information
+            </span>
+
           </label>
         </li>
+
         <li>
           <label>
             <input type="checkbox" data-save="work-education-details">
-            Work and education details
+
+            <span data-en="Work and education details"
+                  data-ko="경력 및 학력 정보">
+              Work and education details
+            </span>
+
           </label>
         </li>
+
         <li>
           <label>
             <input type="checkbox" data-save="application-details">
-            Application details
+
+            <span data-en="Application details"
+                  data-ko="신청 정보">
+              Application details
+            </span>
+
           </label>
         </li>
+
       </ul>
+
     </div>
 
+
     <div class="subgroup">
-      <h3>Required Documents</h3>
+
+      <h3 data-en="Required Documents"
+          data-ko="필수 서류">
+        Required Documents
+      </h3>
+
       <ul class="documents">
+
         <li>
           <label>
             <input type="checkbox" data-save="family-information">
-            Family Information Form (IMM 5707)
+
+            <span data-en="Family Information Form (IMM 5707)"
+                  data-ko="가족관계 정보 양식 (IMM 5707)">
+              Family Information Form (IMM 5707)
+            </span>
+
           </label>
         </li>
+
         <li>
           <label>
             <input type="checkbox" data-save="cv">
-            CV / résumé
+
+            <span data-en="CV / résumé"
+                  data-ko="이력서 (CV / résumé)">
+              CV / résumé
+            </span>
+
           </label>
         </li>
+
         <li>
           <label>
             <input type="checkbox" data-save="passport">
-            Passport
+
+            <span data-en="Passport"
+                  data-ko="여권">
+              Passport
+            </span>
+
           </label>
         </li>
+
         <li>
           <label>
             <input type="checkbox" data-save="national-identity-document">
-            National Identity Document
+
+            <span data-en="National Identity Document"
+                  data-ko="국가 신분증명서">
+              National Identity Document
+            </span>
+
           </label>
         </li>
+
         <li>
           <label>
             <input type="checkbox" data-save="digital-photo">
-            Digital photo
+
+            <span data-en="Digital photo"
+                  data-ko="디지털 사진">
+              Digital photo
+            </span>
+
           </label>
         </li>
+
         <li>
           <label>
             <input type="checkbox" data-save="medical-exam">
-            Proof of medical exam
+
+            <span data-en="Proof of medical exam"
+                  data-ko="신체검사 증명서">
+              Proof of medical exam
+            </span>
+
           </label>
         </li>
+
         <li>
           <label>
             <input type="checkbox" data-save="police-certificates">
-            Police Certificates
+
+            <span data-en="Police Certificates"
+                  data-ko="범죄경력증명서">
+              Police Certificates
+            </span>
+
           </label>
         </li>
+
       </ul>
+
     </div>
 
+
     <div class="subgroup">
-      <h3>Medical exam</h3>
-      <p>
+
+      <h3 data-en="Medical exam"
+          data-ko="신체검사">
+        Medical exam
+      </h3>
+
+      <p data-en="The exam must be performed by an IRCC-approved panel physician. The medical exam results are valid for 12 months."
+         data-ko="신체검사는 IRCC가 승인한 지정 의료기관의 의사에게 받아야 합니다. 신체검사 결과는 12개월 동안 유효합니다.">
         The exam must be performed by an IRCC-approved panel physician.
         The medical exam results are valid for 12 months.
       </p>
+
       <p>
         <a
           href="https://secure.cic.gc.ca/PanelPhysicianMedecinDesigne/en/Home"
           target="_blank"
           rel="noopener noreferrer"
+          data-en="Find an IRCC-approved panel physician"
+          data-ko="IRCC 지정 의료기관 찾기"
         >Find an IRCC-approved panel physician</a>
       </p>
+
     </div>
 
+
     <div class="subgroup">
-      <h3>Additional Documents</h3>
-      <p>
+
+      <h3 data-en="Additional Documents"
+          data-ko="추가 서류">
+        Additional Documents
+      </h3>
+
+      <p data-en="Additional documents may be requested depending on your individual circumstances."
+         data-ko="개인의 상황에 따라 추가 서류가 요청될 수 있습니다.">
         Additional documents may be requested depending on your individual
         circumstances.
       </p>
+
     </div>
 
+
     <div class="subgroup">
-      <h3>Submit your application</h3>
+
+      <h3 data-en="Submit your application"
+          data-ko="신청서 제출">
+        Submit your application
+      </h3>
+
       <ul class="documents">
+
         <li>
           <label>
             <input type="checkbox" data-save="application-submitted">
-            Application submitted
+
+            <span data-en="Application submitted"
+                  data-ko="신청서 제출 완료">
+              Application submitted
+            </span>
+
           </label>
         </li>
+
         <li>
           <label>
             <input type="checkbox" data-save="fees-paid">
-            Fees paid
+
+            <span data-en="Fees paid"
+                  data-ko="수수료 납부 완료">
+              Fees paid
+            </span>
+
           </label>
         </li>
+
       </ul>
+
       <div class="date">
-        Submitted:
+
+        <span data-en="Submitted:"
+              data-ko="제출일:">
+          Submitted:
+        </span>
+
         <input type="date" data-save="application-date">
+
       </div>
+
     </div>
+
   </div>
+
 </details>
+
 
 <div class="arrow">↓</div>
 
+
 <!-- STEP 05 -->
+
 <details class="step" data-step="05" open>
+
   <summary>
+
     <span class="step-number">05</span>
-    <h2>Give your biometrics</h2>
+
+    <h2 data-en="Give your biometrics"
+        data-ko="생체정보 등록">
+      Give your biometrics
+    </h2>
+
   </summary>
+
   <div class="step-content">
-    <p class="description">
+
+    <p class="description"
+       data-en="After you submit your application, you may receive a Biometrics Instruction Letter (BIL) in your IRCC account. If required, you must give your fingerprints and photo in person within 30 days of receiving the BIL."
+       data-ko="신청서를 제출한 후 IRCC 계정에서 생체정보 등록 안내서(BIL)를 받을 수 있습니다. 생체정보 등록이 필요한 경우 BIL을 받은 날로부터 30일 이내에 직접 지문과 사진을 등록해야 합니다.">
       After you submit your application, you may receive a Biometrics Instruction
       Letter (BIL) in your IRCC account. If required, you must give your
       fingerprints and photo in person within 30 days of receiving the BIL.
     </p>
 
+
     <div class="subgroup">
-      <h3>Biometrics Instruction Letter</h3>
+
+      <h3 data-en="Biometrics Instruction Letter"
+          data-ko="생체정보 등록 안내서">
+        Biometrics Instruction Letter
+      </h3>
+
       <ul class="documents">
+
         <li>
           <label>
             <input type="checkbox" data-save="bil-received">
-            BIL received
+
+            <span data-en="BIL received"
+                  data-ko="BIL 수령">
+              BIL received
+            </span>
+
           </label>
         </li>
+
       </ul>
+
       <div class="date">
-        BIL received:
+
+        <span data-en="BIL received:"
+              data-ko="BIL 수령일:">
+          BIL received:
+        </span>
+
         <input type="date" data-save="bil-date">
+
       </div>
+
       <div class="deadline" data-deadline="biometrics">
-        Biometrics deadline:
+
+        <span data-en="Biometrics deadline:"
+              data-ko="생체정보 등록 마감일:">
+          Biometrics deadline:
+        </span>
+
         <span class="deadline-date"></span>
         <span class="days-left"></span>
+
       </div>
-      <p class="deadline-note">
+
+      <p class="deadline-note"
+         data-en="Check your IRCC account for your exact deadline."
+         data-ko="정확한 마감일은 IRCC 계정에서 확인하세요.">
         Check your IRCC account for your exact deadline.
       </p>
+
       <p>
         <a
           href="https://www.canada.ca/en/immigration-refugees-citizenship/services/biometrics/where-to-give.html"
           target="_blank"
           rel="noopener noreferrer"
+          data-en="Find a biometrics collection site"
+          data-ko="생체정보 등록 장소 찾기"
         >Find a biometrics collection site</a>
       </p>
+
     </div>
 
+
     <div class="subgroup">
-      <h3>Complete biometrics</h3>
+
+      <h3 data-en="Complete biometrics"
+          data-ko="생체정보 등록 완료">
+        Complete biometrics
+      </h3>
+
       <ul class="documents">
+
         <li>
           <label>
             <input type="checkbox" data-save="biometrics-completed">
-            Biometrics completed
+
+            <span data-en="Biometrics completed"
+                  data-ko="생체정보 등록 완료">
+              Biometrics completed
+            </span>
+
           </label>
         </li>
+
       </ul>
+
     </div>
 
+
     <div class="subgroup">
-      <h3>If you've already given your biometrics</h3>
-      <p>
+
+      <h3 data-en="If you've already given your biometrics"
+          data-ko="이미 생체정보를 등록한 경우">
+        If you've already given your biometrics
+      </h3>
+
+      <p data-en="Your biometrics may still be valid. Check your biometrics status and expiry date using the"
+         data-ko="기존에 등록한 생체정보가 아직 유효할 수 있습니다. 생체정보 상태와 만료일은 다음 도구를 통해 확인하세요.">
         Your biometrics may still be valid. Check your biometrics status and
         expiry date using the
-        <a
-          href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html"
-          target="_blank"
-          rel="noopener noreferrer"
-        >IRCC Check Status Tool</a>.
       </p>
+
+      <a
+        href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-en="IRCC Check Status Tool"
+        data-ko="IRCC 신청 상태 확인 도구"
+      >IRCC Check Status Tool</a>.
+
     </div>
+
   </div>
+
 </details>
+
 
 <div class="arrow">↓</div>
 
+
 <!-- STEP 06 -->
+
 <details class="step" data-step="06" open>
+
   <summary>
+
     <span class="step-number">06</span>
-    <h2>Wait for a decision</h2>
+
+    <h2 data-en="Wait for a decision"
+        data-ko="심사 결과 대기">
+      Wait for a decision
+    </h2>
+
   </summary>
+
   <div class="step-content">
-    <p class="description">
+
+    <p class="description"
+       data-en="IRCC will assess your application and may ask you to provide additional documents or information."
+       data-ko="IRCC에서 신청서를 심사하며 추가 서류나 정보를 요청할 수 있습니다.">
       IRCC will assess your application and may ask you to provide
       additional documents or information.
     </p>
 
     <ul class="documents">
+
       <li>
         <label>
+
           <input type="checkbox" data-save="application-approved">
-          Application approved
+
+          <span data-en="Application approved"
+                data-ko="신청 승인">
+            Application approved
+          </span>
+
         </label>
       </li>
+
     </ul>
 
     <div class="date">
-      Approved:
+
+      <span data-en="Approved:"
+            data-ko="승인일:">
+        Approved:
+      </span>
+
       <input type="date" data-save="approval-date">
+
     </div>
+
   </div>
+
 </details>
+
 
 <div class="arrow">↓</div>
 
+
 <!-- STEP 07 -->
+
 <details class="step" data-step="07" open>
+
   <summary>
+
     <span class="step-number">07</span>
-    <h2>Receive your POE Letter</h2>
+
+    <h2 data-en="Receive your POE Letter"
+        data-ko="POE 레터 수령">
+      Receive your POE Letter
+    </h2>
+
   </summary>
+
   <div class="step-content">
-    <p class="description">
+
+    <p class="description"
+       data-en="If your application is approved, IRCC will send your Port of Entry Letter of Introduction to your account. Bring this letter with you when you travel to Canada."
+       data-ko="신청이 승인되면 IRCC에서 Port of Entry Letter of Introduction을 계정으로 보내줍니다. 캐나다로 출국할 때 이 레터를 지참하세요.">
       If your application is approved, IRCC will send your Port of Entry
       Letter of Introduction to your account. Bring this letter with you
       when you travel to Canada.
     </p>
 
     <ul class="documents">
+
       <li>
         <label>
+
           <input type="checkbox" data-save="poe-received">
-          POE Letter received
+
+          <span data-en="POE Letter received"
+                data-ko="POE 레터 수령">
+            POE Letter received
+          </span>
+
         </label>
       </li>
+
     </ul>
 
     <div class="date">
-      Received:
+
+      <span data-en="Received:"
+            data-ko="수령일:">
+        Received:
+      </span>
+
       <input type="date" data-save="poe-date">
+
     </div>
+
   </div>
+
 </details>
 
+
 <div class="back">
-  <a href="../">back</a>
-  <a href="../03-before-departure/" class="next" aria-disabled="true">next →</a>
+
+  <a href="../"
+     data-en="back"
+     data-ko="뒤로">
+    back
+  </a>
+
+  <a
+    href="../03-before-departure/"
+    class="next"
+    aria-disabled="true"
+    data-en="next →"
+    data-ko="다음 →"
+  >next →</a>
+
 </div>
 
 </main>
 
+
 <script>
+
+const LANGUAGE_KEY = "workingholiday_language";
+
+const currentLanguage =
+  localStorage.getItem(LANGUAGE_KEY) || "en";
 
 const STORAGE_PREFIX = "workingholiday_iec_";
 
 
-// ----------------------------------------
-// Save and restore checkbox / date values
-// ----------------------------------------
+/* ----------------------------------------
+   Language
+---------------------------------------- */
 
-const elements = document.querySelectorAll("[data-save]");
+function applyLanguage(language) {
+
+  document.documentElement.lang = language;
+
+  document.querySelectorAll("[data-en][data-ko]").forEach(element => {
+
+    element.textContent =
+      element.dataset[language];
+
+  });
+
+
+  const en =
+    document.getElementById("lang-en");
+
+  const ko =
+    document.getElementById("lang-ko");
+
+
+  if (language === "en") {
+
+    en.classList.add("current");
+    ko.classList.remove("current");
+
+  } else {
+
+    en.classList.remove("current");
+    ko.classList.add("current");
+
+  }
+
+
+  document.title =
+    language === "en"
+      ? "Application Process — IEC Visa"
+      : "IEC 신청 절차 — 워킹홀리데이";
+
+
+  updateDeadlines();
+
+}
+
+
+/* ----------------------------------------
+   Language selector
+---------------------------------------- */
+
+document
+  .getElementById("lang-en")
+  .addEventListener("click", event => {
+
+    event.preventDefault();
+
+    localStorage.setItem(
+      LANGUAGE_KEY,
+      "en"
+    );
+
+    applyLanguage("en");
+
+  });
+
+
+document
+  .getElementById("lang-ko")
+  .addEventListener("click", event => {
+
+    event.preventDefault();
+
+    localStorage.setItem(
+      LANGUAGE_KEY,
+      "ko"
+    );
+
+    applyLanguage("ko");
+
+  });
+
+
+/* ----------------------------------------
+   Save / restore checkbox and date values
+---------------------------------------- */
+
+const elements =
+  document.querySelectorAll("[data-save]");
+
 
 elements.forEach(element => {
 
-  const key = STORAGE_PREFIX + element.dataset.save;
-  const savedValue = localStorage.getItem(key);
+  const key =
+    STORAGE_PREFIX + element.dataset.save;
+
+  const savedValue =
+    localStorage.getItem(key);
+
 
   if (element.type === "checkbox") {
 
-    element.checked = savedValue === "true";
+    element.checked =
+      savedValue === "true";
 
   } else {
 
@@ -659,12 +1192,23 @@ elements.forEach(element => {
 
   }
 
+
   element.addEventListener("change", () => {
 
     if (element.type === "checkbox") {
-      localStorage.setItem(key, element.checked);
+
+      localStorage.setItem(
+        key,
+        element.checked
+      );
+
     } else {
-      localStorage.setItem(key, element.value);
+
+      localStorage.setItem(
+        key,
+        element.value
+      );
+
     }
 
     updateDeadlines();
@@ -676,9 +1220,9 @@ elements.forEach(element => {
 });
 
 
-// ----------------------------------------
-// Date utilities
-// ----------------------------------------
+/* ----------------------------------------
+   Date utilities
+---------------------------------------- */
 
 function addDays(dateString, days) {
 
@@ -686,9 +1230,12 @@ function addDays(dateString, days) {
     return null;
   }
 
-  const date = new Date(dateString + "T00:00:00");
+  const date =
+    new Date(dateString + "T00:00:00");
 
-  date.setDate(date.getDate() + days);
+  date.setDate(
+    date.getDate() + days
+  );
 
   return date;
 
@@ -701,18 +1248,25 @@ function formatDate(date) {
     return "";
   }
 
-  return date.toLocaleDateString("en-CA", {
-    year: "numeric",
-    month: "long",
-    day: "numeric"
-  });
+  const language =
+    localStorage.getItem(LANGUAGE_KEY) || "en";
+
+
+  return date.toLocaleDateString(
+    language === "ko" ? "ko-KR" : "en-CA",
+    {
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+    }
+  );
 
 }
 
 
-// ----------------------------------------
-// Calculate days remaining
-// ----------------------------------------
+/* ----------------------------------------
+   Calculate days remaining
+---------------------------------------- */
 
 function getDaysRemaining(deadline) {
 
@@ -720,29 +1274,47 @@ function getDaysRemaining(deadline) {
     return null;
   }
 
-  const today = new Date();
+  const today =
+    new Date();
 
-  today.setHours(0, 0, 0, 0);
+  today.setHours(
+    0,
+    0,
+    0,
+    0
+  );
 
-  const target = new Date(deadline);
+  const target =
+    new Date(deadline);
 
-  target.setHours(0, 0, 0, 0);
+  target.setHours(
+    0,
+    0,
+    0,
+    0
+  );
 
   const difference =
-    target.getTime() - today.getTime();
+    target.getTime() -
+    today.getTime();
 
   return Math.ceil(
-    difference / (1000 * 60 * 60 * 24)
+    difference /
+    (1000 * 60 * 60 * 24)
   );
 
 }
 
 
-// ----------------------------------------
-// Apply warning level
-// ----------------------------------------
+/* ----------------------------------------
+   Apply warning level
+---------------------------------------- */
 
-function setWarningLevel(element, daysLeft, completed) {
+function setWarningLevel(
+  element,
+  daysLeft,
+  completed
+) {
 
   element.classList.remove(
     "warning-1",
@@ -753,54 +1325,76 @@ function setWarningLevel(element, daysLeft, completed) {
     "completed"
   );
 
+
   if (daysLeft === null) {
     return;
   }
 
+
   if (completed) {
 
-    element.classList.add("completed");
+    element.classList.add(
+      "completed"
+    );
 
     return;
 
   }
 
+
   if (daysLeft <= 0) {
 
-    element.classList.add("warning-5");
+    element.classList.add(
+      "warning-5"
+    );
 
   } else if (daysLeft === 1) {
 
-    element.classList.add("warning-4");
+    element.classList.add(
+      "warning-4"
+    );
 
   } else if (daysLeft <= 3) {
 
-    element.classList.add("warning-3");
+    element.classList.add(
+      "warning-3"
+    );
 
   } else if (daysLeft <= 5) {
 
-    element.classList.add("warning-2");
+    element.classList.add(
+      "warning-2"
+    );
 
   } else {
 
-    element.classList.add("warning-1");
+    element.classList.add(
+      "warning-1"
+    );
 
   }
 
 }
 
 
-// ----------------------------------------
-// Display deadline
-// ----------------------------------------
+/* ----------------------------------------
+   Display deadline
+---------------------------------------- */
 
-function displayDeadline(element, deadline) {
+function displayDeadline(
+  element,
+  deadline
+) {
 
   const dateElement =
-    element.querySelector(".deadline-date");
+    element.querySelector(
+      ".deadline-date"
+    );
 
   const daysElement =
-    element.querySelector(".days-left");
+    element.querySelector(
+      ".days-left"
+    );
 
 
   if (!deadline) {
@@ -808,7 +1402,11 @@ function displayDeadline(element, deadline) {
     dateElement.textContent = "";
     daysElement.textContent = "";
 
-    setWarningLevel(element, null, false);
+    setWarningLevel(
+      element,
+      null,
+      false
+    );
 
     return;
 
@@ -823,20 +1421,30 @@ function displayDeadline(element, deadline) {
     formatDate(deadline);
 
 
+  const language =
+    localStorage.getItem(LANGUAGE_KEY) || "en";
+
+
   if (daysLeft > 0) {
 
     daysElement.textContent =
-      `(D-${daysLeft})`;
+      language === "ko"
+        ? `(D-${daysLeft})`
+        : `(D-${daysLeft})`;
 
   } else if (daysLeft === 0) {
 
     daysElement.textContent =
-      "(D-Day)";
+      language === "ko"
+        ? "(D-Day)"
+        : "(D-Day)";
 
   } else {
 
     daysElement.textContent =
-      `(D+${Math.abs(daysLeft)})`;
+      language === "ko"
+        ? `(D+${Math.abs(daysLeft)})`
+        : `(D+${Math.abs(daysLeft)})`;
 
   }
 
@@ -886,13 +1494,13 @@ function displayDeadline(element, deadline) {
 }
 
 
-// ----------------------------------------
-// Update all deadlines
-// ----------------------------------------
+/* ----------------------------------------
+   Update all deadlines
+---------------------------------------- */
 
 function updateDeadlines() {
 
-  // ITA acceptance deadline
+  /* ITA acceptance deadline */
 
   const itaReceivedDate =
     localStorage.getItem(
@@ -900,12 +1508,16 @@ function updateDeadlines() {
     );
 
   const itaDeadline =
-    addDays(itaReceivedDate, 10);
+    addDays(
+      itaReceivedDate,
+      10
+    );
 
   const itaElement =
     document.querySelector(
       '[data-deadline="ita-accept"]'
     );
+
 
   if (itaElement) {
 
@@ -917,7 +1529,7 @@ function updateDeadlines() {
   }
 
 
-  // Work permit application deadline
+  /* Work permit application deadline */
 
   const itaAcceptedDate =
     localStorage.getItem(
@@ -925,12 +1537,16 @@ function updateDeadlines() {
     );
 
   const workPermitDeadline =
-    addDays(itaAcceptedDate, 20);
+    addDays(
+      itaAcceptedDate,
+      20
+    );
 
   const workPermitElement =
     document.querySelector(
       '[data-deadline="work-permit"]'
     );
+
 
   if (workPermitElement) {
 
@@ -942,7 +1558,7 @@ function updateDeadlines() {
   }
 
 
-  // Biometrics deadline
+  /* Biometrics deadline */
 
   const bilDate =
     localStorage.getItem(
@@ -950,12 +1566,16 @@ function updateDeadlines() {
     );
 
   const biometricsDeadline =
-    addDays(bilDate, 30);
+    addDays(
+      bilDate,
+      30
+    );
 
   const biometricsElement =
     document.querySelector(
       '[data-deadline="biometrics"]'
     );
+
 
   if (biometricsElement) {
 
@@ -969,48 +1589,69 @@ function updateDeadlines() {
 }
 
 
-// ----------------------------------------
-// Auto-collapse completed steps
-// ----------------------------------------
+/* ----------------------------------------
+   Auto-collapse completed steps
+---------------------------------------- */
 
 function updateStepCompletion() {
 
-  document.querySelectorAll(".step").forEach(step => {
+  document
+    .querySelectorAll(".step")
+    .forEach(step => {
 
-    const boxes = step.querySelectorAll('input[type="checkbox"]');
-    const dates = step.querySelectorAll('input[type="date"]');
+      const boxes =
+        step.querySelectorAll(
+          'input[type="checkbox"]'
+        );
 
-    // Checkboxes
-    const checkboxesComplete =
-      boxes.length === 0 ||
-      [...boxes].every(box => box.checked);
+      const dates =
+        step.querySelectorAll(
+          'input[type="date"]'
+        );
 
-    // Dates
-    const datesComplete =
-      dates.length === 0 ||
-      [...dates].every(date => date.value !== "");
 
-    // Step is complete only when:
-    // 1. All checkboxes are checked
-    // 2. All date fields are filled
-    const completed =
-      checkboxesComplete && datesComplete;
+      const checkboxesComplete =
+        boxes.length === 0 ||
+        [...boxes].every(
+          box => box.checked
+        );
 
-    step.classList.toggle("completed", completed);
 
-    if (completed) {
-      step.removeAttribute("open");
-    }
+      const datesComplete =
+        dates.length === 0 ||
+        [...dates].every(
+          date => date.value !== ""
+        );
 
-  });
+
+      const completed =
+        checkboxesComplete &&
+        datesComplete;
+
+
+      step.classList.toggle(
+        "completed",
+        completed
+      );
+
+
+      if (completed) {
+
+        step.removeAttribute(
+          "open"
+        );
+
+      }
+
+    });
 
 }
 
 
-// ----------------------------------------
-// Check whether all application steps
-// are complete
-// ----------------------------------------
+/* ----------------------------------------
+   Check whether all application steps
+   are complete
+---------------------------------------- */
 
 function isApplicationComplete() {
 
@@ -1019,10 +1660,6 @@ function isApplicationComplete() {
 
 
   for (const step of steps) {
-
-    // ------------------------------
-    // Checkboxes
-    // ------------------------------
 
     const boxes =
       step.querySelectorAll(
@@ -1039,17 +1676,11 @@ function isApplicationComplete() {
 
 
       if (!allChecked) {
-
         return false;
-
       }
 
     }
 
-
-    // ------------------------------
-    // Date inputs
-    // ------------------------------
 
     const dates =
       step.querySelectorAll(
@@ -1066,9 +1697,7 @@ function isApplicationComplete() {
 
 
       if (!allDatesFilled) {
-
         return false;
-
       }
 
     }
@@ -1081,9 +1710,9 @@ function isApplicationComplete() {
 }
 
 
-// ----------------------------------------
-// Update Next button
-// ----------------------------------------
+/* ----------------------------------------
+   Update Next button
+---------------------------------------- */
 
 function updateNextButton() {
 
@@ -1092,9 +1721,7 @@ function updateNextButton() {
 
 
   if (!nextButton) {
-
     return;
-
   }
 
 
@@ -1110,46 +1737,52 @@ function updateNextButton() {
 
   nextButton.setAttribute(
     "aria-disabled",
-    complete ? "false" : "true"
+    complete
+      ? "false"
+      : "true"
   );
 
 }
 
 
-// ----------------------------------------
-// Prevent navigation when incomplete
-// ----------------------------------------
+/* ----------------------------------------
+   Prevent navigation when incomplete
+---------------------------------------- */
 
-document.addEventListener("click", event => {
+document.addEventListener(
+  "click",
+  event => {
 
-  const nextButton =
-    event.target.closest(".next");
+    const nextButton =
+      event.target.closest(".next");
 
 
-  if (!nextButton) {
+    if (!nextButton) {
+      return;
+    }
 
-    return;
+
+    if (!isApplicationComplete()) {
+
+      event.preventDefault();
+
+    }
 
   }
+);
 
 
-  if (!isApplicationComplete()) {
+/* ----------------------------------------
+   Run when page loads
+---------------------------------------- */
 
-    event.preventDefault();
-
-  }
-
-});
-
-
-// ----------------------------------------
-// Run when page loads
-// ----------------------------------------
-
+applyLanguage(currentLanguage);
 updateDeadlines();
 updateStepCompletion();
 updateNextButton();
 
 </script>
+
 </body>
 </html>
+```
