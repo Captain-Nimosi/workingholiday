@@ -52,6 +52,25 @@ h1 {
   color: #111;
 }
 
+
+/* ---------- Language ---------- */
+
+.language {
+  position: absolute;
+  top: 24px;
+  right: 40px;
+}
+
+.language a {
+  text-decoration: underline;
+}
+
+.language .current {
+  color: #111;
+  text-decoration: none;
+}
+
+
 /* ---------- Sections ---------- */
 
 .step {
@@ -102,6 +121,7 @@ h1 {
   margin-left: 22px;
 }
 
+
 /* ---------- Subgroups ---------- */
 
 .subgroup {
@@ -128,6 +148,7 @@ h1 {
   margin-bottom: 0;
 }
 
+
 /* ---------- Documents / checkboxes ---------- */
 
 .documents {
@@ -148,6 +169,7 @@ h1 {
   margin-right: 8px;
   vertical-align: middle;
 }
+
 
 /* ---------- Navigation ---------- */
 
@@ -172,19 +194,58 @@ h1 {
 
 <body>
 
+<div class="language">
+  <a href="#" id="lang-en">EN</a>
+  <span> | </span>
+  <a href="#" id="lang-ko">한국어</a>
+</div>
+
+
 <main>
 
-<h1>Before Departure</h1>
+<h1
+  data-en="Before Departure"
+  data-ko="출국 전 준비"
+>
+  Before Departure
+</h1>
+
 
 <p class="page-meta">
-For Korean citizens participating in the IEC Working Holiday program.<br>
-Based on information provided by
-<a
-  href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/after-apply-next-steps.html"
-  target="_blank"
-  rel="noopener noreferrer"
->Immigration, Refugees and Citizenship Canada (IRCC)</a>.<br>
-Last updated: August 26, 2026
+
+  <span
+    data-en="For Korean citizens participating in the IEC Working Holiday program."
+    data-ko="IEC 워킹홀리데이 프로그램에 참여하는 한국 국적자를 위한 안내입니다."
+  >
+    For Korean citizens participating in the IEC Working Holiday program.
+  </span>
+
+  <br>
+
+  <span
+    data-en="Based on information provided by"
+    data-ko="다음 기관에서 제공하는 정보를 기준으로 작성했습니다:"
+  >
+    Based on information provided by
+  </span>
+
+  <a
+    href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/after-apply-next-steps.html"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Immigration, Refugees and Citizenship Canada (IRCC)
+  </a>.
+
+  <br>
+
+  <span
+    data-en="Last updated: August 26, 2026"
+    data-ko="최종 업데이트: 2026년 8월 26일"
+  >
+    Last updated: August 26, 2026
+  </span>
+
 </p>
 
 
@@ -194,14 +255,24 @@ Last updated: August 26, 2026
 
   <summary>
     <span class="step-number">01</span>
-    <h2>Before departure</h2>
+    <h2
+      data-en="Before departure"
+      data-ko="출국 전"
+    >
+      Before departure
+    </h2>
   </summary>
 
   <div class="step-content">
 
     <div class="subgroup">
 
-      <h3>Documents</h3>
+      <h3
+        data-en="Documents"
+        data-ko="서류"
+      >
+        Documents
+      </h3>
 
       <ul class="documents">
 
@@ -211,7 +282,12 @@ Last updated: August 26, 2026
               type="checkbox"
               data-save="poe-letter"
             >
-            POE Letter of Introduction
+            <span
+              data-en="POE Letter of Introduction"
+              data-ko="POE Letter of Introduction"
+            >
+              POE Letter of Introduction
+            </span>
           </label>
         </li>
 
@@ -221,7 +297,12 @@ Last updated: August 26, 2026
               type="checkbox"
               data-save="valid-passport"
             >
-            Valid passport
+            <span
+              data-en="Valid passport"
+              data-ko="유효한 여권"
+            >
+              Valid passport
+            </span>
           </label>
         </li>
 
@@ -231,7 +312,12 @@ Last updated: August 26, 2026
               type="checkbox"
               data-save="health-insurance"
             >
-            Health insurance for your stay
+            <span
+              data-en="Health insurance for your stay"
+              data-ko="체류 기간 전체를 보장하는 건강보험"
+            >
+              Health insurance for your stay
+            </span>
           </label>
         </li>
 
@@ -241,7 +327,12 @@ Last updated: August 26, 2026
               type="checkbox"
               data-save="proof-of-funds"
             >
-            Proof of funds
+            <span
+              data-en="Proof of funds"
+              data-ko="재정 증명서"
+            >
+              Proof of funds
+            </span>
           </label>
         </li>
 
@@ -251,7 +342,12 @@ Last updated: August 26, 2026
               type="checkbox"
               data-save="application-copies"
             >
-            Copies of documents submitted with your work permit application
+            <span
+              data-en="Copies of documents submitted with your work permit application"
+              data-ko="취업허가 신청 시 제출한 서류 사본"
+            >
+              Copies of documents submitted with your work permit application
+            </span>
           </label>
         </li>
 
@@ -262,7 +358,12 @@ Last updated: August 26, 2026
 
     <div class="subgroup">
 
-      <h3>Travel arrangements</h3>
+      <h3
+        data-en="Travel arrangements"
+        data-ko="여행 준비"
+      >
+        Travel arrangements
+      </h3>
 
       <ul class="documents">
 
@@ -272,7 +373,12 @@ Last updated: August 26, 2026
               type="checkbox"
               data-save="departure-ticket"
             >
-            Departure ticket or sufficient funds to purchase one
+            <span
+              data-en="Departure ticket or sufficient funds to purchase one"
+              data-ko="출국 항공권 또는 항공권 구매에 충분한 자금"
+            >
+              Departure ticket or sufficient funds to purchase one
+            </span>
           </label>
         </li>
 
@@ -282,7 +388,12 @@ Last updated: August 26, 2026
               type="checkbox"
               data-save="accommodation"
             >
-            Initial accommodation arranged
+            <span
+              data-en="Initial accommodation arranged"
+              data-ko="초기 숙소 준비"
+            >
+              Initial accommodation arranged
+            </span>
           </label>
         </li>
 
@@ -293,9 +404,17 @@ Last updated: August 26, 2026
 
     <div class="subgroup">
 
-      <h3>Before making commitments</h3>
+      <h3
+        data-en="Before making commitments"
+        data-ko="확정적인 계약 및 예약 전"
+      >
+        Before making commitments
+      </h3>
 
-      <p>
+      <p
+        data-en="Wait until your IEC application is approved before making major travel, insurance, employment or accommodation commitments."
+        data-ko="중요한 여행, 보험, 고용 또는 숙소 관련 계약 및 예약은 IEC 신청이 승인될 때까지 기다리는 것이 좋습니다."
+      >
         Wait until your IEC application is approved before making major travel,
         insurance, employment or accommodation commitments.
       </p>
@@ -305,7 +424,11 @@ Last updated: August 26, 2026
           href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/after-apply-next-steps.html"
           target="_blank"
           rel="noopener noreferrer"
-        >Check the official IRCC guidance</a>.
+          data-en="Check the official IRCC guidance"
+          data-ko="IRCC 공식 안내 확인"
+        >
+          Check the official IRCC guidance
+        </a>.
       </p>
 
     </div>
@@ -324,14 +447,24 @@ Last updated: August 26, 2026
 
   <summary>
     <span class="step-number">02</span>
-    <h2>At the border</h2>
+    <h2
+      data-en="At the border"
+      data-ko="입국 심사"
+    >
+      At the border
+    </h2>
   </summary>
 
   <div class="step-content">
 
     <div class="subgroup">
 
-      <h3>Documents to present</h3>
+      <h3
+        data-en="Documents to present"
+        data-ko="제시해야 할 서류"
+      >
+        Documents to present
+      </h3>
 
       <ul class="documents">
 
@@ -341,7 +474,12 @@ Last updated: August 26, 2026
               type="checkbox"
               data-save="border-passport"
             >
-            Passport
+            <span
+              data-en="Passport"
+              data-ko="여권"
+            >
+              Passport
+            </span>
           </label>
         </li>
 
@@ -351,7 +489,12 @@ Last updated: August 26, 2026
               type="checkbox"
               data-save="border-poe"
             >
-            POE Letter of Introduction
+            <span
+              data-en="POE Letter of Introduction"
+              data-ko="POE Letter of Introduction"
+            >
+              POE Letter of Introduction
+            </span>
           </label>
         </li>
 
@@ -361,7 +504,12 @@ Last updated: August 26, 2026
               type="checkbox"
               data-save="border-insurance"
             >
-            Proof of health insurance
+            <span
+              data-en="Proof of health insurance"
+              data-ko="건강보험 가입 증명서"
+            >
+              Proof of health insurance
+            </span>
           </label>
         </li>
 
@@ -371,7 +519,12 @@ Last updated: August 26, 2026
               type="checkbox"
               data-save="border-funds"
             >
-            Proof of funds
+            <span
+              data-en="Proof of funds"
+              data-ko="재정 증명서"
+            >
+              Proof of funds
+            </span>
           </label>
         </li>
 
@@ -381,7 +534,12 @@ Last updated: August 26, 2026
               type="checkbox"
               data-save="border-ticket"
             >
-            Departure ticket or sufficient funds to purchase one
+            <span
+              data-en="Departure ticket or sufficient funds to purchase one"
+              data-ko="출국 항공권 또는 항공권 구매에 충분한 자금"
+            >
+              Departure ticket or sufficient funds to purchase one
+            </span>
           </label>
         </li>
 
@@ -391,7 +549,12 @@ Last updated: August 26, 2026
               type="checkbox"
               data-save="border-application-copies"
             >
-            Copies of documents submitted with your work permit application
+            <span
+              data-en="Copies of documents submitted with your work permit application"
+              data-ko="취업허가 신청 시 제출한 서류 사본"
+            >
+              Copies of documents submitted with your work permit application
+            </span>
           </label>
         </li>
 
@@ -402,16 +565,30 @@ Last updated: August 26, 2026
 
     <div class="subgroup">
 
-      <h3>Proof of funds</h3>
+      <h3
+        data-en="Proof of funds"
+        data-ko="재정 증명"
+      >
+        Proof of funds
+      </h3>
 
-      <p>
+      <p
+        data-en="Your bank statement should be issued no more than 1 week before your departure and show enough funds to support yourself for the first 3 months in Canada."
+        data-ko="은행 잔고증명서는 출국일로부터 1주일 이내에 발급된 것이어야 하며, 캐나다에서 첫 3개월 동안 생활할 수 있는 충분한 자금을 보여주어야 합니다."
+      >
         Your bank statement should be issued no more than 1 week before your
         departure and show enough funds to support yourself for the first
         3 months in Canada.
       </p>
 
       <p>
-        The current IRCC requirement is the equivalent of
+        <span
+          data-en="The current IRCC requirement is the equivalent of"
+          data-ko="현재 IRCC가 요구하는 금액은"
+        >
+          The current IRCC requirement is the equivalent of
+        </span>
+
         <strong>CAN$2,500</strong>.
       </p>
 
@@ -420,7 +597,11 @@ Last updated: August 26, 2026
           href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/prepare-arrival.html"
           target="_blank"
           rel="noopener noreferrer"
-        >Check the official proof of funds requirements</a>.
+          data-en="Check the official proof of funds requirements"
+          data-ko="공식 재정 증명 요건 확인"
+        >
+          Check the official proof of funds requirements
+        </a>.
       </p>
 
     </div>
@@ -428,14 +609,25 @@ Last updated: August 26, 2026
 
     <div class="subgroup">
 
-      <h3>Health insurance</h3>
+      <h3
+        data-en="Health insurance"
+        data-ko="건강보험"
+      >
+        Health insurance
+      </h3>
 
-      <p>
+      <p
+        data-en="Your insurance should cover medical care, hospitalization and repatriation for your entire stay."
+        data-ko="보험은 전체 체류 기간 동안 의료비, 입원비 및 본국 송환 비용을 보장해야 합니다."
+      >
         Your insurance should cover medical care, hospitalization and
         repatriation for your entire stay.
       </p>
 
-      <p>
+      <p
+        data-en="If your insurance is valid for less than your intended stay, your work permit may be issued only until the insurance expiry date."
+        data-ko="보험의 유효기간이 실제 체류 예정 기간보다 짧으면 취업허가도 보험 만료일까지로 제한될 수 있습니다."
+      >
         If your insurance is valid for less than your intended stay,
         your work permit may be issued only until the insurance expiry date.
       </p>
@@ -456,16 +648,29 @@ Last updated: August 26, 2026
 
   <summary>
     <span class="step-number">03</span>
-    <h2>After entry</h2>
+    <h2
+      data-en="After entry"
+      data-ko="입국 후"
+    >
+      After entry
+    </h2>
   </summary>
 
   <div class="step-content">
 
     <div class="subgroup">
 
-      <h3>Review your work permit</h3>
+      <h3
+        data-en="Review your work permit"
+        data-ko="취업허가 확인"
+      >
+        Review your work permit
+      </h3>
 
-      <p>
+      <p
+        data-en="Check your work permit carefully before leaving the port of entry."
+        data-ko="입국장을 떠나기 전에 취업허가 내용을 꼼꼼히 확인하세요."
+      >
         Check your work permit carefully before leaving the port of entry.
       </p>
 
@@ -477,7 +682,12 @@ Last updated: August 26, 2026
               type="checkbox"
               data-save="permit-name"
             >
-            Name is spelled correctly
+            <span
+              data-en="Name is spelled correctly"
+              data-ko="이름 철자가 정확함"
+            >
+              Name is spelled correctly
+            </span>
           </label>
         </li>
 
@@ -487,7 +697,12 @@ Last updated: August 26, 2026
               type="checkbox"
               data-save="permit-valid-until"
             >
-            “Valid until” date is correct
+            <span
+              data-en="“Valid until” date is correct"
+              data-ko="“Valid until” 날짜가 정확함"
+            >
+              “Valid until” date is correct
+            </span>
           </label>
         </li>
 
@@ -497,7 +712,12 @@ Last updated: August 26, 2026
               type="checkbox"
               data-save="permit-medical"
             >
-            Medical restrictions are correct
+            <span
+              data-en="Medical restrictions are correct"
+              data-ko="의료 관련 제한사항이 정확함"
+            >
+              Medical restrictions are correct
+            </span>
           </label>
         </li>
 
@@ -507,7 +727,12 @@ Last updated: August 26, 2026
               type="checkbox"
               data-save="permit-employer"
             >
-            Employer shows “open”
+            <span
+              data-en="Employer shows “open”"
+              data-ko="고용주가 “open”으로 표시됨"
+            >
+              Employer shows “open”
+            </span>
           </label>
         </li>
 
@@ -517,7 +742,12 @@ Last updated: August 26, 2026
               type="checkbox"
               data-save="permit-location"
             >
-            Location shows “unknown”
+            <span
+              data-en="Location shows “unknown”"
+              data-ko="근무지가 “unknown”으로 표시됨"
+            >
+              Location shows “unknown”
+            </span>
           </label>
         </li>
 
@@ -528,9 +758,17 @@ Last updated: August 26, 2026
 
     <div class="subgroup">
 
-      <h3>If there is a mistake</h3>
+      <h3
+        data-en="If there is a mistake"
+        data-ko="오류가 있는 경우"
+      >
+        If there is a mistake
+      </h3>
 
-      <p>
+      <p
+        data-en="Tell the border services officer immediately before leaving the port of entry."
+        data-ko="오류가 발견되면 입국장을 떠나기 전에 즉시 국경서비스 담당자에게 알려야 합니다."
+      >
         Tell the border services officer immediately before leaving the
         port of entry.
       </p>
@@ -540,7 +778,11 @@ Last updated: August 26, 2026
           href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/prepare-arrival.html"
           target="_blank"
           rel="noopener noreferrer"
-        >Check the official IRCC instructions</a>.
+          data-en="Check the official IRCC instructions"
+          data-ko="IRCC 공식 안내 확인"
+        >
+          Check the official IRCC instructions
+        </a>.
       </p>
 
     </div>
@@ -560,38 +802,143 @@ Last updated: August 26, 2026
 <script>
 
 /* ----------------------------------------
+   Language
+---------------------------------------- */
+
+const LANGUAGE_KEY = "workingholiday_language";
+
+const currentLanguage =
+  localStorage.getItem(LANGUAGE_KEY) || "en";
+
+
+/* ----------------------------------------
+   Apply language
+---------------------------------------- */
+
+function applyLanguage(language) {
+
+  document.documentElement.lang = language;
+
+
+  document.querySelectorAll("[data-en][data-ko]").forEach(element => {
+
+    element.textContent =
+      element.dataset[language];
+
+  });
+
+
+  // Language selector
+
+  const en =
+    document.getElementById("lang-en");
+
+  const ko =
+    document.getElementById("lang-ko");
+
+
+  if (language === "en") {
+
+    en.classList.add("current");
+    ko.classList.remove("current");
+
+  } else {
+
+    en.classList.remove("current");
+    ko.classList.add("current");
+
+  }
+
+
+  // Browser tab title
+
+  document.title =
+    language === "en"
+      ? "Before Departure — IEC Visa"
+      : "출국 전 준비 — IEC 비자";
+
+}
+
+
+/* ----------------------------------------
+   Language selector
+---------------------------------------- */
+
+document
+  .getElementById("lang-en")
+  .addEventListener("click", event => {
+
+    event.preventDefault();
+
+    localStorage.setItem(
+      LANGUAGE_KEY,
+      "en"
+    );
+
+    applyLanguage("en");
+
+  });
+
+
+document
+  .getElementById("lang-ko")
+  .addEventListener("click", event => {
+
+    event.preventDefault();
+
+    localStorage.setItem(
+      LANGUAGE_KEY,
+      "ko"
+    );
+
+    applyLanguage("ko");
+
+  });
+
+
+/* ----------------------------------------
    Local storage
 ---------------------------------------- */
 
-const STORAGE_PREFIX = "workingholiday_before_departure_";
+const STORAGE_PREFIX =
+  "workingholiday_before_departure_";
 
 
 /* ----------------------------------------
    Save and restore checkbox values
 ---------------------------------------- */
 
-const elements = document.querySelectorAll("[data-save]");
+const elements =
+  document.querySelectorAll("[data-save]");
+
 
 elements.forEach(element => {
 
   const key =
-    STORAGE_PREFIX + element.dataset.save;
+    STORAGE_PREFIX +
+    element.dataset.save;
 
   const savedValue =
     localStorage.getItem(key);
 
+
   if (element.type === "checkbox") {
+
     element.checked =
       savedValue === "true";
+
   }
+
 
   element.addEventListener("change", () => {
 
     if (element.type === "checkbox") {
+
       localStorage.setItem(
         key,
         element.checked
       );
+
     }
 
     updateStepCompletion();
@@ -612,9 +959,13 @@ function isSectionComplete(step) {
       'input[type="checkbox"]'
     );
 
+
   if (boxes.length === 0) {
+
     return false;
+
   }
+
 
   return [...boxes].every(
     box => box.checked
@@ -629,21 +980,27 @@ function isSectionComplete(step) {
 
 function updateStepCompletion() {
 
-  document.querySelectorAll(".step").forEach(step => {
+  document
+    .querySelectorAll(".step")
+    .forEach(step => {
 
-    const completed =
-      isSectionComplete(step);
+      const completed =
+        isSectionComplete(step);
 
-    step.classList.toggle(
-      "completed",
-      completed
-    );
 
-    if (completed) {
-      step.removeAttribute("open");
-    }
+      step.classList.toggle(
+        "completed",
+        completed
+      );
 
-  });
+
+      if (completed) {
+
+        step.removeAttribute("open");
+
+      }
+
+    });
 
 }
 
@@ -651,6 +1008,8 @@ function updateStepCompletion() {
 /* ----------------------------------------
    Run on page load
 ---------------------------------------- */
+
+applyLanguage(currentLanguage);
 
 updateStepCompletion();
 
