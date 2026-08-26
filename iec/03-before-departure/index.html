@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Before Departure — IEC Visa</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Serif', serif;
+  font-size: 14px;
+  color: #111;
+  background: #fff;
+  margin: 0;
+  padding: 60px 40px;
+  line-height: 1.8;
+}
+
+main {
+  max-width: 600px;
+}
+
+a {
+  color: #0000EE;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #0000AA;
+}
+
+h1 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 32px 0;
+}
+
+.page-meta {
+  margin-top: 8px;
+  margin-bottom: 40px;
+  font-size: 14px;
+  line-height: 1.8;
+  font-weight: 400;
+  color: #111;
+}
+
+/* ---------- Sections ---------- */
+
+.step {
+  margin-bottom: 24px;
+  border: none;
+}
+
+.step > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.step > summary::-webkit-details-marker {
+  display: none;
+}
+
+.step > summary::before {
+  content: "+";
+  font-weight: 700;
+  width: 12px;
+  flex-shrink: 0;
+}
+
+.step[open] > summary::before {
+  content: "−";
+}
+
+.step-number {
+  font-weight: 400;
+}
+
+.step > summary h2 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+  display: inline;
+}
+
+.step.completed > summary {
+  color: #999;
+}
+
+.step-content {
+  margin-top: 16px;
+  margin-left: 22px;
+}
+
+/* ---------- Subgroups ---------- */
+
+.subgroup {
+  border-left: 2px solid #ddd;
+  padding-left: 16px;
+  margin-bottom: 24px;
+}
+
+.subgroup:last-child {
+  margin-bottom: 0;
+}
+
+.subgroup h3 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.subgroup p {
+  margin: 0 0 12px 0;
+}
+
+.subgroup p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Documents / checkboxes ---------- */
+
+.documents {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.documents li {
+  margin: 4px 0;
+}
+
+.documents label {
+  cursor: pointer;
+}
+
+.documents input[type="checkbox"] {
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* ---------- Navigation ---------- */
+
+.back {
+  margin-top: 48px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.back a {
+  color: #111;
+}
+
+.next {
+  color: #111;
+  text-decoration: underline;
+}
+</style>
+
+</head>
+
+
+<body>
+
+<main>
+
+<h1>Before Departure</h1>
+
+<p class="page-meta">
+For Korean citizens participating in the IEC Working Holiday program.<br>
+Based on information provided by
+<a
+  href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/after-apply-next-steps.html"
+  target="_blank"
+  rel="noopener noreferrer"
+>Immigration, Refugees and Citizenship Canada (IRCC)</a>.<br>
+Last updated: August 26, 2026
+</p>
+
+
+<!-- SECTION 01 -->
+
+<details class="step" data-step="01" open>
+
+  <summary>
+    <span class="step-number">01</span>
+    <h2>Before departure</h2>
+  </summary>
+
+  <div class="step-content">
+
+    <div class="subgroup">
+
+      <h3>Documents</h3>
+
+      <ul class="documents">
+
+        <li>
+          <label>
+            <input
+              type="checkbox"
+              data-save="poe-letter"
+            >
+            POE Letter of Introduction
+          </label>
+        </li>
+
+        <li>
+          <label>
+            <input
+              type="checkbox"
+              data-save="valid-passport"
+            >
+            Valid passport
+          </label>
+        </li>
+
+        <li>
+          <label>
+            <input
+              type="checkbox"
+              data-save="health-insurance"
+            >
+            Health insurance for your stay
+          </label>
+        </li>
+
+        <li>
+          <label>
+            <input
+              type="checkbox"
+              data-save="proof-of-funds"
+            >
+            Proof of funds
+          </label>
+        </li>
+
+        <li>
+          <label>
+            <input
+              type="checkbox"
+              data-save="application-copies"
+            >
+            Copies of documents submitted with your work permit application
+          </label>
+        </li>
+
+      </ul>
+
+    </div>
+
+
+    <div class="subgroup">
+
+      <h3>Travel arrangements</h3>
+
+      <ul class="documents">
+
+        <li>
+          <label>
+            <input
+              type="checkbox"
+              data-save="departure-ticket"
+            >
+            Departure ticket or sufficient funds to purchase one
+          </label>
+        </li>
+
+        <li>
+          <label>
+            <input
+              type="checkbox"
+              data-save="accommodation"
+            >
+            Initial accommodation arranged
+          </label>
+        </li>
+
+      </ul>
+
+    </div>
+
+
+    <div class="subgroup">
+
+      <h3>Before making commitments</h3>
+
+      <p>
+        Wait until your IEC application is approved before making major travel,
+        insurance, employment or accommodation commitments.
+      </p>
+
+      <p>
+        <a
+          href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/after-apply-next-steps.html"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Check the official IRCC guidance</a>.
+      </p>
+
+    </div>
+
+  </div>
+
+</details>
+
+
+<div class="arrow">↓</div>
+
+
+<!-- SECTION 02 -->
+
+<details class="step" data-step="02" open>
+
+  <summary>
+    <span class="step-number">02</span>
+    <h2>At the border</h2>
+  </summary>
+
+  <div class="step-content">
+
+    <div class="subgroup">
+
+      <h3>Documents to present</h3>
+
+      <ul class="documents">
+
+        <li>
+          <label>
+            <input
+              type="checkbox"
+              data-save="border-passport"
+            >
+            Passport
+          </label>
+        </li>
+
+        <li>
+          <label>
+            <input
+              type="checkbox"
+              data-save="border-poe"
+            >
+            POE Letter of Introduction
+          </label>
+        </li>
+
+        <li>
+          <label>
+            <input
+              type="checkbox"
+              data-save="border-insurance"
+            >
+            Proof of health insurance
+          </label>
+        </li>
+
+        <li>
+          <label>
+            <input
+              type="checkbox"
+              data-save="border-funds"
+            >
+            Proof of funds
+          </label>
+        </li>
+
+        <li>
+          <label>
+            <input
+              type="checkbox"
+              data-save="border-ticket"
+            >
+            Departure ticket or sufficient funds to purchase one
+          </label>
+        </li>
+
+        <li>
+          <label>
+            <input
+              type="checkbox"
+              data-save="border-application-copies"
+            >
+            Copies of documents submitted with your work permit application
+          </label>
+        </li>
+
+      </ul>
+
+    </div>
+
+
+    <div class="subgroup">
+
+      <h3>Proof of funds</h3>
+
+      <p>
+        Your bank statement should be issued no more than 1 week before your
+        departure and show enough funds to support yourself for the first
+        3 months in Canada.
+      </p>
+
+      <p>
+        The current IRCC requirement is the equivalent of
+        <strong>CAN$2,500</strong>.
+      </p>
+
+      <p>
+        <a
+          href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/prepare-arrival.html"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Check the official proof of funds requirements</a>.
+      </p>
+
+    </div>
+
+
+    <div class="subgroup">
+
+      <h3>Health insurance</h3>
+
+      <p>
+        Your insurance should cover medical care, hospitalization and
+        repatriation for your entire stay.
+      </p>
+
+      <p>
+        If your insurance is valid for less than your intended stay,
+        your work permit may be issued only until the insurance expiry date.
+      </p>
+
+    </div>
+
+  </div>
+
+</details>
+
+
+<div class="arrow">↓</div>
+
+
+<!-- SECTION 03 -->
+
+<details class="step" data-step="03" open>
+
+  <summary>
+    <span class="step-number">03</span>
+    <h2>After entry</h2>
+  </summary>
+
+  <div class="step-content">
+
+    <div class="subgroup">
+
+      <h3>Review your work permit</h3>
+
+      <p>
+        Check your work permit carefully before leaving the port of entry.
+      </p>
+
+      <ul class="documents">
+
+        <li>
+          <label>
+            <input
+              type="checkbox"
+              data-save="permit-name"
+            >
+            Name is spelled correctly
+          </label>
+        </li>
+
+        <li>
+          <label>
+            <input
+              type="checkbox"
+              data-save="permit-valid-until"
+            >
+            “Valid until” date is correct
+          </label>
+        </li>
+
+        <li>
+          <label>
+            <input
+              type="checkbox"
+              data-save="permit-medical"
+            >
+            Medical restrictions are correct
+          </label>
+        </li>
+
+        <li>
+          <label>
+            <input
+              type="checkbox"
+              data-save="permit-employer"
+            >
+            Employer shows “open”
+          </label>
+        </li>
+
+        <li>
+          <label>
+            <input
+              type="checkbox"
+              data-save="permit-location"
+            >
+            Location shows “unknown”
+          </label>
+        </li>
+
+      </ul>
+
+    </div>
+
+
+    <div class="subgroup">
+
+      <h3>If there is a mistake</h3>
+
+      <p>
+        Tell the border services officer immediately before leaving the
+        port of entry.
+      </p>
+
+      <p>
+        <a
+          href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/prepare-arrival.html"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Check the official IRCC instructions</a>.
+      </p>
+
+    </div>
+
+  </div>
+
+</details>
+
+
+<div class="back">
+
+  <a href="../02-application-process/">
+    ← back
+  </a>
+
+  <a href="../">
+    next →
+  </a>
+
+</div>
+
+</main>
+
+
+<script>
+
+/* ----------------------------------------
+   Local storage
+---------------------------------------- */
+
+const STORAGE_PREFIX = "workingholiday_before_departure_";
+
+
+/* ----------------------------------------
+   Save and restore checkbox values
+---------------------------------------- */
+
+const elements = document.querySelectorAll("[data-save]");
+
+elements.forEach(element => {
+
+  const key =
+    STORAGE_PREFIX + element.dataset.save;
+
+  const savedValue =
+    localStorage.getItem(key);
+
+  if (element.type === "checkbox") {
+    element.checked =
+      savedValue === "true";
+  }
+
+  element.addEventListener("change", () => {
+
+    if (element.type === "checkbox") {
+      localStorage.setItem(
+        key,
+        element.checked
+      );
+    }
+
+    updateStepCompletion();
+
+  });
+
+});
+
+
+/* ----------------------------------------
+   Check section completion
+---------------------------------------- */
+
+function isSectionComplete(step) {
+
+  const boxes =
+    step.querySelectorAll(
+      'input[type="checkbox"]'
+    );
+
+  if (boxes.length === 0) {
+    return false;
+  }
+
+  return [...boxes].every(
+    box => box.checked
+  );
+
+}
+
+
+/* ----------------------------------------
+   Auto-collapse completed sections
+---------------------------------------- */
+
+function updateStepCompletion() {
+
+  document.querySelectorAll(".step").forEach(step => {
+
+    const completed =
+      isSectionComplete(step);
+
+    step.classList.toggle(
+      "completed",
+      completed
+    );
+
+    if (completed) {
+      step.removeAttribute("open");
+    }
+
+  });
+
+}
+
+
+/* ----------------------------------------
+   Run on page load
+---------------------------------------- */
+
+updateStepCompletion();
+
+</script>
+
+</body>
+</html>
