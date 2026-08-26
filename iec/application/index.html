@@ -295,6 +295,10 @@
         <span class="deadline-date"></span>
         <span class="days-left"></span>
       </div>
+
+      <p>
+        Check your IRCC account for your exact deadline.
+      </p>
     
       <div class="date">
         Accepted:
@@ -315,7 +319,7 @@
       <h2>Prepare your work permit application</h2>
     
       <p class="description">
-        After accepting your ITA, you have 20 days to complete and submit
+        You have exactly 20 days from the time you accept your ITA to submit
         your work permit application.
       </p>
     
@@ -324,103 +328,145 @@
         <span class="deadline-date"></span>
         <span class="days-left"></span>
       </div>
+
+      <p>
+        Check your IRCC account for your exact deadline.
+      </p>
     
       <h3>eService Form</h3>
-      
+    
       <ul class="documents">
-      
+    
         <li>
           <label>
             <input type="checkbox" data-save="personal-details">
             Personal details of applicant
           </label>
         </li>
-      
+    
         <li>
           <label>
             <input type="checkbox" data-save="contact-information">
             Contact information
           </label>
         </li>
-      
+    
         <li>
           <label>
             <input type="checkbox" data-save="work-education-details">
             Work and education details
           </label>
         </li>
-      
+    
         <li>
           <label>
             <input type="checkbox" data-save="application-details">
             Application details
           </label>
         </li>
-      
+    
       </ul>
-      
-      
+    
+    
       <h3>Required Documents</h3>
-      
+    
       <ul class="documents">
-      
+    
         <li>
           <label>
             <input type="checkbox" data-save="family-information">
             Family Information Form (IMM 5707)
           </label>
         </li>
-      
+    
         <li>
           <label>
             <input type="checkbox" data-save="cv">
             CV / résumé
           </label>
         </li>
-      
+    
         <li>
           <label>
             <input type="checkbox" data-save="passport">
             Passport
           </label>
         </li>
-      
+    
         <li>
           <label>
             <input type="checkbox" data-save="national-identity-document">
             National Identity Document
           </label>
         </li>
-      
+    
         <li>
           <label>
             <input type="checkbox" data-save="digital-photo">
             Digital photo
           </label>
         </li>
-      
+    
         <li>
           <label>
             <input type="checkbox" data-save="medical-exam">
-            Proof of upfront medical exam
+            Proof of medical exam
           </label>
         </li>
-      
+    
         <li>
           <label>
             <input type="checkbox" data-save="police-certificates">
             Police Certificates
           </label>
         </li>
-      
+    
       </ul>
-      
-      
-      <h3>Additional Documents</h3>
-      
+    
+    
+      <h3>Medical exam</h3>
+    
       <p>
-        Additional documents may be requested depending on your individual circumstances.
+        You must complete an immigration medical exam before submitting your
+        application.
       </p>
+    
+      <p>
+        You must see a doctor approved by IRCC, called a panel physician.
+        After the exam, you’ll get an information printout sheet or an
+        IMM 1017B Upfront Medical Report form. Upload this document in the
+        “Proof of medical exam” section of your document checklist.
+      </p>
+    
+      <p>
+        Your medical exam results are valid for 12 months. IRCC recommends
+        waiting until you receive an invitation to apply before getting a
+        medical exam.
+      </p>
+    
+      <p>
+        If you can’t complete the medical exam before your application
+        deadline, you can submit proof that you’ve made an appointment
+        to get one.
+      </p>
+    
+    
+      <h3>Additional Documents</h3>
+    
+      <p>
+        Additional documents may be requested depending on your individual
+        circumstances.
+      </p>
+    
+    
+      <div class="application-complete">
+    
+        <label>
+          <input type="checkbox" data-save="application-submitted">
+          Application submitted
+        </label>
+    
+      </div>
     
     </section>
 
@@ -471,51 +517,78 @@
 
     <!-- STEP 06 -->
     <section class="step">
-
+    
       <div class="step-number">06</div>
-
+    
       <h2>Give your biometrics</h2>
-
+    
+      <p class="description">
+        You may need to give your fingerprints and photo (biometrics)
+        after you apply.
+      </p>
+    
+    
+      <ul class="documents">
+    
+        <li>
+          <label>
+            <input type="checkbox" data-save="bil-received">
+            BIL received
+          </label>
+        </li>
+    
+      </ul>
+    
+    
+      <p>
+        If you haven’t given biometrics in a previous application, you’ll
+        receive a Biometrics Instruction Letter (BIL) in your account
+        message box after you submit your application.
+      </p>
+    
+      <p>
+        You have up to 30 days to give your biometrics. You must give your
+        biometrics in person.
+      </p>
+    
+    
       <div class="date">
         BIL received:
         <input type="date" data-save="bil-date">
       </div>
-
+    
+    
       <div class="deadline" data-deadline="biometrics">
         Biometrics deadline:
         <span class="deadline-date"></span>
         <span class="days-left"></span>
       </div>
 
-      <p class="description">
-        If biometrics are required, you will receive a Biometrics Instruction
-        Letter (BIL) after submitting your application. You must give your
-        biometrics in person within 30 days.
+      <p>
+        Check your IRCC account for your exact deadline.
       </p>
-
+    
       <ul class="documents">
-
-        <li>
-          <label>
-            <input type="checkbox" data-save="bil-received">
-            Biometrics Instruction Letter received
-          </label>
-        </li>
-
+    
         <li>
           <label>
             <input type="checkbox" data-save="biometrics-completed">
             Biometrics completed
           </label>
         </li>
-
+    
       </ul>
-
-      <div class="date">
-        Completed:
-        <input type="date" data-save="biometrics-date">
-      </div>
-
+    
+    
+      <h3>If you’ve already given your biometrics</h3>
+    
+      <p>
+        If you’ve already given your biometrics in the past, they may still
+        be valid. You can check if your biometrics are still valid and when
+        they expire by using the IRCC Check Status Tool.
+      </p>
+    
+    
     </section>
 
 
