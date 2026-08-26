@@ -186,7 +186,13 @@ h1 {
 .next {
   color: #111;
   text-decoration: underline;
+  font-weight: 400;
 }
+
+.next.completed {
+  font-weight: 700;
+}
+  
 </style>
 
 </head>
@@ -804,6 +810,8 @@ h1 {
 
   <a
     href="../"
+    class="next"
+    id="iec-visa-link"
     data-en="IEC Visa →"
     data-ko="IEC Visa →"
   >
@@ -996,27 +1004,42 @@ function isSectionComplete(step) {
 
 function updateStepCompletion() {
 
-  document
-    .querySelectorAll(".step")
-    .forEach(step => {
+  const steps =
+    document.querySelectorAll(".step");
 
-      const completed =
-        isSectionComplete(step);
+  let allCompleted = true;
+
+  steps.forEach(step => {
+
+    const completed =
+      isSectionComplete(step);
+
+    step.classList.toggle(
+      "completed",
+      completed
+    );
+
+    if (completed) {
+      step.removeAttribute("open");
+    } else {
+      allCompleted = false;
+    }
+
+  });
 
 
-      step.classList.toggle(
-        "completed",
-        completed
-      );
+  // IEC Visa link
+  const iecVisaLink =
+    document.getElementById("iec-visa-link");
 
+  if (iecVisaLink) {
 
-      if (completed) {
+    iecVisaLink.classList.toggle(
+      "completed",
+      allCompleted
+    );
 
-        step.removeAttribute("open");
-
-      }
-
-    });
+  }
 
 }
 
