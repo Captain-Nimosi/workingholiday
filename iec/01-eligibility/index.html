@@ -155,10 +155,24 @@ h1 {
 
 .back {
   margin-top: 48px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .back a {
   color: #111;
+}
+
+.next {
+  pointer-events: none;
+  color: #ccc !important;
+  text-decoration: none;
+}
+
+.next.active {
+  pointer-events: auto;
+  color: #111 !important;
+  text-decoration: underline;
 }
 </style>
 </head>
@@ -309,8 +323,7 @@ Last updated: August 26, 2026
     </div>
 
 
-    <div class="subgroup">
-
+    <div class="subgroup participation-option">
       <h3>First participation</h3>
 
       <ul class="documents">
@@ -327,8 +340,7 @@ Last updated: August 26, 2026
     </div>
 
 
-    <div class="subgroup">
-
+    <div class="subgroup participation-option">
       <h3>Second participation</h3>
 
       <ul class="documents">
@@ -391,6 +403,7 @@ Last updated: August 26, 2026
 
 <div class="back">
   <a href="../">back</a>
+  <a href="../02-application-process/" class="next" aria-disabled="true">next →</a>
 </div>
 
 </main>
