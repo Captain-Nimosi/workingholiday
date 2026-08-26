@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Cost of Living — British Columbia</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Serif', serif;
+      font-size: 14px;
+      color: #111;
+      background: #fff;
+      margin: 0;
+      padding: 60px 40px;
+      line-height: 1.8;
+    }
+
+    main {
+      max-width: 600px;
+    }
+
+    a {
+      color: #0000EE;
+      text-decoration: underline;
+    }
+
+    a:hover {
+      color: #0000AA;
+    }
+
+    h1 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0 0 32px 0;
+    }
+
+    h2 {
+      font-size: 14px;
+      font-weight: 700;
+      margin: 32px 0 12px 0;
+    }
+
+    p {
+      margin: 0 0 16px 0;
+    }
+
+
+    /* ---------- Language ---------- */
+
+    .language {
+      position: absolute;
+      top: 24px;
+      left: 640px;
+      margin: 0;
+      white-space: nowrap;
+    }
+
+    .language a {
+      text-decoration: underline;
+    }
+
+    .language .current {
+      color: #111;
+      text-decoration: none;
+    }
+
+
+    /* ---------- Calculator ---------- */
+
+    .calculator {
+      margin-top: 40px;
+    }
+
+    .input-group {
+      margin-bottom: 28px;
+    }
+
+    .input-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+
+    .input-label {
+      font-weight: 700;
+    }
+
+    .value-input {
+      width: 110px;
+      padding: 2px 0;
+      border: none;
+      border-bottom: 1px solid #111;
+      border-radius: 0;
+      background: transparent;
+      font-family: inherit;
+      font-size: 14px;
+      text-align: right;
+      color: #111;
+    }
+
+    .value-input:focus {
+      outline: none;
+      border-bottom: 1px solid #0000EE;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      margin: 4px 0 0 0;
+      accent-color: #111;
+      cursor: pointer;
+    }
+
+    .range-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #999;
+      line-height: 1.5;
+    }
+
+
+    /* ---------- Results ---------- */
+
+    .results {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid #ddd;
+    }
+
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      margin: 6px 0;
+    }
+
+    .result-row.total {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid #ddd;
+      font-weight: 700;
+    }
+
+    .result-value {
+      text-align: right;
+    }
+
+    .result-value.positive {
+      color: #111;
+    }
+
+    .result-value.negative {
+      color: #999;
+    }
+
+
+    /* ---------- Notes ---------- */
+
+    .note {
+      margin-top: 32px;
+      font-size: 12px;
+      color: #666;
+      line-height: 1.7;
+    }
+
+
+    /* ---------- Back ---------- */
+
+    .back {
+      margin-top: 48px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .back a {
+      color: #111;
+    }
+
+
+    /* ---------- Mobile ---------- */
+
+    @media (max-width: 700px) {
+
+      body {
+        padding: 60px 24px;
+      }
+
+      main {
+        max-width: 600px;
+      }
+
+      .language {
+        left: auto;
+        right: 24px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <div class="language">
+    <a href="#" id="lang-en">EN</a>
+    <span> | </span>
+    <a href="#" id="lang-ko">한국어</a>
+  </div>
+
+
+  <main>
+
+    <h1
+      data-en="Cost of Living"
+      data-ko="생활비"
+    >
+      Cost of Living
+    </h1>
+
+
+    <p
+      data-en="Estimate your monthly living costs and savings based on your income in British Columbia."
+      data-ko="BC주에서의 소득과 생활비를 기준으로 월 생활비와 예상 저축액을 계산해보세요."
+    >
+      Estimate your monthly living costs and savings based on your income
+      in British Columbia.
+    </p>
+
+
+    <div class="calculator">
+
+
+      <!-- LOCATION -->
+
+      <h2
+        data-en="Location"
+        data-ko="지역"
+      >
+        Location
+      </h2>
+
+
+      <div class="input-group">
+
+        <div class="input-header">
+
+          <span
+            class="input-label"
+            data-en="City"
+            data-ko="도시"
+          >
+            City
+          </span>
+
+        </div>
+
+
+        <select
+          id="city"
+          class="value-input"
+          style="width: 180px;"
+        >
+
+          <option value="vancouver">
+            Vancouver
+          </option>
+
+          <option value="burnaby">
+            Burnaby
+          </option>
+
+          <option value="other">
+            Other / BC
+          </option>
+
+        </select>
+
+      </div>
+
+
+
+      <!-- INCOME -->
+
+      <h2
+        data-en="Income"
+        data-ko="소득"
+      >
+        Income
+      </h2>
+
+
+      <div class="input-group">
+
+        <div class="input-header">
+
+          <span
+            class="input-label"
+            data-en="Annual gross salary"
+            data-ko="연봉 (세전)"
+          >
+            Annual gross salary
+          </span>
+
+
+          <input
+            type="number"
+            id="salary-number"
+            class="value-input"
+            min="30000"
+            max="150000"
+            step="1000"
+            value="50000"
+          >
+
+        </div>
+
+
+        <input
+          type="range"
+          id="salary-range"
+          min="30000"
+          max="150000"
+          step="1000"
+          value="50000"
+        >
+
+
+        <div class="range-labels">
+          <span>$30,000</span>
+          <span>$150,000</span>
+        </div>
+
+      </div>
+
+
+
+      <!-- HOUSING -->
+
+      <h2
+        data-en="Monthly expenses"
+        data-ko="월 생활비"
+      >
+        Monthly expenses
+      </h2>
+
+
+      <!-- RENT -->
+
+      <div class="input-group">
+
+        <div class="input-header">
+
+          <span
+            class="input-label"
+            data-en="Rent"
+            data-ko="월세"
+          >
+            Rent
+          </span>
+
+
+          <input
+            type="number"
+            id="rent-number"
+            class="value-input"
+            min="0"
+            max="5000"
+            step="50"
+            value="1500"
+          >
+
+        </div>
+
+
+        <input
+          type="range"
+          id="rent-range"
+          min="0"
+          max="5000"
+          step="50"
+          value="1500"
+        >
+
+        <div class="range-labels">
+          <span>$0</span>
+          <span>$5,000</span>
+        </div>
+
+      </div>
+
+
+
+      <!-- FOOD -->
+
+      <div class="input-group">
+
+        <div class="input-header">
+
+          <span
+            class="input-label"
+            data-en="Food"
+            data-ko="식비"
+          >
+            Food
+          </span>
+
+
+          <input
+            type="number"
+            id="food-number"
+            class="value-input"
+            min="0"
+            max="2000"
+            step="50"
+            value="400"
+          >
+
+        </div>
+
+
+        <input
+          type="range"
+          id="food-range"
+          min="0"
+          max="2000"
+          step="50"
+          value="400"
+        >
+
+        <div class="range-labels">
+          <span>$0</span>
+          <span>$2,000</span>
+        </div>
+
+      </div>
+
+
+
+      <!-- TRANSPORTATION -->
+
+      <div class="input-group">
+
+        <div class="input-header">
+
+          <span
+            class="input-label"
+            data-en="Transportation"
+            data-ko="교통비"
+          >
+            Transportation
+          </span>
+
+
+          <input
+            type="number"
+            id="transport-number"
+            class="value-input"
+            min="0"
+            max="1000"
+            step="25"
+            value="150"
+          >
+
+        </div>
+
+
+        <input
+          type="range"
+          id="transport-range"
+          min="0"
+          max="1000"
+          step="25"
+          value="150"
+        >
+
+        <div class="range-labels">
+          <span>$0</span>
+          <span>$1,000</span>
+        </div>
+
+      </div>
+
+
+
+      <!-- PHONE -->
+
+      <div class="input-group">
+
+        <div class="input-header">
+
+          <span
+            class="input-label"
+            data-en="Phone & internet"
+            data-ko="통신비"
+          >
+            Phone & internet
+          </span>
+
+
+          <input
+            type="number"
+            id="phone-number"
+            class="value-input"
+            min="0"
+            max="500"
+            step="10"
+            value="100"
+          >
+
+        </div>
+
+
+        <input
+          type="range"
+          id="phone-range"
+          min="0"
+          max="500"
+          step="10"
+          value="100"
+        >
+
+        <div class="range-labels">
+          <span>$0</span>
+          <span>$500</span>
+        </div>
+
+      </div>
+
+
+
+      <!-- PERSONAL -->
+
+      <div class="input-group">
+
+        <div class="input-header">
+
+          <span
+            class="input-label"
+            data-en="Personal & leisure"
+            data-ko="개인·여가비"
+          >
+            Personal & leisure
+          </span>
+
+
+          <input
+            type="number"
+            id="personal-number"
+            class="value-input"
+            min="0"
+            max="2000"
+            step="50"
+            value="300"
+          >
+
+        </div>
+
+
+        <input
+          type="range"
+          id="personal-range"
+          min="0"
+          max="2000"
+          step="50"
+          value="300"
+        >
+
+        <div class="range-labels">
+          <span>$0</span>
+          <span>$2,000</span>
+        </div>
+
+      </div>
+
+
+
+      <!-- OTHER -->
+
+      <div class="input-group">
+
+        <div class="input-header">
+
+          <span
+            class="input-label"
+            data-en="Other"
+            data-ko="기타"
+          >
+            Other
+          </span>
+
+
+          <input
+            type="number"
+            id="other-number"
+            class="value-input"
+            min="0"
+            max="2000"
+            step="50"
+            value="200"
+          >
+
+        </div>
+
+
+        <input
+          type="range"
+          id="other-range"
+          min="0"
+          max="2000"
+          step="50"
+          value="200"
+        >
+
+        <div class="range-labels">
+          <span>$0</span>
+          <span>$2,000</span>
+        </div>
+
+      </div>
+
+
+
+      <!-- RESULTS -->
+
+      <div class="results">
+
+        <h2
+          data-en="Estimated result"
+          data-ko="예상 결과"
+        >
+          Estimated result
+        </h2>
+
+
+        <div class="result-row">
+
+          <span
+            data-en="Gross monthly income"
+            data-ko="월 세전 소득"
+          >
+            Gross monthly income
+          </span>
+
+          <span
+            class="result-value"
+            id="gross-monthly"
+          >
+            $4,167
+          </span>
+
+        </div>
+
+
+        <div class="result-row">
+
+          <span
+            data-en="Estimated tax & deductions"
+            data-ko="예상 세금 및 공제"
+          >
+            Estimated tax & deductions
+          </span>
+
+          <span
+            class="result-value"
+            id="tax-monthly"
+          >
+            -$800
+          </span>
+
+        </div>
+
+
+        <div class="result-row">
+
+          <span
+            data-en="Estimated net monthly income"
+            data-ko="예상 월 실수령액"
+          >
+            Estimated net monthly income
+          </span>
+
+          <span
+            class="result-value"
+            id="net-monthly"
+          >
+            $3,367
+          </span>
+
+        </div>
+
+
+        <div class="result-row">
+
+          <span
+            data-en="Monthly living expenses"
+            data-ko="월 생활비"
+          >
+            Monthly living expenses
+          </span>
+
+          <span
+            class="result-value"
+            id="expenses-monthly"
+          >
+            $2,650
+          </span>
+
+        </div>
+
+
+        <div class="result-row total">
+
+          <span
+            data-en="Estimated monthly savings"
+            data-ko="예상 월 저축액"
+          >
+            Estimated monthly savings
+          </span>
+
+          <span
+            class="result-value"
+            id="savings-monthly"
+          >
+            $717
+          </span>
+
+        </div>
+
+
+        <div class="result-row total">
+
+          <span
+            data-en="Estimated annual savings"
+            data-ko="예상 연간 저축액"
+          >
+            Estimated annual savings
+          </span>
+
+          <span
+            class="result-value"
+            id="savings-yearly"
+          >
+            $8,604
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <p
+        class="note"
+        data-en="Tax and take-home pay are estimates for planning purposes. Actual deductions may vary depending on federal tax, B.C. tax, CPP, EI and individual circumstances."
+        data-ko="세후 소득은 계획을 위한 예상치입니다. 실제 실수령액은 연방세, BC주 세금, CPP, EI 및 개인 상황에 따라 달라질 수 있습니다."
+      >
+        Tax and take-home pay are estimates for planning purposes.
+        Actual deductions may vary depending on federal tax, B.C. tax,
+        CPP, EI and individual circumstances.
+      </p>
+
+
+      <p class="note">
+
+        <span
+          data-en="Sources:"
+          data-ko="출처:"
+        >
+          Sources:
+        </span>
+
+        <br>
+
+        <a
+          href="https://www.careerbeacon.com/en/cost-of-living/vancouver_british-columbia/50000-salary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          CareerBeacon
+        </a>
+
+        ·
+
+        <a
+          href="https://www.numbeo.com/cost-of-living/in/Vancouver"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Numbeo
+        </a>
+
+        ·
+
+        <a
+          href="https://www2.gov.bc.ca/gov/content/taxes/income-taxes/personal/tax-rates"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Government of British Columbia
+        </a>
+
+      </p>
+
+
+    </div>
+
+
+    <div class="back">
+
+      <a
+        href="../"
+        data-en="← previous"
+        data-ko="← 이전"
+      >
+        ← previous
+      </a>
+
+
+      <a
+        href="../"
+        data-en="working holiday →"
+        data-ko="워킹홀리데이 →"
+      >
+        working holiday →
+      </a>
+
+    </div>
+
+  </main>
+
+
+
+  <script>
+
+
+    /* ----------------------------------------
+       Language
+    ---------------------------------------- */
+
+    const LANGUAGE_KEY =
+      "workingholiday_language";
+
+    const currentLanguage =
+      localStorage.getItem(LANGUAGE_KEY) || "en";
+
+
+    function applyLanguage(language) {
+
+      document.documentElement.lang =
+        language;
+
+
+      document
+        .querySelectorAll("[data-en][data-ko]")
+        .forEach(element => {
+
+          element.textContent =
+            element.dataset[language];
+
+        });
+
+
+      const en =
+        document.getElementById("lang-en");
+
+      const ko =
+        document.getElementById("lang-ko");
+
+
+      if (language === "en") {
+
+        en.classList.add("current");
+        ko.classList.remove("current");
+
+      } else {
+
+        en.classList.remove("current");
+        ko.classList.add("current");
+
+      }
+
+
+      document.title =
+        language === "en"
+          ? "Cost of Living — British Columbia"
+          : "생활비 — 브리티시컬럼비아";
+
+    }
+
+
+    document
+      .getElementById("lang-en")
+      .addEventListener("click", event => {
+
+        event.preventDefault();
+
+        localStorage.setItem(
+          LANGUAGE_KEY,
+          "en"
+        );
+
+        applyLanguage("en");
+
+      });
+
+
+    document
+      .getElementById("lang-ko")
+      .addEventListener("click", event => {
+
+        event.preventDefault();
+
+        localStorage.setItem(
+          LANGUAGE_KEY,
+          "ko"
+        );
+
+        applyLanguage("ko");
+
+      });
+
+
+
+    /* ----------------------------------------
+       Slider ↔ Number input
+    ---------------------------------------- */
+
+    function connectInputs(rangeId, numberId) {
+
+      const range =
+        document.getElementById(rangeId);
+
+      const number =
+        document.getElementById(numberId);
+
+
+      range.addEventListener("input", () => {
+
+        number.value =
+          range.value;
+
+        calculate();
+
+      });
+
+
+      number.addEventListener("input", () => {
+
+        let value =
+          Number(number.value);
+
+        const min =
+          Number(range.min);
+
+        const max =
+          Number(range.max);
+
+
+        if (value < min) {
+          value = min;
+        }
+
+        if (value > max) {
+          value = max;
+        }
+
+
+        range.value =
+          value;
+
+        calculate();
+
+      });
+
+    }
+
+
+    connectInputs(
+      "salary-range",
+      "salary-number"
+    );
+
+    connectInputs(
+      "rent-range",
+      "rent-number"
+    );
+
+    connectInputs(
+      "food-range",
+      "food-number"
+    );
+
+    connectInputs(
+      "transport-range",
+      "transport-number"
+    );
+
+    connectInputs(
+      "phone-range",
+      "phone-number"
+    );
+
+    connectInputs(
+      "personal-range",
+      "personal-number"
+    );
+
+    connectInputs(
+      "other-range",
+      "other-number"
+    );
+
+
+
+    /* ----------------------------------------
+       Currency
+    ---------------------------------------- */
+
+    function money(value) {
+
+      return new Intl.NumberFormat(
+        "en-CA",
+        {
+          style: "currency",
+          currency: "CAD",
+          maximumFractionDigits: 0
+        }
+      ).format(value);
+
+    }
+
+
+
+    /* ----------------------------------------
+       2026 B.C. tax estimate
+    ---------------------------------------- */
+
+    function bcTax(income) {
+
+      const brackets = [
+
+        [50363, 0.056],
+
+        [100728, 0.077],
+
+        [115648, 0.105],
+
+        [140430, 0.1229],
+
+        [190405, 0.147],
+
+        [265545, 0.168],
+
+        [Infinity, 0.205]
+
+      ];
+
+
+      let tax = 0;
+
+      let previous = 0;
+
+
+      for (const [limit, rate] of brackets) {
+
+        if (income <= previous) {
+          break;
+        }
+
+
+        const taxable =
+          Math.min(
+            income,
+            limit
+          ) - previous;
+
+
+        tax += taxable * rate;
+
+        previous = limit;
+
+      }
+
+
+      return tax;
+
+    }
+
+
+
+    /* ----------------------------------------
+       Federal tax estimate
+    ---------------------------------------- */
+
+    function federalTax(income) {
+
+      const brackets = [
+
+        [58523, 0.14],
+
+        [117045, 0.205],
+
+        [181440, 0.26],
+
+        [258482, 0.29],
+
+        [Infinity, 0.33]
+
+      ];
+
+
+      let tax = 0;
+
+      let previous = 0;
+
+
+      for (const [limit, rate] of brackets) {
+
+        if (income <= previous) {
+          break;
+        }
+
+
+        const taxable =
+          Math.min(
+            income,
+            limit
+          ) - previous;
+
+
+        tax += taxable * rate;
+
+        previous = limit;
+
+      }
+
+
+      return tax;
+
+    }
+
+
+
+    /* ----------------------------------------
+       Income calculation
+    ---------------------------------------- */
+
+    function calculate() {
+
+      const salary =
+        Number(
+          document.getElementById(
+            "salary-number"
+          ).value
+        );
+
+
+      const rent =
+        Number(
+          document.getElementById(
+            "rent-number"
+          ).value
+        );
+
+
+      const food =
+        Number(
+          document.getElementById(
+            "food-number"
+          ).value
+        );
+
+
+      const transport =
+        Number(
+          document.getElementById(
+            "transport-number"
+          ).value
+        );
+
+
+      const phone =
+        Number(
+          document.getElementById(
+            "phone-number"
+          ).value
+        );
+
+
+      const personal =
+        Number(
+          document.getElementById(
+            "personal-number"
+          ).value
+        );
+
+
+      const other =
+        Number(
+          document.getElementById(
+            "other-number"
+          ).value
+        );
+
+
+      const grossMonthly =
+        salary / 12;
+
+
+      const federal =
+        federalTax(salary);
+
+
+      const provincial =
+        bcTax(salary);
+
+
+      /*
+        Simple planning estimate.
+        CPP / EI will be refined later.
+      */
+
+      const totalTax =
+        federal + provincial;
+
+
+      const netAnnual =
+        salary - totalTax;
+
+
+      const netMonthly =
+        netAnnual / 12;
+
+
+      const expenses =
+        rent +
+        food +
+        transport +
+        phone +
+        personal +
+        other;
+
+
+      const savings =
+        netMonthly - expenses;
+
+
+      const yearlySavings =
+        savings * 12;
+
+
+      document.getElementById(
+        "gross-monthly"
+      ).textContent =
+        money(grossMonthly);
+
+
+      document.getElementById(
+        "tax-monthly"
+      ).textContent =
+        "-" + money(totalTax / 12);
+
+
+      document.getElementById(
+        "net-monthly"
+      ).textContent =
+        money(netMonthly);
+
+
+      document.getElementById(
+        "expenses-monthly"
+      ).textContent =
+        money(expenses);
+
+
+      document.getElementById(
+        "savings-monthly"
+      ).textContent =
+        money(savings);
+
+
+      document.getElementById(
+        "savings-yearly"
+      ).textContent =
+        money(yearlySavings);
+
+
+      const savingsMonthlyElement =
+        document.getElementById(
+          "savings-monthly"
+        );
+
+
+      savingsMonthlyElement.classList.toggle(
+        "positive",
+        savings >= 0
+      );
+
+
+      savingsMonthlyElement.classList.toggle(
+        "negative",
+        savings < 0
+      );
+
+    }
+
+
+
+    /* ----------------------------------------
+       Run
+    ---------------------------------------- */
+
+    applyLanguage(currentLanguage);
+
+    calculate();
+
+  </script>
+
+</body>
+</html>
