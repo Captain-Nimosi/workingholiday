@@ -1,19 +1,468 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eligibility — IEC Visa</title>
 
-  <title>Eligibility — IEC Visa</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Serif', serif;
+  font-size: 14px;
+  color: #111;
+  background: #fff;
+  margin: 0;
+  padding: 60px 40px;
+  line-height: 1.8;
+}
+
+main {
+  max-width: 600px;
+}
+
+a {
+  color: #0000EE;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #0000AA;
+}
+
+h1 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 32px 0;
+}
+
+.page-meta {
+  margin-top: 8px;
+  margin-bottom: 40px;
+  font-size: 14px;
+  line-height: 1.8;
+  font-weight: 400;
+  color: #111;
+}
+
+/* ---------- Eligibility sections ---------- */
+
+.step {
+  margin-bottom: 24px;
+  border: none;
+}
+
+.step > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.step > summary::-webkit-details-marker {
+  display: none;
+}
+
+.step > summary::before {
+  content: "+";
+  font-weight: 700;
+  width: 12px;
+  flex-shrink: 0;
+}
+
+.step[open] > summary::before {
+  content: "−";
+}
+
+.step-number {
+  font-weight: 400;
+}
+
+.step > summary h2 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+  display: inline;
+}
+
+.step.completed > summary {
+  color: #999;
+}
+
+.step-content {
+  margin-top: 16px;
+  margin-left: 22px;
+}
+
+.description {
+  margin-bottom: 16px;
+}
+
+/* ---------- Subgroups ---------- */
+
+.subgroup {
+  border-left: 2px solid #ddd;
+  padding-left: 16px;
+  margin-bottom: 24px;
+}
+
+.subgroup:last-child {
+  margin-bottom: 0;
+}
+
+.subgroup h3 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.subgroup p {
+  margin: 0 0 12px 0;
+}
+
+.subgroup p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Documents / checkboxes ---------- */
+
+.documents {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.documents li {
+  margin: 4px 0;
+}
+
+.documents label {
+  cursor: pointer;
+}
+
+.documents input[type="checkbox"] {
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* ---------- Back ---------- */
+
+.back {
+  margin-top: 48px;
+}
+
+.back a {
+  color: #111;
+}
+</style>
 </head>
 
 <body>
+<main>
 
-  <h1>Eligibility</h1>
+<h1>IEC Eligibility</h1>
 
+<p class="page-meta">
+For Korean citizens applying for the IEC program.<br>
+Based on information provided by
+<a
+  href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/eligibility.html"
+  target="_blank"
+  rel="noopener noreferrer"
+>Immigration, Refugees and Citizenship Canada (IRCC)</a>.<br>
+Last updated: August 26, 2026
+</p>
+
+
+<!-- SECTION 01 -->
+<details class="step" data-step="01" open>
+  <summary>
+    <span class="step-number">01</span>
+    <h2>Basic eligibility</h2>
+  </summary>
+
+  <div class="step-content">
+
+    <ul class="documents">
+
+      <li>
+        <label>
+          <input type="checkbox" data-save="valid-korean-passport">
+          Valid Korean passport
+        </label>
+      </li>
+
+      <li>
+        <label>
+          <input type="checkbox" data-save="age-requirement">
+          Age 18–35
+        </label>
+      </li>
+
+      <li>
+        <label>
+          <input type="checkbox" data-save="working-holiday-eligible">
+          Eligible for the Working Holiday category
+        </label>
+      </li>
+
+      <li>
+        <label>
+          <input type="checkbox" data-save="inadmissibility">
+          No inadmissibility issues
+        </label>
+      </li>
+
+    </ul>
+
+    <div class="subgroup">
+      <h3>Age requirement</h3>
+
+      <p>
+        You must be between 18 and 35 years old, inclusive.
+      </p>
+
+      <p>
+        <a
+          href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/eligibility.html"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Check the official IRCC eligibility requirements</a>.
+      </p>
+    </div>
+
+  </div>
+</details>
+
+
+<div class="arrow">↓</div>
+
+
+<!-- SECTION 02 -->
+<details class="step" data-step="02" open>
+  <summary>
+    <span class="step-number">02</span>
+    <h2>Financial & insurance requirements</h2>
+  </summary>
+
+  <div class="step-content">
+
+    <ul class="documents">
+
+      <li>
+        <label>
+          <input type="checkbox" data-save="initial-funds">
+          Enough funds for your initial stay in Canada
+        </label>
+      </li>
+
+      <li>
+        <label>
+          <input type="checkbox" data-save="health-insurance">
+          Valid health insurance for your stay
+        </label>
+      </li>
+
+    </ul>
+
+  </div>
+</details>
+
+
+<div class="arrow">↓</div>
+
+
+<!-- SECTION 03 -->
+<details class="step" data-step="03" open>
+  <summary>
+    <span class="step-number">03</span>
+    <h2>Previous IEC participation</h2>
+  </summary>
+
+  <div class="step-content">
+
+    <div class="subgroup">
+
+      <p>
+        Participation means you entered Canada and received an IEC work permit.
+      </p>
+
+      <p>
+        If your application was approved but you did not enter Canada to receive
+        a work permit, it does not count as a participation.
+      </p>
+
+      <p>
+        <a
+          href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/eligibility.html"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Check the official IRCC participation rules</a>.
+      </p>
+
+    </div>
+
+
+    <div class="subgroup">
+
+      <h3>First participation</h3>
+
+      <ul class="documents">
+
+        <li>
+          <label>
+            <input type="checkbox" data-save="first-participation">
+            I have not previously participated in IEC
+          </label>
+        </li>
+
+      </ul>
+
+    </div>
+
+
+    <div class="subgroup">
+
+      <h3>Second participation</h3>
+
+      <ul class="documents">
+
+        <li>
+          <label>
+            <input type="checkbox" data-save="second-participation-history">
+            I have participated in IEC once before
+          </label>
+        </li>
+
+        <li>
+          <label>
+            <input type="checkbox" data-save="second-participation-remaining">
+            I have not used my second participation
+          </label>
+        </li>
+
+        <li>
+          <label>
+            <input type="checkbox" data-save="second-participation-eligible">
+            I meet the eligibility requirements for this participation
+          </label>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+</details>
+
+
+<div class="arrow">↓</div>
+
+
+<!-- SECTION 04 -->
+<details class="step" data-step="04" open>
+  <summary>
+    <span class="step-number">04</span>
+    <h2>Required documents</h2>
+  </summary>
+
+  <div class="step-content">
+
+    <ul class="documents">
+
+      <li>
+        <label>
+          <input type="checkbox" data-save="required-documents">
+          Required documents can be provided
+        </label>
+      </li>
+
+    </ul>
+
+  </div>
+</details>
+
+
+<div class="back">
   <a href="../">back</a>
+</div>
+
+</main>
+
+
+<script>
+
+const STORAGE_PREFIX = "workingholiday_eligibility_";
+
+
+// ----------------------------------------
+// Save and restore checkbox values
+// ----------------------------------------
+
+const elements = document.querySelectorAll("[data-save]");
+
+elements.forEach(element => {
+
+  const key = STORAGE_PREFIX + element.dataset.save;
+  const savedValue = localStorage.getItem(key);
+
+  if (element.type === "checkbox") {
+    element.checked = savedValue === "true";
+  }
+
+  element.addEventListener("change", () => {
+
+    if (element.type === "checkbox") {
+      localStorage.setItem(key, element.checked);
+    }
+
+    updateStepCompletion();
+
+  });
+
+});
+
+
+// ----------------------------------------
+// Auto-collapse fully completed sections
+// ----------------------------------------
+
+function updateStepCompletion() {
+
+  document.querySelectorAll(".step").forEach(step => {
+
+    const boxes = step.querySelectorAll('input[type="checkbox"]');
+
+    if (boxes.length === 0) {
+      return;
+    }
+
+    const allChecked = [...boxes].every(box => box.checked);
+
+    step.classList.toggle("completed", allChecked);
+
+    if (allChecked) {
+      step.removeAttribute("open");
+    }
+
+  });
+
+}
+
+
+// ----------------------------------------
+// Run when page loads
+// ----------------------------------------
+
+updateStepCompletion();
+
+</script>
 
 </body>
-
 </html>
