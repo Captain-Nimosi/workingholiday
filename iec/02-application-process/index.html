@@ -207,10 +207,24 @@ h1 {
 
 .back {
   margin-top: 48px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .back a {
   color: #111;
+}
+
+.next {
+  pointer-events: none;
+  color: #ccc !important;
+  text-decoration: none;
+}
+
+.next.active {
+  pointer-events: auto;
+  color: #111 !important;
+  text-decoration: underline;
 }
 </style>
 </head>
@@ -612,87 +626,131 @@ Last updated: August 26, 2026
 
 <div class="back">
   <a href="../">back</a>
+  <a href="../03-before-departure/" class="next" aria-disabled="true">next →</a>
 </div>
 
 </main>
 
 <script>
+
 const STORAGE_PREFIX = "workingholiday_iec_";
+
 
 // ----------------------------------------
 // Save and restore checkbox / date values
 // ----------------------------------------
+
 const elements = document.querySelectorAll("[data-save]");
 
 elements.forEach(element => {
+
   const key = STORAGE_PREFIX + element.dataset.save;
   const savedValue = localStorage.getItem(key);
 
   if (element.type === "checkbox") {
+
     element.checked = savedValue === "true";
+
   } else {
+
     if (savedValue) {
       element.value = savedValue;
     }
+
   }
 
   element.addEventListener("change", () => {
+
     if (element.type === "checkbox") {
       localStorage.setItem(key, element.checked);
     } else {
       localStorage.setItem(key, element.value);
     }
+
     updateDeadlines();
     updateStepCompletion();
+    updateNextButton();
+
   });
+
 });
+
 
 // ----------------------------------------
 // Date utilities
 // ----------------------------------------
+
 function addDays(dateString, days) {
+
   if (!dateString) {
     return null;
   }
+
   const date = new Date(dateString + "T00:00:00");
+
   date.setDate(date.getDate() + days);
+
   return date;
+
 }
 
+
 function formatDate(date) {
+
   if (!date) {
     return "";
   }
+
   return date.toLocaleDateString("en-CA", {
     year: "numeric",
     month: "long",
     day: "numeric"
   });
+
 }
+
 
 // ----------------------------------------
 // Calculate days remaining
 // ----------------------------------------
+
 function getDaysRemaining(deadline) {
+
   if (!deadline) {
     return null;
   }
+
   const today = new Date();
+
   today.setHours(0, 0, 0, 0);
 
   const target = new Date(deadline);
+
   target.setHours(0, 0, 0, 0);
 
-  const difference = target.getTime() - today.getTime();
-  return Math.ceil(difference / (1000 * 60 * 60 * 24));
+  const difference =
+    target.getTime() - today.getTime();
+
+  return Math.ceil(
+    difference / (1000 * 60 * 60 * 24)
+  );
+
 }
+
 
 // ----------------------------------------
 // Apply warning level
 // ----------------------------------------
+
 function setWarningLevel(element, daysLeft, completed) {
+
   element.classList.remove(
-    "warning-1", "warning-2", "warning-3", "warning-4", "warning-5", "completed"
+    "warning-1",
+    "warning-2",
+    "warning-3",
+    "warning-4",
+    "warning-5",
+    "completed"
   );
 
   if (daysLeft === null) {
@@ -700,110 +758,401 @@ function setWarningLevel(element, daysLeft, completed) {
   }
 
   if (completed) {
+
     element.classList.add("completed");
+
     return;
+
   }
 
   if (daysLeft <= 0) {
+
     element.classList.add("warning-5");
+
   } else if (daysLeft === 1) {
+
     element.classList.add("warning-4");
+
   } else if (daysLeft <= 3) {
+
     element.classList.add("warning-3");
+
   } else if (daysLeft <= 5) {
+
     element.classList.add("warning-2");
+
   } else {
+
     element.classList.add("warning-1");
+
   }
+
 }
+
 
 // ----------------------------------------
 // Display deadline
 // ----------------------------------------
+
 function displayDeadline(element, deadline) {
-  const dateElement = element.querySelector(".deadline-date");
-  const daysElement = element.querySelector(".days-left");
+
+  const dateElement =
+    element.querySelector(".deadline-date");
+
+  const daysElement =
+    element.querySelector(".days-left");
+
 
   if (!deadline) {
+
     dateElement.textContent = "";
     daysElement.textContent = "";
+
     setWarningLevel(element, null, false);
+
     return;
+
   }
 
-  const daysLeft = getDaysRemaining(deadline);
-  dateElement.textContent = formatDate(deadline);
+
+  const daysLeft =
+    getDaysRemaining(deadline);
+
+
+  dateElement.textContent =
+    formatDate(deadline);
+
 
   if (daysLeft > 0) {
-    daysElement.textContent = `(D-${daysLeft})`;
+
+    daysElement.textContent =
+      `(D-${daysLeft})`;
+
   } else if (daysLeft === 0) {
-    daysElement.textContent = "(D-Day)";
+
+    daysElement.textContent =
+      "(D-Day)";
+
   } else {
-    daysElement.textContent = `(D+${Math.abs(daysLeft)})`;
+
+    daysElement.textContent =
+      `(D+${Math.abs(daysLeft)})`;
+
   }
+
 
   let completed = false;
-  const deadlineType = element.dataset.deadline;
+
+  const deadlineType =
+    element.dataset.deadline;
+
 
   if (deadlineType === "ita-accept") {
-    completed = localStorage.getItem(STORAGE_PREFIX + "ita-accepted") === "true";
-  }
-  if (deadlineType === "work-permit") {
-    completed = localStorage.getItem(STORAGE_PREFIX + "application-submitted") === "true";
-  }
-  if (deadlineType === "biometrics") {
-    completed = localStorage.getItem(STORAGE_PREFIX + "biometrics-completed") === "true";
+
+    completed =
+      localStorage.getItem(
+        STORAGE_PREFIX + "ita-accepted"
+      ) === "true";
+
   }
 
-  setWarningLevel(element, daysLeft, completed);
+
+  if (deadlineType === "work-permit") {
+
+    completed =
+      localStorage.getItem(
+        STORAGE_PREFIX + "application-submitted"
+      ) === "true";
+
+  }
+
+
+  if (deadlineType === "biometrics") {
+
+    completed =
+      localStorage.getItem(
+        STORAGE_PREFIX + "biometrics-completed"
+      ) === "true";
+
+  }
+
+
+  setWarningLevel(
+    element,
+    daysLeft,
+    completed
+  );
+
 }
+
 
 // ----------------------------------------
 // Update all deadlines
 // ----------------------------------------
+
 function updateDeadlines() {
-  const itaReceivedDate = localStorage.getItem(STORAGE_PREFIX + "ita-date");
-  const itaDeadline = addDays(itaReceivedDate, 10);
-  const itaElement = document.querySelector('[data-deadline="ita-accept"]');
+
+  // ITA acceptance deadline
+
+  const itaReceivedDate =
+    localStorage.getItem(
+      STORAGE_PREFIX + "ita-date"
+    );
+
+  const itaDeadline =
+    addDays(itaReceivedDate, 10);
+
+  const itaElement =
+    document.querySelector(
+      '[data-deadline="ita-accept"]'
+    );
+
   if (itaElement) {
-    displayDeadline(itaElement, itaDeadline);
+
+    displayDeadline(
+      itaElement,
+      itaDeadline
+    );
+
   }
 
-  const itaAcceptedDate = localStorage.getItem(STORAGE_PREFIX + "ita-accepted-date");
-  const workPermitDeadline = addDays(itaAcceptedDate, 20);
-  const workPermitElement = document.querySelector('[data-deadline="work-permit"]');
+
+  // Work permit application deadline
+
+  const itaAcceptedDate =
+    localStorage.getItem(
+      STORAGE_PREFIX + "ita-accepted-date"
+    );
+
+  const workPermitDeadline =
+    addDays(itaAcceptedDate, 20);
+
+  const workPermitElement =
+    document.querySelector(
+      '[data-deadline="work-permit"]'
+    );
+
   if (workPermitElement) {
-    displayDeadline(workPermitElement, workPermitDeadline);
+
+    displayDeadline(
+      workPermitElement,
+      workPermitDeadline
+    );
+
   }
 
-  const bilDate = localStorage.getItem(STORAGE_PREFIX + "bil-date");
-  const biometricsDeadline = addDays(bilDate, 30);
-  const biometricsElement = document.querySelector('[data-deadline="biometrics"]');
+
+  // Biometrics deadline
+
+  const bilDate =
+    localStorage.getItem(
+      STORAGE_PREFIX + "bil-date"
+    );
+
+  const biometricsDeadline =
+    addDays(bilDate, 30);
+
+  const biometricsElement =
+    document.querySelector(
+      '[data-deadline="biometrics"]'
+    );
+
   if (biometricsElement) {
-    displayDeadline(biometricsElement, biometricsDeadline);
+
+    displayDeadline(
+      biometricsElement,
+      biometricsDeadline
+    );
+
   }
+
 }
+
 
 // ----------------------------------------
 // Auto-collapse fully completed steps
 // ----------------------------------------
-function updateStepCompletion() {
-  document.querySelectorAll(".step").forEach(step => {
-    const boxes = step.querySelectorAll('input[type="checkbox"]');
-    if (boxes.length === 0) return;
 
-    const allChecked = [...boxes].every(box => box.checked);
-    step.classList.toggle("completed", allChecked);
+function updateStepCompletion() {
+
+  document.querySelectorAll(".step").forEach(step => {
+
+    const boxes =
+      step.querySelectorAll(
+        'input[type="checkbox"]'
+      );
+
+    if (boxes.length === 0) {
+      return;
+    }
+
+
+    const allChecked =
+      [...boxes].every(
+        box => box.checked
+      );
+
+
+    step.classList.toggle(
+      "completed",
+      allChecked
+    );
+
 
     if (allChecked) {
+
       step.removeAttribute("open");
+
     }
+
   });
+
 }
 
+
+// ----------------------------------------
+// Check whether all application steps
+// are complete
+// ----------------------------------------
+
+function isApplicationComplete() {
+
+  const steps =
+    document.querySelectorAll(".step");
+
+
+  for (const step of steps) {
+
+    // ------------------------------
+    // Checkboxes
+    // ------------------------------
+
+    const boxes =
+      step.querySelectorAll(
+        'input[type="checkbox"]'
+      );
+
+
+    if (boxes.length > 0) {
+
+      const allChecked =
+        [...boxes].every(
+          box => box.checked
+        );
+
+
+      if (!allChecked) {
+
+        return false;
+
+      }
+
+    }
+
+
+    // ------------------------------
+    // Date inputs
+    // ------------------------------
+
+    const dates =
+      step.querySelectorAll(
+        'input[type="date"]'
+      );
+
+
+    if (dates.length > 0) {
+
+      const allDatesFilled =
+        [...dates].every(
+          date => date.value !== ""
+        );
+
+
+      if (!allDatesFilled) {
+
+        return false;
+
+      }
+
+    }
+
+  }
+
+
+  return true;
+
+}
+
+
+// ----------------------------------------
+// Update Next button
+// ----------------------------------------
+
+function updateNextButton() {
+
+  const nextButton =
+    document.querySelector(".next");
+
+
+  if (!nextButton) {
+
+    return;
+
+  }
+
+
+  const complete =
+    isApplicationComplete();
+
+
+  nextButton.classList.toggle(
+    "active",
+    complete
+  );
+
+
+  nextButton.setAttribute(
+    "aria-disabled",
+    complete ? "false" : "true"
+  );
+
+}
+
+
+// ----------------------------------------
+// Prevent navigation when incomplete
+// ----------------------------------------
+
+document.addEventListener("click", event => {
+
+  const nextButton =
+    event.target.closest(".next");
+
+
+  if (!nextButton) {
+
+    return;
+
+  }
+
+
+  if (!isApplicationComplete()) {
+
+    event.preventDefault();
+
+  }
+
+});
+
+
+// ----------------------------------------
 // Run when page loads
+// ----------------------------------------
+
 updateDeadlines();
 updateStepCompletion();
+updateNextButton();
+
 </script>
 </body>
 </html>
