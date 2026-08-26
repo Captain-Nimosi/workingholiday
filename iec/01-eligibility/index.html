@@ -1,645 +1,1065 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eligibility — IEC Visa</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+  <title>Eligibility — IEC Visa</title>
 
-* {
-  box-sizing: border-box;
-}
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
 
-body {
-  font-family: 'Noto Serif', serif;
-  font-size: 14px;
-  color: #111;
-  background: #fff;
-  margin: 0;
-  padding: 60px 40px;
-  line-height: 1.8;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-main {
-  max-width: 600px;
-}
+    body {
+      font-family: 'Noto Serif', serif;
+      font-size: 14px;
+      color: #111;
+      background: #fff;
+      margin: 0;
+      padding: 60px 40px;
+      line-height: 1.8;
+    }
 
-a {
-  color: #0000EE;
-  text-decoration: underline;
-}
+    main {
+      max-width: 600px;
+    }
 
-a:hover {
-  color: #0000AA;
-}
+    a {
+      color: #0000EE;
+      text-decoration: underline;
+    }
 
-h1 {
-  font-size: 16px;
-  font-weight: 700;
-  margin: 0 0 32px 0;
-}
+    a:hover {
+      color: #0000AA;
+    }
 
-.page-meta {
-  margin-top: 8px;
-  margin-bottom: 40px;
-  font-size: 14px;
-  line-height: 1.8;
-  font-weight: 400;
-  color: #111;
-}
+    h1 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0 0 32px 0;
+    }
 
-/* ---------- Eligibility sections ---------- */
+    .page-meta {
+      margin-top: 8px;
+      margin-bottom: 40px;
+      font-size: 14px;
+      line-height: 1.8;
+      font-weight: 400;
+      color: #111;
+    }
 
-.step {
-  margin-bottom: 24px;
-  border: none;
-}
+    /* ---------- Language ---------- */
 
-.step > summary {
-  list-style: none;
-  cursor: pointer;
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-}
+    .language {
+      position: fixed;
+      top: 24px;
+      right: 40px;
+      z-index: 1000;
+    }
 
-.step > summary::-webkit-details-marker {
-  display: none;
-}
+    .language a {
+      color: #0000EE;
+      text-decoration: underline;
+    }
 
-.step > summary::before {
-  content: "+";
-  font-weight: 700;
-  width: 12px;
-  flex-shrink: 0;
-}
+    .language a:hover {
+      color: #0000AA;
+    }
 
-.step[open] > summary::before {
-  content: "−";
-}
+    .language .current {
+      color: #111;
+      text-decoration: none;
+    }
 
-.step-number {
-  font-weight: 400;
-}
+    /* ---------- Eligibility sections ---------- */
 
-.step > summary h2 {
-  font-size: 14px;
-  font-weight: 700;
-  margin: 0;
-  display: inline;
-}
+    .step {
+      margin-bottom: 24px;
+      border: none;
+    }
 
-.step.completed > summary {
-  color: #999;
-}
+    .step > summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
 
-.step-content {
-  margin-top: 16px;
-  margin-left: 22px;
-}
+    .step > summary::-webkit-details-marker {
+      display: none;
+    }
 
-.description {
-  margin-bottom: 16px;
-}
+    .step > summary::before {
+      content: "+";
+      font-weight: 700;
+      width: 12px;
+      flex-shrink: 0;
+    }
 
-/* ---------- Subgroups ---------- */
+    .step[open] > summary::before {
+      content: "−";
+    }
 
-.subgroup {
-  border-left: 2px solid #ddd;
-  padding-left: 16px;
-  margin-bottom: 24px;
-}
+    .step-number {
+      font-weight: 400;
+    }
 
-.subgroup:last-child {
-  margin-bottom: 0;
-}
+    .step > summary h2 {
+      font-size: 14px;
+      font-weight: 700;
+      margin: 0;
+      display: inline;
+    }
 
-.subgroup h3 {
-  margin: 0 0 8px 0;
-  font-size: 14px;
-  font-weight: 700;
-}
+    .step.completed > summary {
+      color: #999;
+    }
 
-.subgroup p {
-  margin: 0 0 12px 0;
-}
+    .step-content {
+      margin-top: 16px;
+      margin-left: 22px;
+    }
 
-.subgroup p:last-child {
-  margin-bottom: 0;
-}
+    .description {
+      margin-bottom: 16px;
+    }
 
-/* ---------- Documents / checkboxes ---------- */
+    /* ---------- Subgroups ---------- */
 
-.documents {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
+    .subgroup {
+      border-left: 2px solid #ddd;
+      padding-left: 16px;
+      margin-bottom: 24px;
+    }
 
-.documents li {
-  margin: 4px 0;
-}
+    .subgroup:last-child {
+      margin-bottom: 0;
+    }
 
-.documents label {
-  cursor: pointer;
-}
+    .subgroup h3 {
+      margin: 0 0 8px 0;
+      font-size: 14px;
+      font-weight: 700;
+    }
 
-.documents input[type="checkbox"] {
-  margin-right: 8px;
-  vertical-align: middle;
-}
+    .subgroup p {
+      margin: 0 0 12px 0;
+    }
 
-/* ---------- Back ---------- */
+    .subgroup p:last-child {
+      margin-bottom: 0;
+    }
 
-.back {
-  margin-top: 48px;
-  display: flex;
-  justify-content: space-between;
-}
+    /* ---------- Documents / checkboxes ---------- */
 
-.back a {
-  color: #111;
-}
+    .documents {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
 
-.next {
-  pointer-events: none;
-  color: #ccc !important;
-  text-decoration: none;
-}
+    .documents li {
+      margin: 4px 0;
+    }
 
-.next.active {
-  pointer-events: auto;
-  color: #111 !important;
-  text-decoration: underline;
-  font-weight: 700;
-}
-</style>
+    .documents label {
+      cursor: pointer;
+    }
+
+    .documents input[type="checkbox"] {
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    /* ---------- Back ---------- */
+
+    .back {
+      margin-top: 48px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .back a {
+      color: #111;
+    }
+
+    .next {
+      pointer-events: none;
+      color: #ccc !important;
+      text-decoration: none;
+    }
+
+    .next.active {
+      pointer-events: auto;
+      color: #111 !important;
+      text-decoration: underline;
+      font-weight: 700;
+    }
+  </style>
 </head>
 
 <body>
-<main>
 
-<h1>IEC Eligibility</h1>
+  <div class="language">
+    <a href="#" id="lang-en">EN</a>
+    <span> | </span>
+    <a href="#" id="lang-ko">한국어</a>
+  </div>
 
-<p class="page-meta">
-For Korean citizens applying for the IEC program.<br>
-Based on information provided by
-<a
-  href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/eligibility.html"
-  target="_blank"
-  rel="noopener noreferrer"
->Immigration, Refugees and Citizenship Canada (IRCC)</a>.<br>
-Last updated: August 26, 2026
-</p>
+  <main>
+
+    <h1
+      data-en="IEC Eligibility"
+      data-ko="IEC 자격 요건"
+    >
+      IEC Eligibility
+    </h1>
+
+    <p class="page-meta">
+      <span
+        data-en="For Korean citizens applying for the IEC program."
+        data-ko="IEC 프로그램에 신청하는 대한민국 국민을 위한 안내입니다."
+      >
+        For Korean citizens applying for the IEC program.
+      </span>
+      <br>
+
+      <span
+        data-en="Based on information provided by"
+        data-ko="다음 기관에서 제공하는 정보를 기준으로 작성되었습니다:"
+      >
+        Based on information provided by
+      </span>
+
+      <a
+        href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/eligibility.html"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Immigration, Refugees and Citizenship Canada (IRCC)
+      </a>.
+      <br>
+
+      <span
+        data-en="Last updated: August 26, 2026"
+        data-ko="최종 업데이트: 2026년 8월 26일"
+      >
+        Last updated: August 26, 2026
+      </span>
+    </p>
 
 
-<!-- SECTION 01 -->
-<details class="step" data-step="01" open>
-  <summary>
-    <span class="step-number">01</span>
-    <h2>Basic eligibility</h2>
-  </summary>
+    <!-- SECTION 01 -->
 
-  <div class="step-content">
+    <details class="step" data-step="01" open>
 
-    <ul class="documents">
+      <summary>
+        <span class="step-number">01</span>
 
-      <li>
-        <label>
-          <input type="checkbox" data-save="valid-korean-passport">
-          Valid Korean passport
-        </label>
-      </li>
+        <h2
+          data-en="Basic eligibility"
+          data-ko="기본 자격 요건"
+        >
+          Basic eligibility
+        </h2>
+      </summary>
 
-      <li>
-        <label>
-          <input type="checkbox" data-save="age-requirement">
-          Age 18–35(inclusive)
-        </label>
-      </li>
+      <div class="step-content">
 
-      <li>
-        <label>
-          <input type="checkbox" data-save="working-holiday-eligible">
-          Eligible for the Working Holiday category
-        </label>
-      </li>
+        <ul class="documents">
 
-      <li>
-        <label>
-          <input type="checkbox" data-save="inadmissibility">
-          No inadmissibility issues
-        </label>
-      </li>
+          <li>
+            <label>
+              <input
+                type="checkbox"
+                data-save="valid-korean-passport"
+              >
 
-    </ul>
+              <span
+                data-en="Valid Korean passport"
+                data-ko="유효한 대한민국 여권"
+              >
+                Valid Korean passport
+              </span>
+            </label>
+          </li>
 
-    <div class="subgroup">
-      <h3>Age requirement</h3>
+          <li>
+            <label>
+              <input
+                type="checkbox"
+                data-save="age-requirement"
+              >
 
-      <p>
-        You must be between 18 and 35 years old, inclusive.
-      </p>
+              <span
+                data-en="Age 18–35 (inclusive)"
+                data-ko="만 18세–35세 (포함)"
+              >
+                Age 18–35 (inclusive)
+              </span>
+            </label>
+          </li>
 
-      <p>
-        <a
-          href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/eligibility.html"
-          target="_blank"
-          rel="noopener noreferrer"
-        >Check the official IRCC eligibility requirements</a>.
-      </p>
+          <li>
+            <label>
+              <input
+                type="checkbox"
+                data-save="working-holiday-eligible"
+              >
+
+              <span
+                data-en="Eligible for the Working Holiday category"
+                data-ko="워킹홀리데이 카테고리 신청 자격 충족"
+              >
+                Eligible for the Working Holiday category
+              </span>
+            </label>
+          </li>
+
+          <li>
+            <label>
+              <input
+                type="checkbox"
+                data-save="inadmissibility"
+              >
+
+              <span
+                data-en="No inadmissibility issues"
+                data-ko="입국 불허 사유가 없음"
+              >
+                No inadmissibility issues
+              </span>
+            </label>
+          </li>
+
+        </ul>
+
+
+        <div class="subgroup">
+
+          <h3
+            data-en="Age requirement"
+            data-ko="연령 요건"
+          >
+            Age requirement
+          </h3>
+
+          <p
+            data-en="You must be between 18 and 35 years old, inclusive."
+            data-ko="신청자는 만 18세 이상 35세 이하이어야 합니다."
+          >
+            You must be between 18 and 35 years old, inclusive.
+          </p>
+
+          <p>
+            <a
+              href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/eligibility.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-en="Check the official IRCC eligibility requirements"
+              data-ko="IRCC 공식 자격 요건 확인"
+            >
+              Check the official IRCC eligibility requirements
+            </a>.
+          </p>
+
+        </div>
+
+      </div>
+
+    </details>
+
+
+    <div class="arrow">↓</div>
+
+
+    <!-- SECTION 02 -->
+
+    <details class="step" data-step="02" open>
+
+      <summary>
+        <span class="step-number">02</span>
+
+        <h2
+          data-en="Financial & insurance requirements"
+          data-ko="재정 및 보험 요건"
+        >
+          Financial & insurance requirements
+        </h2>
+      </summary>
+
+      <div class="step-content">
+
+        <ul class="documents">
+
+          <li>
+            <label>
+              <input
+                type="checkbox"
+                data-save="initial-funds"
+              >
+
+              <span
+                data-en="Enough funds for your initial stay in Canada"
+                data-ko="캐나다 초기 체류에 필요한 충분한 자금"
+              >
+                Enough funds for your initial stay in Canada
+              </span>
+            </label>
+          </li>
+
+          <li>
+            <label>
+              <input
+                type="checkbox"
+                data-save="health-insurance"
+              >
+
+              <span
+                data-en="Valid health insurance for your stay"
+                data-ko="체류 기간을 보장하는 유효한 건강보험"
+              >
+                Valid health insurance for your stay
+              </span>
+            </label>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </details>
+
+
+    <div class="arrow">↓</div>
+
+
+    <!-- SECTION 03 -->
+
+    <details class="step" data-step="03" open>
+
+      <summary>
+        <span class="step-number">03</span>
+
+        <h2
+          data-en="Previous IEC participation"
+          data-ko="이전 IEC 참가 이력"
+        >
+          Previous IEC participation
+        </h2>
+      </summary>
+
+      <div class="step-content">
+
+        <div class="subgroup">
+
+          <p
+            data-en="Participation means you entered Canada and received an IEC work permit."
+            data-ko="IEC 참가란 캐나다에 입국하여 IEC 취업 허가증을 발급받은 경우를 의미합니다."
+          >
+            Participation means you entered Canada and received an IEC work permit.
+          </p>
+
+          <p
+            data-en="If your application was approved but you did not enter Canada to receive a work permit, it does not count as a participation."
+            data-ko="신청이 승인되었더라도 캐나다에 입국하여 취업 허가증을 발급받지 않았다면 IEC 참가 이력으로 인정되지 않습니다."
+          >
+            If your application was approved but you did not enter Canada to receive a work permit, it does not count as a participation.
+          </p>
+
+          <p>
+            <a
+              href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/eligibility.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-en="Check the official IRCC participation rules"
+              data-ko="IRCC 공식 참가 규정 확인"
+            >
+              Check the official IRCC participation rules
+            </a>.
+          </p>
+
+        </div>
+
+
+        <div class="subgroup participation-option">
+
+          <h3
+            data-en="First participation"
+            data-ko="첫 번째 참가"
+          >
+            First participation
+          </h3>
+
+          <ul class="documents">
+
+            <li>
+              <label>
+                <input
+                  type="checkbox"
+                  data-save="first-participation"
+                >
+
+                <span
+                  data-en="I have not previously participated in IEC"
+                  data-ko="이전에 IEC에 참가한 적이 없습니다"
+                >
+                  I have not previously participated in IEC
+                </span>
+              </label>
+            </li>
+
+          </ul>
+
+        </div>
+
+
+        <div class="subgroup participation-option">
+
+          <h3
+            data-en="Second participation"
+            data-ko="두 번째 참가"
+          >
+            Second participation
+          </h3>
+
+          <ul class="documents">
+
+            <li>
+              <label>
+                <input
+                  type="checkbox"
+                  data-save="second-participation-history"
+                >
+
+                <span
+                  data-en="I have participated in IEC once before"
+                  data-ko="이전에 IEC에 한 번 참가한 적이 있습니다"
+                >
+                  I have participated in IEC once before
+                </span>
+              </label>
+            </li>
+
+            <li>
+              <label>
+                <input
+                  type="checkbox"
+                  data-save="second-participation-remaining"
+                >
+
+                <span
+                  data-en="I have not used my second participation"
+                  data-ko="두 번째 IEC 참가 기회를 아직 사용하지 않았습니다"
+                >
+                  I have not used my second participation
+                </span>
+              </label>
+            </li>
+
+            <li>
+              <label>
+                <input
+                  type="checkbox"
+                  data-save="second-participation-eligible"
+                >
+
+                <span
+                  data-en="I meet the eligibility requirements for this participation"
+                  data-ko="이번 참가에 필요한 자격 요건을 충족합니다"
+                >
+                  I meet the eligibility requirements for this participation
+                </span>
+              </label>
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+    </details>
+
+
+    <div class="arrow">↓</div>
+
+
+    <!-- SECTION 04 -->
+
+    <details class="step" data-step="04" open>
+
+      <summary>
+        <span class="step-number">04</span>
+
+        <h2
+          data-en="Required documents"
+          data-ko="필요 서류"
+        >
+          Required documents
+        </h2>
+      </summary>
+
+      <div class="step-content">
+
+        <ul class="documents">
+
+          <li>
+            <label>
+              <input
+                type="checkbox"
+                data-save="required-documents"
+              >
+
+              <span
+                data-en="Required documents can be provided"
+                data-ko="필요한 서류를 준비할 수 있음"
+              >
+                Required documents can be provided
+              </span>
+            </label>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </details>
+
+
+    <div class="back">
+      <a href="../">back</a>
+
+      <a
+        href="../02-application-process/"
+        class="next"
+        aria-disabled="true"
+        data-en="next →"
+        data-ko="다음 →"
+      >
+        next →
+      </a>
     </div>
 
-  </div>
-</details>
+  </main>
 
 
-<div class="arrow">↓</div>
+  <script>
+
+    // ----------------------------------------
+    // Language
+    // ----------------------------------------
+
+    const LANGUAGE_KEY = "workingholiday_language";
+
+    const currentLanguage =
+      localStorage.getItem(LANGUAGE_KEY) || "en";
 
 
-<!-- SECTION 02 -->
-<details class="step" data-step="02" open>
-  <summary>
-    <span class="step-number">02</span>
-    <h2>Financial & insurance requirements</h2>
-  </summary>
+    // ----------------------------------------
+    // Apply language
+    // ----------------------------------------
 
-  <div class="step-content">
+    function applyLanguage(language) {
 
-    <ul class="documents">
-
-      <li>
-        <label>
-          <input type="checkbox" data-save="initial-funds">
-          Enough funds for your initial stay in Canada
-        </label>
-      </li>
-
-      <li>
-        <label>
-          <input type="checkbox" data-save="health-insurance">
-          Valid health insurance for your stay
-        </label>
-      </li>
-
-    </ul>
-
-  </div>
-</details>
+      document.documentElement.lang = language;
 
 
-<div class="arrow">↓</div>
+      document.querySelectorAll("[data-en][data-ko]").forEach(element => {
+
+        element.textContent =
+          element.dataset[language];
+
+      });
 
 
-<!-- SECTION 03 -->
-<details class="step" data-step="03" open>
-  <summary>
-    <span class="step-number">03</span>
-    <h2>Previous IEC participation</h2>
-  </summary>
+      // Language selector
 
-  <div class="step-content">
+      const en =
+        document.getElementById("lang-en");
 
-    <div class="subgroup">
-
-      <p>
-        Participation means you entered Canada and received an IEC work permit.
-      </p>
-
-      <p>
-        If your application was approved but you did not enter Canada to receive
-        a work permit, it does not count as a participation.
-      </p>
-
-      <p>
-        <a
-          href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/eligibility.html"
-          target="_blank"
-          rel="noopener noreferrer"
-        >Check the official IRCC participation rules</a>.
-      </p>
-
-    </div>
+      const ko =
+        document.getElementById("lang-ko");
 
 
-    <div class="subgroup participation-option">
-      <h3>First participation</h3>
+      if (language === "en") {
 
-      <ul class="documents">
+        en.classList.add("current");
+        ko.classList.remove("current");
 
-        <li>
-          <label>
-            <input type="checkbox" data-save="first-participation">
-            I have not previously participated in IEC
-          </label>
-        </li>
+      } else {
 
-      </ul>
+        en.classList.remove("current");
+        ko.classList.add("current");
 
-    </div>
+      }
 
 
-    <div class="subgroup participation-option">
-      <h3>Second participation</h3>
+      // Page title
 
-      <ul class="documents">
+      document.title =
+        language === "en"
+          ? "Eligibility — IEC Visa"
+          : "자격 요건 — IEC 비자";
 
-        <li>
-          <label>
-            <input type="checkbox" data-save="second-participation-history">
-            I have participated in IEC once before
-          </label>
-        </li>
-
-        <li>
-          <label>
-            <input type="checkbox" data-save="second-participation-remaining">
-            I have not used my second participation
-          </label>
-        </li>
-
-        <li>
-          <label>
-            <input type="checkbox" data-save="second-participation-eligible">
-            I meet the eligibility requirements for this participation
-          </label>
-        </li>
-
-      </ul>
-
-    </div>
-
-  </div>
-</details>
-
-
-<div class="arrow">↓</div>
-
-
-<!-- SECTION 04 -->
-<details class="step" data-step="04" open>
-  <summary>
-    <span class="step-number">04</span>
-    <h2>Required documents</h2>
-  </summary>
-
-  <div class="step-content">
-
-    <ul class="documents">
-
-      <li>
-        <label>
-          <input type="checkbox" data-save="required-documents">
-          Required documents can be provided
-        </label>
-      </li>
-
-    </ul>
-
-  </div>
-</details>
-
-
-<div class="back">
-  <a href="../">back</a>
-  <a href="../02-application-process/" class="next" aria-disabled="true">next →</a>
-</div>
-
-</main>
-
-
-<script>
-
-const STORAGE_PREFIX = "workingholiday_eligibility_";
-
-
-// ----------------------------------------
-// Save and restore checkbox values
-// ----------------------------------------
-
-const elements = document.querySelectorAll("[data-save]");
-
-elements.forEach(element => {
-
-  const key = STORAGE_PREFIX + element.dataset.save;
-  const savedValue = localStorage.getItem(key);
-
-  if (element.type === "checkbox") {
-    element.checked = savedValue === "true";
-  }
-
-  element.addEventListener("change", () => {
-
-    if (element.type === "checkbox") {
-      localStorage.setItem(key, element.checked);
     }
+
+
+    // ----------------------------------------
+    // Language selector
+    // ----------------------------------------
+
+    document
+      .getElementById("lang-en")
+      .addEventListener("click", event => {
+
+        event.preventDefault();
+
+        localStorage.setItem(
+          LANGUAGE_KEY,
+          "en"
+        );
+
+        applyLanguage("en");
+
+      });
+
+
+    document
+      .getElementById("lang-ko")
+      .addEventListener("click", event => {
+
+        event.preventDefault();
+
+        localStorage.setItem(
+          LANGUAGE_KEY,
+          "ko"
+        );
+
+        applyLanguage("ko");
+
+      });
+
+
+    // ----------------------------------------
+    // Save and restore checkbox values
+    // ----------------------------------------
+
+    const STORAGE_PREFIX =
+      "workingholiday_eligibility_";
+
+
+    const elements =
+      document.querySelectorAll("[data-save]");
+
+
+    elements.forEach(element => {
+
+      const key =
+        STORAGE_PREFIX + element.dataset.save;
+
+      const savedValue =
+        localStorage.getItem(key);
+
+
+      if (element.type === "checkbox") {
+
+        element.checked =
+          savedValue === "true";
+
+      }
+
+
+      element.addEventListener("change", () => {
+
+        if (element.type === "checkbox") {
+
+          localStorage.setItem(
+            key,
+            element.checked
+          );
+
+        }
+
+        updateStepCompletion();
+        updateNextButton();
+
+      });
+
+    });
+
+
+    // ----------------------------------------
+    // Check completion of each section
+    // ----------------------------------------
+
+    function isSectionComplete(step) {
+
+      const boxes =
+        step.querySelectorAll(
+          'input[type="checkbox"]'
+        );
+
+
+      if (boxes.length === 0) {
+
+        return false;
+
+      }
+
+
+      return [...boxes].every(
+        box => box.checked
+      );
+
+    }
+
+
+    // ----------------------------------------
+    // Check Previous IEC participation
+    // ----------------------------------------
+
+    function isParticipationComplete() {
+
+      const firstParticipation =
+        document.querySelector(
+          '[data-save="first-participation"]'
+        );
+
+
+      const firstComplete =
+        firstParticipation &&
+        firstParticipation.checked;
+
+
+      const secondParticipation = [
+
+        document.querySelector(
+          '[data-save="second-participation-history"]'
+        ),
+
+        document.querySelector(
+          '[data-save="second-participation-remaining"]'
+        ),
+
+        document.querySelector(
+          '[data-save="second-participation-eligible"]'
+        )
+
+      ];
+
+
+      const secondComplete =
+        secondParticipation.every(
+          box => box && box.checked
+        );
+
+
+      return (
+        firstComplete ||
+        secondComplete
+      );
+
+    }
+
+
+    // ----------------------------------------
+    // Auto-collapse completed sections
+    // ----------------------------------------
+
+    function updateStepCompletion() {
+
+      document
+        .querySelectorAll(".step")
+        .forEach(step => {
+
+          const stepNumber =
+            step.dataset.step;
+
+
+          let completed = false;
+
+
+          // Sections 01, 02, 04
+
+          if (
+            stepNumber === "01" ||
+            stepNumber === "02" ||
+            stepNumber === "04"
+          ) {
+
+            completed =
+              isSectionComplete(step);
+
+          }
+
+
+          // Section 03
+
+          if (stepNumber === "03") {
+
+            completed =
+              isParticipationComplete();
+
+          }
+
+
+          step.classList.toggle(
+            "completed",
+            completed
+          );
+
+
+          if (completed) {
+
+            step.removeAttribute("open");
+
+          }
+
+        });
+
+    }
+
+
+    // ----------------------------------------
+    // Check whether user is ready for next step
+    // ----------------------------------------
+
+    function isEligibilityComplete() {
+
+      const section01 =
+        document.querySelector(
+          '[data-step="01"]'
+        );
+
+
+      const section02 =
+        document.querySelector(
+          '[data-step="02"]'
+        );
+
+
+      const section03 =
+        document.querySelector(
+          '[data-step="03"]'
+        );
+
+
+      const section04 =
+        document.querySelector(
+          '[data-step="04"]'
+        );
+
+
+      const basicEligibility =
+        isSectionComplete(section01);
+
+
+      const financialInsurance =
+        isSectionComplete(section02);
+
+
+      const participation =
+        isParticipationComplete();
+
+
+      const requiredDocuments =
+        isSectionComplete(section04);
+
+
+      return (
+        basicEligibility &&
+        financialInsurance &&
+        participation &&
+        requiredDocuments
+      );
+
+    }
+
+
+    // ----------------------------------------
+    // Create / update Next button
+    // ----------------------------------------
+
+    function updateNextButton() {
+
+      const nextButton =
+        document.querySelector(".next");
+
+
+      if (!nextButton) {
+
+        return;
+
+      }
+
+
+      const complete =
+        isEligibilityComplete();
+
+
+      nextButton.classList.toggle(
+        "active",
+        complete
+      );
+
+
+      nextButton.setAttribute(
+        "aria-disabled",
+        complete
+          ? "false"
+          : "true"
+      );
+
+    }
+
+
+    // ----------------------------------------
+    // Prevent navigation when not complete
+    // ----------------------------------------
+
+    document.addEventListener(
+      "click",
+      event => {
+
+        const nextButton =
+          event.target.closest(".next");
+
+
+        if (!nextButton) {
+
+          return;
+
+        }
+
+
+        if (!isEligibilityComplete()) {
+
+          event.preventDefault();
+
+          return;
+
+        }
+
+      }
+    );
+
+
+    // ----------------------------------------
+    // Run when page loads
+    // ----------------------------------------
+
+    applyLanguage(currentLanguage);
 
     updateStepCompletion();
     updateNextButton();
 
-  });
-
-});
-
-
-// ----------------------------------------
-// Check completion of each section
-// ----------------------------------------
-
-function isSectionComplete(step) {
-
-  const boxes = step.querySelectorAll('input[type="checkbox"]');
-
-  if (boxes.length === 0) {
-    return false;
-  }
-
-  return [...boxes].every(box => box.checked);
-
-}
-
-
-// ----------------------------------------
-// Check Previous IEC participation
-// ----------------------------------------
-//
-// Section 03 is complete when either:
-//
-// 1. First participation is checked
-// OR
-// 2. All Second participation items are checked
-//
-
-function isParticipationComplete() {
-
-  // First participation
-  const firstParticipation =
-    document.querySelector('[data-save="first-participation"]');
-
-  const firstComplete =
-    firstParticipation && firstParticipation.checked;
-
-
-  // Second participation
-  const secondParticipation = [
-    document.querySelector('[data-save="second-participation-history"]'),
-    document.querySelector('[data-save="second-participation-remaining"]'),
-    document.querySelector('[data-save="second-participation-eligible"]')
-  ];
-
-  const secondComplete =
-    secondParticipation.every(box => box && box.checked);
-
-
-  // Either First OR Second participation is sufficient
-  return firstComplete || secondComplete;
-}
-
-
-// ----------------------------------------
-// Auto-collapse completed sections
-// ----------------------------------------
-
-function updateStepCompletion() {
-
-  document.querySelectorAll(".step").forEach(step => {
-
-    const stepNumber =
-      step.dataset.step;
-
-    let completed = false;
-
-    // Sections 01, 02, 04
-    if (
-      stepNumber === "01" ||
-      stepNumber === "02" ||
-      stepNumber === "04"
-    ) {
-      completed = isSectionComplete(step);
-    }
-
-    // Section 03
-    if (stepNumber === "03") {
-      completed = isParticipationComplete();
-    }
-
-    step.classList.toggle("completed", completed);
-
-    if (completed) {
-      step.removeAttribute("open");
-    }
-
-  });
-
-}
-
-
-// ----------------------------------------
-// Check whether user is ready for next step
-// ----------------------------------------
-
-function isEligibilityComplete() {
-
-  // Section 01
-  const section01 =
-    document.querySelector('[data-step="01"]');
-
-  // Section 02
-  const section02 =
-    document.querySelector('[data-step="02"]');
-
-  // Section 03
-  const section03 =
-    document.querySelector('[data-step="03"]');
-
-  // Section 04
-  const section04 =
-    document.querySelector('[data-step="04"]');
-
-
-  const basicEligibility =
-    isSectionComplete(section01);
-
-  const financialInsurance =
-    isSectionComplete(section02);
-
-  const participation =
-    isParticipationComplete();
-
-  const requiredDocuments =
-    isSectionComplete(section04);
-
-
-  return (
-    basicEligibility &&
-    financialInsurance &&
-    participation &&
-    requiredDocuments
-  );
-
-}
-
-
-// ----------------------------------------
-// Create / update Next button
-// ----------------------------------------
-
-function updateNextButton() {
-
-  const nextButton =
-    document.querySelector(".next");
-
-  if (!nextButton) {
-    return;
-  }
-
-  const complete =
-    isEligibilityComplete();
-
-  nextButton.classList.toggle("active", complete);
-
-  nextButton.setAttribute(
-    "aria-disabled",
-    complete ? "false" : "true"
-  );
-
-}
-
-
-// ----------------------------------------
-// Prevent navigation when not complete
-// ----------------------------------------
-
-document.addEventListener("click", event => {
-
-  const nextButton =
-    event.target.closest(".next");
-
-  if (!nextButton) {
-    return;
-  }
-
-  if (!isEligibilityComplete()) {
-
-    event.preventDefault();
-
-    return;
-
-  }
-
-});
-
-
-// ----------------------------------------
-// Run when page loads
-// ----------------------------------------
-
-updateStepCompletion();
-updateNextButton();
-
-</script>
+  </script>
 
 </body>
 </html>
