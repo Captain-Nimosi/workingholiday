@@ -59,6 +59,46 @@
       padding: 0;
     }
 
+    /* ---------- IEC steps ---------- */
+
+    .steps {
+      margin-top: 40px;
+    }
+
+    .step {
+      margin: 0;
+    }
+
+    .step a {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      color: #0000EE;
+      text-decoration: underline;
+    }
+
+    .step a:hover {
+      color: #0000AA;
+    }
+
+    .step-number {
+      font-weight: 400;
+      width: 18px;
+      flex-shrink: 0;
+    }
+
+    .step-title {
+      font-weight: 700;
+    }
+
+    .arrow {
+      margin: 8px 0 8px 1px;
+      font-size: 14px;
+      color: #999;
+    }
+
+    /* ---------- Back ---------- */
+
     .back {
       margin-top: 48px;
     }
@@ -67,42 +107,19 @@
       color: #111;
     }
 
-    /* ---------- IEC steps ---------- */
+    /* ---------- Language ---------- */
 
-    .steps {
+    .language {
       margin-top: 40px;
     }
-    
-    .step {
-      margin: 0;
-    }
-    
-    .step a {
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-      color: #0000EE;
+
+    .language a {
       text-decoration: underline;
     }
-    
-    .step a:hover {
-      color: #0000AA;
-    }
-    
-    .step-number {
-      font-weight: 400;
-      width: 18px;
-      flex-shrink: 0;
-    }
-    
-    .step-title {
-      font-weight: 700;
-    }
-    
-    .arrow {
-      margin: 8px 0 8px 1px;
-      font-size: 14px;
-      color: #999;
+
+    .language .current {
+      color: #111;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -111,53 +128,203 @@
 
   <main>
 
-    <h1>IEC Visa</h1>
+    <h1 data-en="IEC Visa" data-ko="IEC 비자">
+      IEC Visa
+    </h1>
 
-    <p>
+    <p
+      data-en="International Experience Canada (IEC) is Canada's youth mobility program. The Working Holiday category allows eligible participants to apply for an open work permit."
+      data-ko="International Experience Canada (IEC)는 캐나다의 청년 교류 프로그램입니다. Working Holiday 카테고리를 통해 자격을 갖춘 참가자는 오픈 워크 퍼밋을 신청할 수 있습니다."
+    >
       International Experience Canada (IEC) is Canada's youth mobility
       program. The Working Holiday category allows eligible participants
       to apply for an open work permit.
     </p>
 
-    <h2>Working Holiday</h2>
+    <h2
+      data-en="Working Holiday"
+      data-ko="워킹홀리데이"
+    >
+      Working Holiday
+    </h2>
 
     <div class="steps">
 
+      <!-- STEP 01 -->
       <div class="step">
         <a href="01-eligibility/">
           <span class="step-number">01</span>
-          <span class="step-title">Eligibility</span>
+          <span
+            class="step-title"
+            data-en="Eligibility"
+            data-ko="자격 요건"
+          >
+            Eligibility
+          </span>
         </a>
       </div>
-    
+
       <div class="arrow">↓</div>
-    
+
+      <!-- STEP 02 -->
       <div class="step">
         <a href="02-application-process/">
           <span class="step-number">02</span>
-          <span class="step-title">Application Process</span>
+          <span
+            class="step-title"
+            data-en="Application Process"
+            data-ko="신청 절차"
+          >
+            Application Process
+          </span>
         </a>
       </div>
-    
+
       <div class="arrow">↓</div>
-    
+
+      <!-- STEP 03 -->
       <div class="step">
         <a href="03-before-departure/">
           <span class="step-number">03</span>
-          <span class="step-title">Before Departure</span>
+          <span
+            class="step-title"
+            data-en="Before Departure"
+            data-ko="출국 전 준비"
+          >
+            Before Departure
+          </span>
         </a>
       </div>
-    
+
     </div>
 
     <div class="back">
-      <a href="../">back</a>
+      <a
+        href="../"
+        data-en="back"
+        data-ko="뒤로"
+      >
+        back
+      </a>
+    </div>
+
+    <!-- Language selector -->
+    <div class="language">
+      <a href="#" id="lang-en">EN</a>
+      <span> | </span>
+      <a href="#" id="lang-ko">한국어</a>
     </div>
 
   </main>
 
-  <script src="../archive.js"></script>
-  
+
+  <script>
+
+    // ----------------------------------------
+    // Language
+    // ----------------------------------------
+
+    const LANGUAGE_KEY = "workingholiday_language";
+
+    const currentLanguage =
+      localStorage.getItem(LANGUAGE_KEY) || "en";
+
+
+    // ----------------------------------------
+    // Apply language
+    // ----------------------------------------
+
+    function applyLanguage(language) {
+
+      document.documentElement.lang = language;
+
+
+      // Text content
+
+      document.querySelectorAll("[data-en][data-ko]").forEach(element => {
+
+        element.textContent =
+          element.dataset[language];
+
+      });
+
+
+      // Language selector
+
+      const en =
+        document.getElementById("lang-en");
+
+      const ko =
+        document.getElementById("lang-ko");
+
+
+      if (language === "en") {
+
+        en.classList.add("current");
+        ko.classList.remove("current");
+
+      } else {
+
+        en.classList.remove("current");
+        ko.classList.add("current");
+
+      }
+
+
+      // Page title
+
+      document.title =
+        language === "en"
+          ? "IEC Visa — Working Holiday Canada"
+          : "IEC 비자 — 캐나다 워킹홀리데이";
+
+    }
+
+
+    // ----------------------------------------
+    // Language selector
+    // ----------------------------------------
+
+    document
+      .getElementById("lang-en")
+      .addEventListener("click", event => {
+
+        event.preventDefault();
+
+        localStorage.setItem(
+          LANGUAGE_KEY,
+          "en"
+        );
+
+        applyLanguage("en");
+
+      });
+
+
+    document
+      .getElementById("lang-ko")
+      .addEventListener("click", event => {
+
+        event.preventDefault();
+
+        localStorage.setItem(
+          LANGUAGE_KEY,
+          "ko"
+        );
+
+        applyLanguage("ko");
+
+      });
+
+
+    // ----------------------------------------
+    // Run when page loads
+    // ----------------------------------------
+
+    applyLanguage(currentLanguage);
+
+  </script>
+
 </body>
 
 </html>
