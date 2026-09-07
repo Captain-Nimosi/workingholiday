@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bank Accounts — Checking vs Savings</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body { font-family: 'Noto Serif', serif; font-size: 14px; color: #111; background: #fff; margin: 0; padding: 60px 40px; line-height: 1.8; }
+main { max-width: 700px; }
+a { color: #0000EE; text-decoration: underline; }
+a:hover { color: #0000AA; }
+h1 { font-size: 16px; font-weight: 700; margin: 0 0 8px 0; }
+h2 { font-size: 14px; font-weight: 700; margin: 40px 0 12px 0; }
+p { margin: 0 0 16px 0; }
+.language { margin-bottom: 32px; }
+.language .current { color: #111; text-decoration: none; }
+.card { border-left: 2px solid #ddd; padding-left: 16px; margin-bottom: 32px; }
+.card h3 { font-size: 14px; font-weight: 700; margin: 0 0 8px 0; }
+.cta { margin-top: 40px; padding-top: 20px; border-top: 1px solid #111; }
+.back { margin-top: 48px; }
+.back a { color: #111; }
+</style>
+</head>
+<body>
+<main>
+
+<div class="language">
+  <a href="#" id="lang-en" class="current">EN</a>
+  <span> | </span>
+  <a href="#" id="lang-ko">한국어</a>
+</div>
+
+<h1 data-en="Bank Accounts" data-ko="캐나다 계좌 종류">Bank Accounts</h1>
+<p data-en="Canadian banks generally offer two basic types of personal accounts. Most people open one of each." data-ko="캐나다 은행은 보통 개인용 계좌를 크게 두 종류로 나눠요. 대부분 둘 다 하나씩 개설해요.">Canadian banks generally offer two basic types of personal accounts. Most people open one of each.</p>
+
+<div class="card">
+<h3 data-en="Checking Account (Chequing Account)" data-ko="체킹 어카운트 (Chequing Account)">Checking Account (Chequing Account)</h3>
+<p data-en="Your everyday account, used for direct deposit (payroll), debit card purchases, bill payments, and e-transfers. Usually earns little to no interest. Most banks charge a monthly fee unless you meet certain conditions (minimum balance, direct deposit, or newcomer status)." data-ko="일상적인 입출금, 급여 입금, 데빗카드 결제, 공과금 납부, 이체(e-Transfer)에 쓰는 계좌예요. 이자는 거의 없거나 아예 없어요. 최소 잔액 유지, 급여이체, 뉴커머 자격 등 조건을 채우지 못하면 대부분 월 수수료가 붙어요.">Your everyday account, used for direct deposit (payroll), debit card purchases, bill payments, and e-transfers. Usually earns little to no interest. Most banks charge a monthly fee unless you meet certain conditions (minimum balance, direct deposit, or newcomer status).</p>
+</div>
+
+<div class="card">
+<h3 data-en="Savings Account" data-ko="세이빙 어카운트 (Savings Account)">Savings Account</h3>
+<p data-en="Meant for holding money you don't need to touch often. Earns interest (rates vary widely by bank and promotion). Some savings accounts limit the number of free withdrawals per month." data-ko="자주 쓰지 않는 돈을 넣어두는 계좌예요. 이자가 붙고(은행·프로모션에 따라 금리 차이 큼), 일부 세이빙 계좌는 월 무료 출금 횟수에 제한이 있어요.">Meant for holding money you don't need to touch often. Earns interest (rates vary widely by bank and promotion). Some savings accounts limit the number of free withdrawals per month.</p>
+</div>
+
+<p data-en="As a newcomer, you'll typically open a checking account first to receive your first paycheque, then add a savings account once you have money to set aside." data-ko="워킹홀리데이로 처음 입국하면 보통 체킹 어카운트부터 개설해서 급여를 받고, 여윳돈이 생기면 세이빙 어카운트를 추가로 만드는 순서가 일반적이에요.">As a newcomer, you'll typically open a checking account first to receive your first paycheque, then add a savings account once you have money to set aside.</p>
+
+<div class="cta">
+<p data-en="Ready to open one? Compare current checking account promotions:" data-ko="계좌를 개설할 준비가 됐다면, 지금 체킹 어카운트 프로모션을 비교해보세요:">Ready to open one? Compare current checking account promotions:</p>
+<p><a href="../checking/" data-en="→ Checking Account Promotions" data-ko="→ 체킹 어카운트 프로모션 비교">→ Checking Account Promotions</a></p>
+<p data-en="Savings account promotions coming soon." data-ko="세이빙 어카운트 프로모션 비교는 준비 중이에요.">Savings account promotions coming soon.</p>
+</div>
+
+<div class="back">
+  <a href="../" data-en="← back" data-ko="← 뒤로">← back</a>
+</div>
+
+</main>
+<script>
+const LANGUAGE_KEY = "canadafinance_language";
+const currentLanguage = localStorage.getItem(LANGUAGE_KEY) || "en";
+function applyLanguage(language) {
+  document.documentElement.lang = language;
+  document.querySelectorAll("[data-en][data-ko]").forEach(el => { el.textContent = el.dataset[language]; });
+  document.getElementById("lang-en").classList.toggle("current", language === "en");
+  document.getElementById("lang-ko").classList.toggle("current", language === "ko");
+}
+document.getElementById("lang-en").addEventListener("click", e => { e.preventDefault(); localStorage.setItem(LANGUAGE_KEY, "en"); applyLanguage("en"); });
+document.getElementById("lang-ko").addEventListener("click", e => { e.preventDefault(); localStorage.setItem(LANGUAGE_KEY, "ko"); applyLanguage("ko"); });
+applyLanguage(currentLanguage);
+</script>
+</body>
+</html>
